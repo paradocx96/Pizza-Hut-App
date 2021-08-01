@@ -1,9 +1,22 @@
 # se3050---uee-2021s2_reg_we_57
 se3050---uee-2021s2_reg_we_57 created by GitHub Classroom
 
-### Team Members  
-IT19014128 - A.M.W.W.R.L. Wataketiya  
-IT19180526 - S.A.N.L.D. Chandrasiri  
-IT19240848 - H.G. Malwatta  
+## Selected Application  
 
-### Selected Application - Pizza Hut Sri Lanka
+### Pizza Hut Sri Lanka  
+
+## Team Members  
+
+| Student ID | Student Name            | Github Username       |
+|------------|-------------------------|-----------------------|
+| IT19014128 | A.M.W.W.R.L. Wataketiya | RavinduLa             |
+| IT19180526 | S.A.N.L.D. Chandrasiri  | paradocx96            |
+| IT19240848 | H.G. Malwatta           | DeclanChirush         |  
+
+## Member Functions  
+
+| Student ID | Student Name            | Functions                                           |
+|------------|-------------------------|-----------------------------------------------------|
+| IT19014128 | A.M.W.W.R.L. Wataketiya | Pizza Menu, Cart                                    |
+| IT19180526 | S.A.N.L.D. Chandrasiri  | Appetizers and Others Menu, Promos Menu, Contact us |
+| IT19240848 | H.G. Malwatta           | User Login & Signup, User Profile                   |  
