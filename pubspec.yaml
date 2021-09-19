@@ -66,6 +66,9 @@ flutter:
     - assets/images/beverages/Image3.jpg
     - assets/images/beverages/Image4.jpg
     - assets/images/beverages/Image5.jpg
+    - assets/images/desserts/Image1.jpg
+    - assets/images/desserts/Image2.jpg
+    - assets/images/desserts/Image3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
