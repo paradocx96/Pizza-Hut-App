@@ -1,7 +1,8 @@
-class Beverages {
+class Beverage {
   late String name;
+  late String size;
   late String price;
   late String flag;
 
-  Beverages({required this.name, required this.price, required this.flag});
+  Beverage({required this.name, required this.size, required this.price, required this.flag});
 }
