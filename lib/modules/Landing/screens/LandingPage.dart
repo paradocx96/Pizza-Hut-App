@@ -4,6 +4,8 @@ import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
+  /*final int index;
+  LandingPage(this.index);*/
 
   static const routeName = "/menus/landing";
 
@@ -26,11 +28,9 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
 
-    final args = ModalRoute.of(context)!.settings.arguments as LandingPageArguments;
-    //currentIndex = args.navbarIndex;
-    /*setState(() {
-      currentIndex = args.navbarIndex;
-    });*/
+    //final args = ModalRoute.of(context)!.settings.arguments as LandingPageArguments;
+    //int currentIndex = args.navbarIndex;
+    //setState(() => {currentIndex = args.navbarIndex} );
 
     //image asset for logog
     Widget pizzaHutLogo_image = Container(

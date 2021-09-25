@@ -12,7 +12,7 @@ class TempGetStarted extends StatelessWidget {
         child: GestureDetector(
           onTap: (){
             Navigator.pushNamed(context, LandingPage.routeName,
-                arguments: LandingPageArguments(0) //navigate to landing page
+                arguments: LandingPageArguments(1) //navigate to landing page
             );
           },
           child: Card(
