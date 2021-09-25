@@ -15,25 +15,25 @@ class _HomeState extends State<Home> {
         price: 'Starting From Rs.2800.00',
         ingredient:
             '2 Medium Pan Pizzas\n2 Appetizers\n2 Portions of Cinnamon Rolls',
-        flag: 'dealimage1.png'),
+        flag: 'Image1.jpg'),
     Deals(
         name: 'My Box Lite',
         price: 'Starting From Rs.780.00',
         ingredient:
             '1 Personal Pan Pizza(Classic)\n1/2 portion of an Appetizer\n1 Sweet Treat\n1 Pet Coke(400ml)',
-        flag: 'dealimage2.png'),
+        flag: 'Image2.jpg'),
     Deals(
         name: 'My Box Pro',
         price: 'Starting From Rs.900.00',
         ingredient:
             '1 Personal Pan Pizza(Classic Signature)\n1/2 portion of an Appetizer\n1 Sweet Treat or Lava Cake\n1 Pet Coke (400ml)',
-        flag: 'dealimage3.png'),
+        flag: 'Image3.jpg'),
     Deals(
         name: 'Party Combo - Signature Pizza',
         price: 'Rs.5700.00',
         ingredient:
             '2 Signature Large Pan Pizzas\n3 Appetizers\n4 portions of Sweet Treats\n2 Cokes (1.5L)',
-        flag: 'dealimage4.jpg')
+        flag: 'Image7.jpg')
   ];
 
   @override
