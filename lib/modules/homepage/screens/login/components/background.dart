@@ -17,97 +17,99 @@ class Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Container(
       height: size.height,
       width: double.infinity,
       decoration: new BoxDecoration(
           color: Color.fromARGB(20, 209, 207, 207)
       ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Positioned(
-            top:180,
-            right: 95,
-              child: SignInButtonRed(
-                text: 'Sign in',
-                press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginScreen();
-                      },
-                    ),
-                  );
-                },
-              )
-          ),
-          Positioned(
+      //This is added for handle the background items
+      child: SingleChildScrollView(
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            Positioned(
               top:180,
-              right: 5,
-              child: SignUpButtonRed(
-                text: 'Sign Up',
-                press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginScreen();
-                      },
-                    ),
-                  );
-                },
-              )
-          ),
-          Positioned(
-            left: 0,
-            child: Image.asset(
-              "assets/images/login_page/pizza_login_page.png",
-              width: size.width * 1,
+              right: 95,
+                child: SignInButtonRed(
+                  text: 'Sign in',
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LoginScreen();
+                        },
+                      ),
+                    );
+                  },
+                )
             ),
-          ),
-          Positioned(
-            left: 0,
-            child: Image.asset(
-              "assets/images/login_page/ingrediants_login_page.png",
-              width: size.width * 1,
+            Positioned(
+                top:180,
+                right: 5,
+                child: SignUpButtonRed(
+                  text: 'Sign Up',
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LoginScreen();
+                        },
+                      ),
+                    );
+                  },
+                )
             ),
-          ),
-          Positioned(
-            left: 0,
-            child: Image.asset(
-              "assets/images/login_page/login_top_design.png",
-              width: size.width * 1,
+            Positioned(
+              left: 0,
+              child: Image.asset(
+                "assets/images/login_page/pizza_login_page.png",
+                width: size.width * 1,
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 0.3,
-            left: 20,
-            child: Image.asset(
-              "assets/images/login_page/login_bottom_design.jpg",
-              width: size.width * 1,
+            Positioned(
+              left: 0,
+              child: Image.asset(
+                "assets/images/login_page/ingrediants_login_page.png",
+                width: size.width * 1,
+              ),
             ),
-          ),
-          Positioned(
-              bottom:152,
-              right: 50,
-              child: ForgotPasswordCheck(
-                press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginScreen();
-                      },
-                    ),
-                  );
-                },
-              )
-          ),
-          child,
-        ],
+            Positioned(
+              left: 0,
+              child: Image.asset(
+                "assets/images/login_page/login_top_design.png",
+                width: size.width * 1,
+              ),
+            ),
+            Positioned(
+              bottom: 0.3,
+              left: 20,
+              child: Image.asset(
+                "assets/images/login_page/login_bottom_design.jpg",
+                width: size.width * 1,
+              ),
+            ),
+            Positioned(
+                bottom:152,
+                right: 50,
+                child: ForgotPasswordCheck(
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LoginScreen();
+                        },
+                      ),
+                    );
+                  },
+                )
+            ),
+            child,
+          ],
+        ),
       ),
     );
   }

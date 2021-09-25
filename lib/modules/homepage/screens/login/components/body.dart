@@ -1,14 +1,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pizzahut/modules/homepage/screens/login/components/forgot_password_check.dart';
+//import 'package:pizzahut/modules/homepage/screens/login/components/forgot_password_check.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/rounded_button_red.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/rounded_button_white.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/rounded_input_field.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/rounded_password_field.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/signin_button_red.dart';
 //import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
-import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
+//import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
 
 import 'background.dart';
 
@@ -22,6 +22,8 @@ class Body extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Background(
       child: SingleChildScrollView(
+        //Add padding to managed UI
+        padding: new EdgeInsets.all(33.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

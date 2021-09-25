@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
+//import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GetsStartedScreen(),
+      home: SplashScreen(),
     );
   }
 }
