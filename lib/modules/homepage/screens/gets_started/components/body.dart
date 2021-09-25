@@ -2,8 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/homepage/screens/gets_started/components/rounded_button.dart';
+import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
 //import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
-import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
+//import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
+
 
 import 'background.dart';
 
@@ -30,7 +32,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return SplashScreen();
+                      return LoginScreen();
                     },
                   ),
                 );
