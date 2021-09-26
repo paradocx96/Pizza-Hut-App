@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:pizzahut/modules/homepage/screens/login/components/forgot_password_check.dart';
-import 'package:pizzahut/modules/homepage/screens/login/components/signin_button_red.dart';
-import 'package:pizzahut/modules/homepage/screens/login/components/signup_button_white.dart';
-import 'package:pizzahut/modules/homepage/screens/register/register_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/register/components/signin_button_red.dart';
+import 'package:pizzahut/modules/homepage/screens/register/components/signup_button_white.dart';
+import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
 
-import '../login_screen.dart';
+import '../register_screen.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -31,9 +30,9 @@ class Background extends StatelessWidget {
           children: <Widget>[
             Positioned(
               top:210,
-              right: 95,
+              left: 95,
                 child: SignInButtonRed(
-                  text: 'Sign in',
+                  text: 'Sign up',
                   press: () {
                     Navigator.push(
                       context,
@@ -48,9 +47,9 @@ class Background extends StatelessWidget {
             ),
             Positioned(
                 top:210,
-                right: 5,
+                left: 5,
                 child: SignUpButtonRed(
-                  text: 'Sign Up',
+                  text: 'Sign in',
                   press: () {
                     Navigator.push(
                       context,
@@ -65,51 +64,35 @@ class Background extends StatelessWidget {
             ),
             Positioned(
               top: 0,
-              left: 0,
+              right: 0,
               child: Image.asset(
-                "assets/images/login_page/pizza_login_page.png",
+                "assets/images/register_page/pizza_register_page.png",
                 width: size.width * 1,
               ),
             ),
             Positioned(
               top: 0,
-              left: 0,
+              right: 0,
               child: Image.asset(
-                "assets/images/login_page/ingrediants_login_page.png",
+                "assets/images/register_page/ingrediants_register_page.png",
                 width: size.width * 1,
               ),
             ),
             Positioned(
               top: 0,
-              left: 0,
+              right: 0,
               child: Image.asset(
-                "assets/images/login_page/login_top_design.png",
+                "assets/images/register_page/register_top_design.png",
                 width: size.width * 1,
               ),
             ),
             Positioned(
               bottom: 0,
-              left: 20,
+              right: 20,
               child: Image.asset(
-                "assets/images/login_page/login_bottom_design.jpg",
+                "assets/images/register_page/register_bottom_design.png",
                 width: size.width * 1,
               ),
-            ),
-            Positioned(
-                bottom:170,
-                right: 50,
-                child: ForgotPasswordCheck(
-                  press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return LoginScreen();
-                        },
-                      ),
-                    );
-                  },
-                )
             ),
             child,
           ],

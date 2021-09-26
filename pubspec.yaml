@@ -50,6 +50,7 @@ flutter:
     - assets/images/gets_started_page/
     - assets/images/splash_page/
     - assets/images/login_page/
+    - assets/images/register_page/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

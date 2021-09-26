@@ -7,9 +7,11 @@ import 'package:pizzahut/modules/homepage/screens/login/components/rounded_butto
 import 'package:pizzahut/modules/homepage/screens/login/components/rounded_input_field.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/rounded_password_field.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/signin_button_red.dart';
+import 'package:pizzahut/modules/homepage/screens/register/register_screen.dart';
 //import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
 //import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
 
+import '../login_screen.dart';
 import 'background.dart';
 
 class Body extends StatelessWidget {
@@ -27,7 +29,7 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: size.height * 0.40),
+            SizedBox(height: size.height * 0.45),
             RoundedInputField(
               hintText: "Username",
               onChanged: (value) {},
@@ -35,9 +37,19 @@ class Body extends StatelessWidget {
             RoundedPasswordField(
               onChanged: (value) {},
             ),
+            SizedBox(height: size.height * 0.02),
             RoundedButtonRed(
               text: "SIGN IN",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return RegisterScreen();
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(height: size.height * 0.04),
              Text(
@@ -45,6 +57,7 @@ class Body extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.normal,fontSize: 25),
 
             ),
+            SizedBox(height: size.height * 0.02),
             RoundedButtonWhite(
               text: "Sign in with Google",
               press: () {},
