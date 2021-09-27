@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaModel.dart';
+import 'package:pizzahut/modules/Pizza/models/PizzaSingleViewArguments.dart';
+import 'package:pizzahut/modules/Pizza/screens/PizzaSingleView.dart';
 
 class PizzaMenu extends StatefulWidget {
   const PizzaMenu({Key? key}) : super(key: key);
@@ -15,44 +17,47 @@ class _PizzaMenuState extends State<PizzaMenu> {
 
   List<PizzaModel> pizzas = [
     PizzaModel(
-        name: "BBQ Chicken", range: "Classic", flag: "bbq_chicken_pizza.jpg"),
+        name: "BBQ Chicken", range: "Classic", flag: "bbq_chicken_pizza.jpg",
+      description: "This a description of the pizza. This a description of the pizza."
+    ),
     PizzaModel(
         name: "Black Chicken",
         range: "Classic",
-        flag: "black_chicken_pizza.jpg"),
+        flag: "black_chicken_pizza.jpg",
+        description: "This a description of the pizza. This a description of the pizza."
+    ),
     PizzaModel(
         name: "Hot and Spicy Chicken",
         range: "Classic",
-        flag: "hotspicy_chicken.jpg"),
+        flag: "hotspicy_chicken.jpg",
+        description: "This a description of the pizza. This a description of the pizza."),
 
     PizzaModel(
         name: "Hot and Spicy Chicken1",
         range: "Classic",
-        flag: "hotspicy_chicken.jpg"),
+        flag: "hotspicy_chicken.jpg",
+        description: "This a description of the pizza. This a description of the pizza."),
     PizzaModel(
         name: "Hot and Spicy Chicken1",
         range: "Classic",
-        flag: "hotspicy_chicken.jpg"),
+        flag: "hotspicy_chicken.jpg",
+        description: "This a description of the pizza. This a description of the pizza."),
     PizzaModel(
         name: "Hot and Spicy Chicken1",
         range: "Classic",
-        flag: "hotspicy_chicken.jpg"),
+        flag: "hotspicy_chicken.jpg",
+        description: "This a description of the pizza. This a description of the pizza."),
     PizzaModel(
         name: "Hot and Spicy Chicken1",
         range: "Classic",
-        flag: "hotspicy_chicken.jpg"),
+        flag: "hotspicy_chicken.jpg",
+        description: "This a description of the pizza. This a description of the pizza."),
     PizzaModel(
         name: "Hot and Spicy Chicken1",
         range: "Classic",
-        flag: "hotspicy_chicken.jpg"),
-    PizzaModel(
-        name: "Hot and Spicy Chicken1",
-        range: "Classic",
-        flag: "hotspicy_chicken.jpg"),
-    PizzaModel(
-        name: "Hot and Spicy Chicken1",
-        range: "Classic",
-        flag: "hotspicy_chicken.jpg"),
+        flag: "hotspicy_chicken.jpg",
+        description: "This a description of the pizza. This a description of the pizza."),
+
   ];
 
   @override
@@ -88,7 +93,11 @@ class _PizzaMenuState extends State<PizzaMenu> {
                       padding: const EdgeInsets.only(top:12.0),
                       child: ListTile(
                         minLeadingWidth: 100,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, PizzaSingleView.routeName,
+                              arguments: PizzaSingleViewArguments(pizzas[index]) //navigate to pizza
+                          );
+                        },
                         title: Text(pizzas[index].name),
                         leading: Image(
                             image:
