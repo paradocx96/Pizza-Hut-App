@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaSingleViewArguments.dart';
+import 'package:pizzahut/modules/Pizza/widgets/PizzaSizeSelector.dart';
 
 class PizzaSingleView extends StatefulWidget {
   const PizzaSingleView({Key? key}) : super(key: key);
@@ -14,6 +15,15 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
 
   int currentIndex = 0;
 
+  String size = "personal";
+
+  void _handleSizeChange(String newSize){
+    setState(() {
+      size = newSize;
+    });
+
+    print(size);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,14 +114,20 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                     ),
                   ]),
               
-              Container(
-                
-                child: currentIndex == 0? Text("Size") :
-                currentIndex == 1? Text("Topping"):
-                currentIndex == 2? Text("Crust"):
-                currentIndex == 3? Text("Extras"):
-                currentIndex == 4? Text("Other"):
-                Text("data"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+
+                  child: currentIndex == 0? PizzaSizeSelector(
+                    onChanged: _handleSizeChange, selectedSize: size,
+
+                  ) :
+                  currentIndex == 1? Text("Topping"):
+                  currentIndex == 2? Text("Crust"):
+                  currentIndex == 3? Text("Extras"):
+                  currentIndex == 4? Text("Other"):
+                  Text("data"),
+                ),
               )
 
 
