@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaSingleViewArguments.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaSizeSelector.dart';
+import 'package:pizzahut/modules/Pizza/widgets/PizzaCrustSelector.dart';
 
 class PizzaSingleView extends StatefulWidget {
   const PizzaSingleView({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   int currentIndex = 0;
 
   String size = "personal";
+  String crust = "pan";
 
   void _handleSizeChange(String newSize){
     setState(() {
@@ -23,6 +25,14 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
     });
 
     print(size);
+  }
+  
+  void _handleCrustChange(String newCrust){
+    setState(() {
+      crust = newCrust;
+    });
+
+    print(crust);
   }
 
   @override
@@ -123,7 +133,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
 
                   ) :
                   currentIndex == 1? Text("Topping"):
-                  currentIndex == 2? Text("Crust"):
+                  currentIndex == 2? PizzaCrustSelector(onChanged: _handleCrustChange):
                   currentIndex == 3? Text("Extras"):
                   currentIndex == 4? Text("Other"):
                   Text("data"),
