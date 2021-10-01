@@ -68,7 +68,9 @@ class _ContactState extends State<Contact> {
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30.0),
+                    topLeft: Radius.circular(30.0),
                     bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0),
                   ),
                   boxShadow: [
                     BoxShadow(
@@ -200,7 +202,9 @@ class _ContactState extends State<Contact> {
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30.0),
+                    topLeft: Radius.circular(30.0),
                     bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0),
                   ),
                   boxShadow: [
                     BoxShadow(
