@@ -28,7 +28,7 @@ class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
         children: [
           GestureDetector(
             onTap: (){
-              changeCrust("pan");
+              changeCrust("Pan");
               activeCrust = 'pan';
             },
             child: Container(
@@ -56,7 +56,7 @@ class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
           ),
           Spacer(),
           GestureDetector(onTap:(){
-            changeCrust("stuffed");
+            changeCrust("Stuffed");
             activeCrust ='stuffed';
           },
             child: Container(
@@ -86,7 +86,7 @@ class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
           Spacer(),
           GestureDetector(
             onTap: (){
-              changeCrust("sausage");
+              changeCrust("Sausage");
               activeCrust = "sausage";
             },
             child: Container(
@@ -116,7 +116,7 @@ class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
 
           GestureDetector(
             onTap: (){
-              changeCrust("thin");
+              changeCrust("Thin");
               activeCrust = "thin";
             },
             child: Container(

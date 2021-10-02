@@ -42,6 +42,8 @@ class _PizzaToppingSelectorState extends State<PizzaToppingSelector> {
       //flip the local isMayo
       isMayo = !isMayo;
 
+      widget.onChanged(toppingModel);
+
       print("Mayo local: "+isMayo.toString());
       print("Mayo topping model: "+toppingModel.mayo.toString());
 
@@ -68,6 +70,7 @@ class _PizzaToppingSelectorState extends State<PizzaToppingSelector> {
     setState(() {
       toppingModel.toppingHalf = half;
     });
+    widget.onChanged(toppingModel);
     print("Pizza model half: " + toppingModel.toppingHalf);
   }
 

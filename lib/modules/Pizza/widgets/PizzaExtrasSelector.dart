@@ -11,7 +11,7 @@ class PizzaExtrasSelector extends StatefulWidget {
 
 class _PizzaExtrasSelectorState extends State<PizzaExtrasSelector> {
 
-  String activeItem = "cheese";
+  String activeItem = "none";
 
   void changeExtra(String extra){
     widget.onChanged(extra);
@@ -24,125 +24,161 @@ class _PizzaExtrasSelectorState extends State<PizzaExtrasSelector> {
     double containerHeight = 90.0;
 
     return Container(child: Center(
-      child: Row(
+      child: Column(
         children: [
-          GestureDetector(
-            onTap: (){
-              changeExtra("cheese");
-              activeItem = 'cheese';
-            },
-            child: Container(
-              height: containerHeight,
-              width: containerHeight,
-              child: Card(
-                elevation: 5,
-                color: activeItem == 'cheese'? Theme.of(context).accentColor: Colors.white,
-                child: Column(
-                  children: [
-                    Spacer(),
-                    Icon(Icons.local_pizza,
-                      color: activeItem == "cheese"? Colors.white: Colors.black,
+          Row(
+            children: [
+              GestureDetector(
+                onTap: (){
+                  changeExtra("cheese");
+                  activeItem = 'cheese';
+                },
+                child: Container(
+                  height: containerHeight,
+                  width: containerHeight,
+                  child: Card(
+                    elevation: 5,
+                    color: activeItem == 'cheese'? Theme.of(context).accentColor: Colors.white,
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        Icon(Icons.local_pizza,
+                          color: activeItem == "cheese"? Colors.white: Colors.black,
+                        ),
+                        Spacer(),
+                        Text("Cheese", style: TextStyle(
+                            fontSize: 18,
+                            color: activeItem == "cheese"? Colors.white: Colors.black
+                        ),),
+                        Spacer(),
+                      ],
                     ),
-                    Spacer(),
-                    Text("Cheese", style: TextStyle(
-                        fontSize: 18,
-                        color: activeItem == "cheese"? Colors.white: Colors.black
-                    ),),
-                    Spacer(),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
-          Spacer(),
-          GestureDetector(onTap:(){
-            changeExtra("olives");
-            activeItem ='olives';
-          },
-            child: Container(
-              height: containerHeight,
-              width: containerHeight,
-              child: Card(
-                elevation: 5,
-                color: activeItem == "olives"? Theme.of(context).accentColor : Colors.white,
-                child: Column(
-                  children: [
-                    Spacer(),
-                    Icon(Icons.local_pizza,
-                      color: activeItem == "olives"? Colors.white: Colors.black,
+              Spacer(),
+              GestureDetector(onTap:(){
+                changeExtra("olives");
+                activeItem ='olives';
+              },
+                child: Container(
+                  height: containerHeight,
+                  width: containerHeight,
+                  child: Card(
+                    elevation: 5,
+                    color: activeItem == "olives"? Theme.of(context).accentColor : Colors.white,
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        Icon(Icons.local_pizza,
+                          color: activeItem == "olives"? Colors.white: Colors.black,
+                        ),
+                        Spacer(),
+                        Text("Olives", style: TextStyle(
+                            fontSize: 18,
+                            color: activeItem == "olives"? Colors.white: Colors.black
+                        ),),
+                        Spacer(),
+                      ],
                     ),
-                    Spacer(),
-                    Text("Olives", style: TextStyle(
-                        fontSize: 18,
-                        color: activeItem == "olives"? Colors.white: Colors.black
-                    ),),
-                    Spacer(),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
 
-          Spacer(),
-          GestureDetector(
-            onTap: (){
-              changeExtra("onions");
-              activeItem = "onions";
-            },
-            child: Container(
-              height: containerHeight,
-              width: containerHeight,
-              child: Card(
-                elevation: 5,
-                color: activeItem == "onions"? Theme.of(context).accentColor: Colors.white,
-                child: Column(
-                  children: [
-                    Spacer(),
-                    Icon(Icons.local_pizza,
-                      color: activeItem== "onions"? Colors.white: Colors.black,
+              Spacer(),
+              GestureDetector(
+                onTap: (){
+                  changeExtra("onions");
+                  activeItem = "onions";
+                },
+                child: Container(
+                  height: containerHeight,
+                  width: containerHeight,
+                  child: Card(
+                    elevation: 5,
+                    color: activeItem == "onions"? Theme.of(context).accentColor: Colors.white,
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        Icon(Icons.local_pizza,
+                          color: activeItem== "onions"? Colors.white: Colors.black,
+                        ),
+                        Spacer(),
+                        Text("Onions", style: TextStyle(
+                            fontSize: 18,
+                            color: activeItem == "onions"? Colors.white: Colors.black),),
+                        Spacer(),
+                      ],
                     ),
-                    Spacer(),
-                    Text("Onions", style: TextStyle(
-                        fontSize: 18,
-                        color: activeItem == "onions"? Colors.white: Colors.black),),
-                    Spacer(),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
 
-          Spacer(),
+              Spacer(),
 
-          GestureDetector(
-            onTap: (){
-              changeExtra("capsicum");
-              activeItem = "capsicum";
-            },
-            child: Container(
-              height: containerHeight,
-              width: containerHeight,
-              child: Card(
-                elevation: 5,
-                color: activeItem == "capsicum"? Theme.of(context).accentColor: Colors.white,
-                child: Column(
-                  children: [
-                    Spacer(),
-                    Icon(Icons.local_pizza,
-                      color: activeItem== "capsicum"? Colors.white: Colors.black,
+              GestureDetector(
+                onTap: (){
+                  changeExtra("capsicum");
+                  activeItem = "capsicum";
+                },
+                child: Container(
+                  height: containerHeight,
+                  width: containerHeight,
+                  child: Card(
+                    elevation: 5,
+                    color: activeItem == "capsicum"? Theme.of(context).accentColor: Colors.white,
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        Icon(Icons.local_pizza,
+                          color: activeItem== "capsicum"? Colors.white: Colors.black,
+                        ),
+                        Spacer(),
+                        Text("Capsicum", style: TextStyle(
+                            fontSize: 18,
+                            color: activeItem == "capsicum"? Colors.white: Colors.black),),
+                        Spacer(),
+                      ],
                     ),
-                    Spacer(),
-                    Text("Capsicum", style: TextStyle(
-                        fontSize: 18,
-                        color: activeItem == "capsicum"? Colors.white: Colors.black),),
-                    Spacer(),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
 
+            ],
+          ),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: (){
+                  changeExtra("none");
+                  activeItem = "none";
+                },
+                child: Container(
+                  height: containerHeight,
+                  width: containerHeight,
+                  child: Card(
+                    elevation: 5,
+                    color: activeItem == "none"? Theme.of(context).accentColor: Colors.white,
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        Icon(Icons.local_pizza,
+                          color: activeItem== "none"? Colors.white: Colors.black,
+                        ),
+                        Spacer(),
+                        Text("None", style: TextStyle(
+                            fontSize: 18,
+                            color: activeItem == "none"? Colors.white: Colors.black),),
+                        Spacer(),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
         ],
+
       ),
     ),);
   }

@@ -19,9 +19,9 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
 
   int currentIndex = 0;
 
-  String size = "personal";
-  String crust = "pan";
-  String extras = "cheese";
+  String size = "Personal";
+  String crust = "Pan";
+  String extras = "none";
   String toppingHalf = "none";
   bool mayo = false;
 
@@ -104,6 +104,24 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                   ),
                 ),
               ),
+
+              Center(
+                child: Text("Size : "+ size),
+              ),
+
+              mayo? Center(child: Text("Mayo Applied"),) : Center(),
+
+              toppingHalf != "none"? Center(
+                child: Text("Other half : " + toppingHalf),
+              ) : Center(),
+
+              Center(
+                child: Text("Crust: " + crust),
+              ),
+
+              extras!="none" ? Center(
+                child: Text("Extras: " + extras),
+              ): Center(),
 
 
               BottomNavigationBar(
