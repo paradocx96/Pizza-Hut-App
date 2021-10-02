@@ -5,6 +5,7 @@ import 'package:pizzahut/modules/Pizza/widgets/PizzaSizeSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaCrustSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaExtrasSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaToppingSelector.dart';
+import 'package:pizzahut/modules/Pizza/widgets/PizzaSpecialInstructions.dart';
 
 class PizzaSingleView extends StatefulWidget {
   const PizzaSingleView({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   String crust = "Pan";
   String extras = "none";
   String toppingHalf = "none";
+  String specialInstructions = "none";
   bool mayo = false;
 
   void _handleSizeChange(String newSize){
@@ -53,6 +55,12 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
     setState(() {
       toppingHalf = toppingModel.toppingHalf;
       mayo = toppingModel.mayo;
+    });
+  }
+
+  void _handleSpecialInstructionChange(String instruction){
+    setState(() {
+      specialInstructions = instruction;
     });
   }
 
@@ -123,6 +131,10 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                 child: Text("Extras: " + extras),
               ): Center(),
 
+              specialInstructions != "none" ? Center(
+                child: Text("Special Instructions: " +specialInstructions),
+              ):Center(),
+
 
               BottomNavigationBar(
                   selectedItemColor: Theme.of(context).accentColor,
@@ -174,7 +186,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                   currentIndex == 1? PizzaToppingSelector(onChanged: _handleToppingChange,):
                   currentIndex == 2? PizzaCrustSelector(onChanged: _handleCrustChange):
                   currentIndex == 3? PizzaExtrasSelector(onChanged: _handleExtrasChange,):
-                  currentIndex == 4? Text("Other"):
+                  currentIndex == 4? SpecialInstructions(onChanged: _handleSpecialInstructionChange):
                   Text("data"),
                 ),
               )
