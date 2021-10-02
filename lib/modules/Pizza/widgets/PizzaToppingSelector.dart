@@ -68,6 +68,7 @@ class _PizzaToppingSelectorState extends State<PizzaToppingSelector> {
     setState(() {
       toppingModel.toppingHalf = half;
     });
+    print("Pizza model half: " + toppingModel.toppingHalf);
   }
 
   @override
@@ -98,9 +99,35 @@ class _PizzaToppingSelectorState extends State<PizzaToppingSelector> {
                     ),
                   ],
                 ),
-                Container(
-                  child: isHalf?Text("Here is other halves") : Text("No other halves"),
+                isHalf? SizedBox(
+                  height: 400,
+                  child:
+                  new ListView.builder(
+                    itemCount: pizzas.length,
+                    itemExtent: 100,
+                    itemBuilder: (context, index){
+                      return Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Card(
+                          shape: RoundedRectangleBorder( borderRadius: BorderRadius.all(Radius.circular(10))),
+                          elevation: 3,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top:12.0),
+                            child: ListTile(
+                              minLeadingWidth: 100,
+                              onTap: (){
+                                changeHalf(pizzas[index].name);
+                              },
+                              title: Text(pizzas[index].name),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  )
+
                 )
+                    : Text("Other halves not selected"),
               ],
             )
           ],
