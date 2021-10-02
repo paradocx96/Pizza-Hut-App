@@ -57,12 +57,13 @@ class _PizzaToppingSelectorState extends State<PizzaToppingSelector> {
       isHalf = !isHalf;
       //is half is false flip it to true
       if(isHalf == false){
-
-      }
-      else{
         toppingModel.toppingHalf = "none";
       }
+      else{
+        //
+      }
     });
+    widget.onChanged(toppingModel);
 
   }
 
