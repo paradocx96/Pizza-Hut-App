@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaSingleViewArguments.dart';
+import 'package:pizzahut/modules/Pizza/models/PizzaToppingModel.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaSizeSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaCrustSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaExtrasSelector.dart';
+import 'package:pizzahut/modules/Pizza/widgets/PizzaToppingSelector.dart';
 
 class PizzaSingleView extends StatefulWidget {
   const PizzaSingleView({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   String size = "personal";
   String crust = "pan";
   String extras = "cheese";
+  String toppingHalf = "none";
+  bool mayo = false;
 
   void _handleSizeChange(String newSize){
     setState(() {
@@ -43,6 +47,13 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
     });
 
     print(extras);
+  }
+
+  void _handleToppingChange(PizzaToppingModel toppingModel){
+    setState(() {
+      toppingHalf = toppingModel.toppingHalf;
+      mayo = toppingModel.mayo;
+    });
   }
 
   @override
@@ -142,7 +153,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                     onChanged: _handleSizeChange, selectedSize: size,
 
                   ) :
-                  currentIndex == 1? Text("Topping"):
+                  currentIndex == 1? PizzaToppingSelector(onChanged: _handleToppingChange,):
                   currentIndex == 2? PizzaCrustSelector(onChanged: _handleCrustChange):
                   currentIndex == 3? PizzaExtrasSelector(onChanged: _handleExtrasChange,):
                   currentIndex == 4? Text("Other"):
