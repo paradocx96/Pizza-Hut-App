@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/atc/screens/normal_food.dart';
 import 'package:pizzahut/modules/categories/models/pasta.dart';
 
 class Pastas extends StatefulWidget {
@@ -14,19 +15,27 @@ class _PastasState extends State<Pastas> {
     Pasta(
         name: 'Spaghetti Bolognaise - Chicken',
         price: 'Rs.770.00',
-        flag: 'Image1.jpg'),
+        description:
+        'The famed Italian spaghetti with minced chicken complemented by delicious mozzarella cheese baked to perfection, served with 2 slices of garlic bread.',
+        flag: 'assets/images/pastas/Image1.jpg'),
     Pasta(
         name: 'Spaghetti with Chicken & Sausage Meat',
         price: 'Rs.770.00',
-        flag: 'Image2.jpg'),
+        description:
+        'Spaghetti with a tandoori chicken and kotchchi chicken sausage meat along with a spicy Italian sauce and mozzarella cheese, with 2 slices of garlic bread.',
+        flag: 'assets/images/pastas/Image2.jpg'),
     Pasta(
         name: 'Macaroni & Cheese',
         price: 'Rs.880.00',
-        flag: 'Image3.jpg'),
+        description:
+        'Macaroni elbow pasta mixed with cheese sauce, accompanied by grilled onions and layered with mozzarella cheese, served with 2 slices of garlic bread.',
+        flag: 'assets/images/pastas/Image3.jpg'),
     Pasta(
         name: 'Chicken Lasagna',
         price: 'Rs.880.00',
-        flag: 'Image4.jpg'),
+        description:
+        'A true classic with layers of pasta chicken slathered with cheese sauce and mozzarella cheese, served with 2 slices of garlic bread.',
+        flag: 'assets/images/pastas/Image4.jpg'),
   ];
 
   @override
@@ -43,13 +52,15 @@ class _PastasState extends State<Pastas> {
                 width: MediaQuery.of(context).size.width,
               ),
               Container(
-                height: 25,
-                color: Colors.black12,
+                height: 30,
                 width: MediaQuery.of(context).size.width,
-                child: Text('PASTAS'),
+                color: Colors.white,
+                child: Text('PASTAS -----------------------------------------------------------',
+                  style: TextStyle(height: 1.5, fontSize: 20),
+                ),
               ),
               Container(
-                height: MediaQuery.of(context).size.height - 150,
+                height: MediaQuery.of(context).size.height - 154,
                 child: ListView.builder(
                     itemCount: pastas.length,
                     itemBuilder: (context, index) {
@@ -58,12 +69,20 @@ class _PastasState extends State<Pastas> {
                             vertical: 1.0, horizontal: 5.0),
                         child: Card(
                           child: ListTile(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => NormalFood(
+                                          name: pastas[index].name,
+                                          price: pastas[index].price,
+                                          description: pastas[index].description,
+                                          flag: pastas[index].flag)));
+                            },
                             title: Text(pastas[index].name),
                             subtitle: Text(pastas[index].price),
                             leading: Image(
-                              image: AssetImage(
-                                  'assets/images/pastas/${pastas[index].flag}'),
+                              image: AssetImage(pastas[index].flag),
                             ),
                           ),
                         ),

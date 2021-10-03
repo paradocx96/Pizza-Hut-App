@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pizzahut/modules/appetizers/screens/appetizer_food.dart';
+import 'package:pizzahut/modules/atc/screens/appetizer_food.dart';
 import 'package:pizzahut/modules/categories/models/appetizer.dart';
 
 class Appetizers extends StatefulWidget {

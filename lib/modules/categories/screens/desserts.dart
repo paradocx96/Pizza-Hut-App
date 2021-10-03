@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/atc/screens/normal_food.dart';
 import 'package:pizzahut/modules/categories/models/dessert.dart';
 
 class Desserts extends StatefulWidget {
@@ -13,15 +14,21 @@ class _DessertsState extends State<Desserts> {
     Dessert(
         name: 'Cinnamon Rolls (2 pcs per portion)',
         price: 'Rs.220.00',
-        flag: 'Image1.jpg'),
+        description:
+        'Swirls made of authentic cinnamon powder topped with a tantalizing icing sugar glaze.',
+        flag: 'assets/images/desserts/Image1.jpg'),
     Dessert(
         name: 'Chocolate Delights (2 pcs per portion)',
         price: 'Rs.300.00',
-        flag: 'Image2.jpg'),
+        description:
+        'A tempting delicacy made with chocolate chips and topped with rich chocolate sauce.',
+        flag: 'assets/images/desserts/Image2.jpg'),
     Dessert(
         name: 'Chocolate Melt Lava Cake',
         price: 'Rs.310.00',
-        flag: 'Image3.jpg'),
+        description:
+        'Soft, moist chocolate cake with a burst of thick, hot liquid chocolate inside.',
+        flag: 'assets/images/desserts/Image3.jpg'),
   ];
 
   @override
@@ -38,13 +45,15 @@ class _DessertsState extends State<Desserts> {
                 width: MediaQuery.of(context).size.width,
               ),
               Container(
-                height: 25,
-                color: Colors.black12,
+                height: 30,
                 width: MediaQuery.of(context).size.width,
-                child: Text('DESSERTS'),
+                color: Colors.white,
+                child: Text('DESSERTS -------------------------------------------------------',
+                  style: TextStyle(height: 1.5, fontSize: 20),
+                ),
               ),
               Container(
-                height: MediaQuery.of(context).size.height - 150,
+                height: MediaQuery.of(context).size.height - 154,
                 child: ListView.builder(
                     itemCount: desserts.length,
                     itemBuilder: (context, index) {
@@ -53,12 +62,20 @@ class _DessertsState extends State<Desserts> {
                             vertical: 1.0, horizontal: 5.0),
                         child: Card(
                           child: ListTile(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => NormalFood(
+                                          name: desserts[index].name,
+                                          price: desserts[index].price,
+                                          description: desserts[index].description,
+                                          flag: desserts[index].flag)));
+                            },
                             title: Text(desserts[index].name),
                             subtitle: Text(desserts[index].price),
                             leading: Image(
-                              image: AssetImage(
-                                  'assets/images/desserts/${desserts[index].flag}'),
+                              image: AssetImage(desserts[index].flag),
                             ),
                           ),
                         ),
