@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/FoodMenu/screens/FoodMenu.dart';
 import 'package:pizzahut/modules/Pizza/screens/PizzaSingleView.dart';
 import 'package:pizzahut/modules/homepage/screens/TempGetStarted.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         FoodMenu.routeName: (context) => const FoodMenu(),
         LandingPage.routeName: (context) => const LandingPage(),
         PizzaSingleView.routeName: (context) => const PizzaSingleView(),
+        Cart.routeName : (context) => const Cart(),
       },
     );
   }
