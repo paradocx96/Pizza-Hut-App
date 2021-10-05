@@ -65,6 +65,10 @@ class _CartState extends State<Cart> {
                             padding: const EdgeInsets.only(top:12.0),
                             child: ListTile(
                               title: Text(cart.items[index].name),
+                              trailing: IconButton(onPressed: (){
+                                cart.removeItem(cart.items[index]);
+                              },
+                                  icon: const Icon(Icons.delete)),
                             ),
                           ),
                         ),
