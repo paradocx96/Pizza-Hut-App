@@ -106,7 +106,9 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
         title: pizzaHutLogo_image,
         leading: IconButton(
           icon: Icon(Icons.navigate_before_sharp),
-          onPressed: (){},
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
         ),
         actions: [
           IconButton(

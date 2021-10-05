@@ -74,7 +74,37 @@ class _CartState extends State<Cart> {
                               Text(cart.items[index].name),
                               subtitle: Text("Rs."+cart.items[index].price.toString() + "/="),
                               trailing: IconButton(onPressed: (){
-                                cart.removeItem(cart.items[index]);
+
+                                showDialog(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (BuildContext context){
+                                  return CupertinoAlertDialog(
+                                    title: const Text("Remove item"),
+                                    content: SingleChildScrollView(
+                                      child: ListBody(
+                                        children: const <Widget>[
+                                          Text("Do you want to remove this item from the cart?")
+                                        ],
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(onPressed: (){
+                                        Navigator.of(context).pop();
+                                      },
+                                          child: const Text("No")
+                                      ),
+                                      TextButton(onPressed: (){
+                                        //remove the selected item
+                                        cart.removeItem(cart.items[index]);
+                                        Navigator.of(context).pop();
+                                      },
+                                          child: const Text("Yes")
+                                      )
+                                    ],
+                                  );
+                                });
+
                               },
                                   icon: const Icon(Icons.delete)),
                             ),
