@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/FoodMenu/screens/FoodMenu.dart';
 import 'package:pizzahut/modules/Pizza/screens/PizzaSingleView.dart';
 import 'package:pizzahut/modules/homepage/screens/TempGetStarted.dart';
@@ -8,9 +9,16 @@ import 'package:pizzahut/widgets/BottomNavBar2.dart';
 import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
 import 'package:pizzahut/modules/Landing/screens/LandingPage.dart';
 import 'package:pizzahut/modules/homepage/screens/Example.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+      MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CartModel()),
+      ],
+      child: MyApp() )
+  );
 }
 const accentColor = Color(0xffEE3A43);
 const secondaryColor = Color(0xffF1F1F1);
