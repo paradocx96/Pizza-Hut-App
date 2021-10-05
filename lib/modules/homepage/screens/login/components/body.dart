@@ -27,11 +27,11 @@ class Body extends StatelessWidget {
     return Background(
       child: SingleChildScrollView(
         //Add padding to managed UI
-        padding: new EdgeInsets.all(33.0),
+        //padding: new EdgeInsets.all(33.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: size.height * 0.245),
+            SizedBox(height: size.height * 0.28),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -62,6 +62,7 @@ class Body extends StatelessWidget {
                       );
                     }
                 ),
+                SizedBox(width: size.width * 0.01),
               ],
             ),
             SizedBox(height: size.height * 0.1),
@@ -122,6 +123,7 @@ class Body extends StatelessWidget {
               text: "Sign in with Google",
               press: () {},
             ),
+            SizedBox(height: size.height * 0.05),
           ],
         ),
       ),

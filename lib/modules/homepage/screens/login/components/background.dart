@@ -36,7 +36,7 @@ class Background extends StatelessWidget {
             ),
             Positioned(
               top: 0,
-              left: -5,
+              left: 0,
               child: Image.asset(
                 "assets/images/login_page/ingrediants_login_page.png",
                 width: size.width * 1,
@@ -44,7 +44,7 @@ class Background extends StatelessWidget {
             ),
             Positioned(
               top: 0,
-              left: -12,
+              left: 0,
               child: Image.asset(
                 "assets/images/login_page/login_top_design.png",
                 width: size.width * 1,
