@@ -49,7 +49,7 @@ class _CartState extends State<Cart> {
             Consumer<CartModel>(
                 builder: (context, cart, child){
                   if(cart.items.isEmpty){
-                    return Text("Cart is empty");
+                    return Center(child: Text("Cart is empty"));
                   }
                   else{
                     return ListView.builder(
@@ -64,7 +64,15 @@ class _CartState extends State<Cart> {
                           child: Padding(
                             padding: const EdgeInsets.only(top:12.0),
                             child: ListTile(
-                              title: Text(cart.items[index].name),
+                              title: cart.items[index].itemType == 'Pizza'?
+                              Text(cart.items[index].name +" " +
+                                  cart.items[index].topping+ " topping " +
+                                  cart.items[index].pizzaSize + " " +
+                                  cart.items[index].crust + " "
+                                  //cart.items[index].extras == 'none'? "": ""
+                              )   :
+                              Text(cart.items[index].name),
+                              subtitle: Text("Rs."+cart.items[index].price.toString() + "/="),
                               trailing: IconButton(onPressed: (){
                                 cart.removeItem(cart.items[index]);
                               },
