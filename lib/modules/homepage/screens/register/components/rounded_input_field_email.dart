@@ -19,6 +19,7 @@ class RoundedInputFieldEmail extends StatelessWidget {
       child: TextField(
         onChanged: onChanged,
         cursorColor: Colors.black54,
+        keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           icon: Icon(
             icon,

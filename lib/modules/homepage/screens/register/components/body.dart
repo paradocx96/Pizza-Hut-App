@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
 //import 'package:pizzahut/modules/homepage/screens/login/components/forgot_password_check.dart';
 import 'package:pizzahut/modules/homepage/screens/register/components/rounded_button_red.dart';
 import 'package:pizzahut/modules/homepage/screens/register/components/rounded_button_white.dart';
@@ -51,7 +52,16 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.02),
             RoundedButtonRed(
               text: "SIGN UP",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginScreen();
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(height: size.height * 0.02),
              Text(

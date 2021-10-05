@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SignUpButtonRed extends StatelessWidget {
+class SignUpButtonWhite extends StatelessWidget {
   final String text;
   final VoidCallback press;
   final Color color, textColor;
 
-  const SignUpButtonRed({
+  const SignUpButtonWhite({
     Key? key,
     required this.text,
     required this.press,
