@@ -54,6 +54,11 @@ flutter:
     - images/lava_cake_main.jpg
     - images/chocolate_milkshake_main.jpg
     - images/promo_main.jpg
+    - images/pizza/bbq_chicken_pizza.jpg
+    - images/pizza/black_chicken_pizza.jpg
+    - images/pizza/cheese_lovers_pizza.jpg
+    - images/pizza/hotspicy_chicken.jpg
+    - images/vege_pizza.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
