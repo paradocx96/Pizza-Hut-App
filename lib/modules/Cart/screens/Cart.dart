@@ -91,7 +91,37 @@ class _CartState extends State<Cart> {
                 children: [
                   Text("Rs." + cart.totPrice.toString() +"/="),
                   ElevatedButton(onPressed: (){
-                    cart.removeAll();
+
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context){
+                      return CupertinoAlertDialog(
+                        title: const Text("Remove all items from the cart?"),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: const <Widget>[
+                              Text("This cannot be undone")
+                            ],
+                          ),
+                        ),
+                        actions: [
+                          TextButton(onPressed: (){
+                            Navigator.of(context).pop();
+                          },
+                              child: const Text("No")
+                          ),
+                          TextButton(onPressed: (){
+                            cart.removeAll();
+                            Navigator.of(context).pop();
+                          },
+                              child: const Text("Yes")
+                          )
+                        ],
+                      );
+                    }
+                    );
+
                   },
                       child: Text("Clear cart"))
                 ],
