@@ -15,19 +15,19 @@ class _DessertsState extends State<Desserts> {
         name: 'Cinnamon Rolls (2 pcs per portion)',
         price: 'Rs.220.00',
         description:
-        'Swirls made of authentic cinnamon powder topped with a tantalizing icing sugar glaze.',
+            'Swirls made of authentic cinnamon powder topped with a tantalizing icing sugar glaze.',
         flag: 'assets/images/desserts/Image1.jpg'),
     Dessert(
         name: 'Chocolate Delights (2 pcs per portion)',
         price: 'Rs.300.00',
         description:
-        'A tempting delicacy made with chocolate chips and topped with rich chocolate sauce.',
+            'A tempting delicacy made with chocolate chips and topped with rich chocolate sauce.',
         flag: 'assets/images/desserts/Image2.jpg'),
     Dessert(
         name: 'Chocolate Melt Lava Cake',
         price: 'Rs.310.00',
         description:
-        'Soft, moist chocolate cake with a burst of thick, hot liquid chocolate inside.',
+            'Soft, moist chocolate cake with a burst of thick, hot liquid chocolate inside.',
         flag: 'assets/images/desserts/Image3.jpg'),
   ];
 
@@ -36,7 +36,7 @@ class _DessertsState extends State<Desserts> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: BoxDecoration(color: Color(0xFFF4EFEF)),
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
@@ -48,7 +48,8 @@ class _DessertsState extends State<Desserts> {
                 height: 30,
                 width: MediaQuery.of(context).size.width,
                 color: Colors.white,
-                child: Text('DESSERTS -------------------------------------------------------',
+                child: Text(
+                  'DESSERTS -------------------------------------------------------',
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),
@@ -69,7 +70,8 @@ class _DessertsState extends State<Desserts> {
                                       builder: (_) => NormalFood(
                                           name: desserts[index].name,
                                           price: desserts[index].price,
-                                          description: desserts[index].description,
+                                          description:
+                                              desserts[index].description,
                                           flag: desserts[index].flag)));
                             },
                             title: Text(desserts[index].name),

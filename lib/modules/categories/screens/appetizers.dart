@@ -108,7 +108,7 @@ class _AppetizersState extends State<Appetizers> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: BoxDecoration(color: Color(0xFFF4EFEF)),
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
