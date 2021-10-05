@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/homepage/screens/login/components/signup_button_white.dart';
 import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
 //import 'package:pizzahut/modules/homepage/screens/login/components/forgot_password_check.dart';
 import 'package:pizzahut/modules/homepage/screens/register/components/rounded_button_red.dart';
@@ -14,6 +15,7 @@ import 'package:pizzahut/modules/homepage/screens/login/components/signin_button
 //import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
 //import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
 
+import '../register_screen.dart';
 import 'background.dart';
 
 class Body extends StatelessWidget {
@@ -29,7 +31,41 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: size.height * 0.50),
+            SizedBox(height: size.height * 0.28),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(width: size.width * 0.01),
+                SignInButtonRed(
+                    text: "Sign In",
+                    press: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return LoginScreen();
+                          },
+                        ),
+                      );
+                    }
+                ),
+                SizedBox(width: size.width * 0.01),
+                SignUpButtonWhite(
+                    text: "Sign Up",
+                    press: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return RegisterScreen();
+                          },
+                        ),
+                      );
+                    }
+                ),
+              ],
+            ),
+            SizedBox(height: size.height * 0.1),
             RoundedInputFieldEmail(
               hintText: "Email",
               onChanged: (value) {},
