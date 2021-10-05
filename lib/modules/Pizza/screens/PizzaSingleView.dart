@@ -304,7 +304,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                         content: SingleChildScrollView(
                           child: ListBody(
                             children: const <Widget> [
-                              Text("Added to cart")
+                              //Text("Added to cart")
                             ],
                           ),
                         ),

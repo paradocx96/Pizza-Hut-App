@@ -37,7 +37,7 @@ class _CartState extends State<Cart> {
     onPressed: (){},
     ),
     IconButton(
-    icon: Icon(Icons.shopping_cart),
+    icon: Icon(Icons.shopping_cart,color: Theme.of(context).accentColor,),
     onPressed: (){},
     ),
     ],
@@ -45,11 +45,11 @@ class _CartState extends State<Cart> {
       body: Container(
         child: Column(
           children: [
-            Text("Cart"),
+            //Text("Cart"),
             Consumer<CartModel>(
                 builder: (context, cart, child){
                   if(cart.items.isEmpty){
-                    return Center(child: Text("Cart is empty"));
+                    return Center(child: Text("Cart is empty", style: TextStyle(fontSize: 40),),);
                   }
                   else{
                     return ListView.builder(
@@ -119,7 +119,9 @@ class _CartState extends State<Cart> {
             Consumer<CartModel>(builder: (context, cart, child){
               return Column(
                 children: [
-                  Text("Rs." + cart.totPrice.toString() +"/="),
+                  Text("Total Price",
+                    style: TextStyle(fontSize: 25,color: Theme.of(context).accentColor),),
+                  Text("Rs." + cart.totPrice.toString() +"/=",style: TextStyle(fontSize: 20),),
                   ElevatedButton(onPressed: (){
 
                     showDialog(
@@ -153,7 +155,16 @@ class _CartState extends State<Cart> {
                     );
 
                   },
-                      child: Text("Clear cart"))
+                      child: Text("Clear cart"),
+
+                    style: ButtonStyle(
+                      foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Theme.of(context).accentColor),
+                      minimumSize: MaterialStateProperty.all(Size(180, 40)),
+                    ),
+                  )
                 ],
               );
             })
