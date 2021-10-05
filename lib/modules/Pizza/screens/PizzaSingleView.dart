@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/models/CartItem.dart';
+import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaSingleViewArguments.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaToppingModel.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaSizeSelector.dart';
@@ -6,6 +9,7 @@ import 'package:pizzahut/modules/Pizza/widgets/PizzaCrustSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaExtrasSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaToppingSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaSpecialInstructions.dart';
+import 'package:provider/provider.dart';
 
 class PizzaSingleView extends StatefulWidget {
   const PizzaSingleView({Key? key}) : super(key: key);
@@ -79,6 +83,12 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
       });
     }
 
+  }
+
+  void _addToCart(String name){
+    Provider.of<CartModel>(context, listen: false).add(
+        CartItem("Pizza", "pizza chicken", 1200, "Classic", size, crust, "single", extras, "none")
+    );
   }
 
   @override
@@ -284,7 +294,29 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
               Container(
                 width: 380,
                 child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    _addToCart(args.pizza.name);
+                    showDialog(context: context, builder: (BuildContext context){
+                      return CupertinoAlertDialog(
+                        title: const Text("Added to cart"),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: const <Widget> [
+                              Text("Added to cart")
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(onPressed: (){
+                            Navigator.of(context).pop();
+                          },
+                              child: const Text("OK"))
+                        ],
+                      );
+                    }
+
+                    );
+                  },
                   child: Text("Add to Cart",style: TextStyle(fontSize: 20),),
 
                   style: ButtonStyle(

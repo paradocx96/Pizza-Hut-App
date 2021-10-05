@@ -7,17 +7,18 @@ class CartModel extends ChangeNotifier{
 
   //internal private state of the cart
   final List<CartItem> _items = [];
+  late int totalPrice = 0;
 
   //an unmodifiable view of the items in cart
   UnmodifiableListView<CartItem> get items => UnmodifiableListView(_items);
 
   //getter for total price
-  int get totalPrice{
+  int get totPrice{
     return totalPrice;
   }
 
   //setter for total price
-  set totalPrice (int price){
+  set totPrice (int price){
     totalPrice = price;
   }
 
