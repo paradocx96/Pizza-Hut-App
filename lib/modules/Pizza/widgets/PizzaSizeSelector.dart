@@ -14,7 +14,15 @@ class PizzaSizeSelector extends StatefulWidget {
 
 class _PizzaSizeSelectorState extends State<PizzaSizeSelector> {
 
-  String activeSize = "personal";
+  String activeSize = "Personal";
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      activeSize = widget.selectedSize;
+    });
+  }
 
 
   void selectPersonal(){
@@ -41,24 +49,24 @@ class _PizzaSizeSelectorState extends State<PizzaSizeSelector> {
             GestureDetector(
               onTap: (){
                 selectPersonal();
-                activeSize = 'personal';
+                activeSize = 'Personal';
                 },
               child: Container(
                 height: containerHeight,
                 width: containerHeight,
                 child: Card(
                   elevation: 5,
-                  color: activeSize == 'personal'? Theme.of(context).accentColor: Colors.white,
+                  color: activeSize == 'Personal'? Theme.of(context).accentColor: Colors.white,
                 child: Column(
                   children: [
                     Spacer(),
                     Icon(Icons.local_pizza,
-                      color: activeSize == "personal"? Colors.white: Colors.black,
+                      color: activeSize == "Personal"? Colors.white: Colors.black,
                     ),
                     Spacer(),
                     Text("Personal", style: TextStyle(
                         fontSize: 20,
-                        color: activeSize == "personal"? Colors.white: Colors.black
+                        color: activeSize == "Personal"? Colors.white: Colors.black
                     ),),
                     Spacer(),
                   ],
@@ -69,24 +77,24 @@ class _PizzaSizeSelectorState extends State<PizzaSizeSelector> {
             Spacer(),
             GestureDetector(onTap:(){
               selectMedium();
-              activeSize ='medium';
+              activeSize ='Medium';
               },
               child: Container(
                 height: containerHeight,
                 width: containerHeight,
                 child: Card(
                   elevation: 5,
-                  color: activeSize == "medium"? Theme.of(context).accentColor : Colors.white,
+                  color: activeSize == "Medium"? Theme.of(context).accentColor : Colors.white,
                 child: Column(
                   children: [
                     Spacer(),
                     Icon(Icons.local_pizza,
-                      color: activeSize == "medium"? Colors.white: Colors.black,
+                      color: activeSize == "Medium"? Colors.white: Colors.black,
                     ),
                     Spacer(),
                     Text("Medium", style: TextStyle(
                         fontSize: 20,
-                        color: activeSize == "medium"? Colors.white: Colors.black
+                        color: activeSize == "Medium"? Colors.white: Colors.black
                     ),),
                     Spacer(),
                   ],
@@ -99,24 +107,24 @@ class _PizzaSizeSelectorState extends State<PizzaSizeSelector> {
             GestureDetector(
               onTap: (){
                 selectLarge();
-                activeSize = "large";
+                activeSize = "Large";
                 },
               child: Container(
                 height: containerHeight,
                 width: containerHeight,
                 child: Card(
                   elevation: 5,
-                  color: activeSize == "large"? Theme.of(context).accentColor: Colors.white,
+                  color: activeSize == "Large"? Theme.of(context).accentColor: Colors.white,
                 child: Column(
                   children: [
                     Spacer(),
                     Icon(Icons.local_pizza,
-                    color: activeSize == "large"? Colors.white: Colors.black,
+                    color: activeSize == "Large"? Colors.white: Colors.black,
                     ),
                     Spacer(),
                     Text("Large", style: TextStyle(
                       fontSize: 20,
-                        color: activeSize == "large"? Colors.white: Colors.black),),
+                        color: activeSize == "Large"? Colors.white: Colors.black),),
                     Spacer(),
                   ],
                 ),
