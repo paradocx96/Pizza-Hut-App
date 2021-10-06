@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PizzaCrustSelector extends StatefulWidget {
-  const PizzaCrustSelector({Key? key, required this.onChanged}) : super(key: key);
+  const PizzaCrustSelector({Key? key, required this.onChanged, required this.selectedCrust}) : super(key: key);
 
   final ValueChanged<String> onChanged;
+  final String selectedCrust;
 
   @override
   _PizzaCrustSelectorState createState() => _PizzaCrustSelectorState();
@@ -11,10 +12,18 @@ class PizzaCrustSelector extends StatefulWidget {
 
 class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
 
-  String activeCrust = "pan";
+  String activeCrust = "Pan";
 
   void changeCrust(String crust){
     widget.onChanged(crust);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      activeCrust = widget.selectedCrust;
+    });
   }
 
 
@@ -29,24 +38,24 @@ class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
           GestureDetector(
             onTap: (){
               changeCrust("Pan");
-              activeCrust = 'pan';
+              activeCrust = 'Pan';
             },
             child: Container(
               height: containerHeight,
               width: containerHeight,
               child: Card(
                 elevation: 5,
-                color: activeCrust == 'pan'? Theme.of(context).accentColor: Colors.white,
+                color: activeCrust == 'Pan'? Theme.of(context).accentColor: Colors.white,
                 child: Column(
                   children: [
                     Spacer(),
                     Icon(Icons.local_pizza,
-                      color: activeCrust == "pan"? Colors.white: Colors.black,
+                      color: activeCrust == "Pan"? Colors.white: Colors.black,
                     ),
                     Spacer(),
                     Text("Pan", style: TextStyle(
                         fontSize: 20,
-                        color: activeCrust == "pan"? Colors.white: Colors.black
+                        color: activeCrust == "Pan"? Colors.white: Colors.black
                     ),),
                     Spacer(),
                   ],
@@ -57,24 +66,24 @@ class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
           Spacer(),
           GestureDetector(onTap:(){
             changeCrust("Stuffed");
-            activeCrust ='stuffed';
+            activeCrust ='Stuffed';
           },
             child: Container(
               height: containerHeight,
               width: containerHeight,
               child: Card(
                 elevation: 5,
-                color: activeCrust == "stuffed"? Theme.of(context).accentColor : Colors.white,
+                color: activeCrust == "Stuffed"? Theme.of(context).accentColor : Colors.white,
                 child: Column(
                   children: [
                     Spacer(),
                     Icon(Icons.local_pizza,
-                      color: activeCrust == "stuffed"? Colors.white: Colors.black,
+                      color: activeCrust == "Stuffed"? Colors.white: Colors.black,
                     ),
                     Spacer(),
                     Text("Stuffed", style: TextStyle(
                         fontSize: 20,
-                        color: activeCrust == "stuffed"? Colors.white: Colors.black
+                        color: activeCrust == "Stuffed"? Colors.white: Colors.black
                     ),),
                     Spacer(),
                   ],
@@ -87,24 +96,24 @@ class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
           GestureDetector(
             onTap: (){
               changeCrust("Sausage");
-              activeCrust = "sausage";
+              activeCrust = "Sausage";
             },
             child: Container(
               height: containerHeight,
               width: containerHeight,
               child: Card(
                 elevation: 5,
-                color: activeCrust == "sausage"? Theme.of(context).accentColor: Colors.white,
+                color: activeCrust == "Sausage"? Theme.of(context).accentColor: Colors.white,
                 child: Column(
                   children: [
                     Spacer(),
                     Icon(Icons.local_pizza,
-                      color: activeCrust== "sausage"? Colors.white: Colors.black,
+                      color: activeCrust== "Sausage"? Colors.white: Colors.black,
                     ),
                     Spacer(),
                     Text("Sausage", style: TextStyle(
                         fontSize: 20,
-                        color: activeCrust == "sausage"? Colors.white: Colors.black),),
+                        color: activeCrust == "Sausage"? Colors.white: Colors.black),),
                     Spacer(),
                   ],
                 ),
@@ -117,24 +126,24 @@ class _PizzaCrustSelectorState extends State<PizzaCrustSelector> {
           GestureDetector(
             onTap: (){
               changeCrust("Thin");
-              activeCrust = "thin";
+              activeCrust = "Thin";
             },
             child: Container(
               height: containerHeight,
               width: containerHeight,
               child: Card(
                 elevation: 5,
-                color: activeCrust == "thin"? Theme.of(context).accentColor: Colors.white,
+                color: activeCrust == "Thin"? Theme.of(context).accentColor: Colors.white,
                 child: Column(
                   children: [
                     Spacer(),
                     Icon(Icons.local_pizza,
-                      color: activeCrust== "thin"? Colors.white: Colors.black,
+                      color: activeCrust== "Thin"? Colors.white: Colors.black,
                     ),
                     Spacer(),
                     Text("Thin", style: TextStyle(
                         fontSize: 20,
-                        color: activeCrust == "thin"? Colors.white: Colors.black),),
+                        color: activeCrust == "Thin"? Colors.white: Colors.black),),
                     Spacer(),
                   ],
                 ),

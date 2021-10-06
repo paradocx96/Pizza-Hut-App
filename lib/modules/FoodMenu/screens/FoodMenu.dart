@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/FoodMenu/routes/FoodMenuArguments.dart';
 import 'package:pizzahut/modules/FoodMenu/widgets/AppbarWithBack.dart';
 import 'package:pizzahut/modules/FoodMenu/widgets/SlidableMenuItem.dart';
@@ -45,7 +46,9 @@ class _FoodMenuState extends State<FoodMenu> with SingleTickerProviderStateMixin
           title: pizzaHutLogo_image,
           leading: IconButton(
             icon: Icon(Icons.navigate_before_sharp),
-            onPressed: (){},
+            onPressed: (){
+              Navigator.pop(context);
+            },
           ),
           actions: [
             IconButton(
@@ -54,7 +57,11 @@ class _FoodMenuState extends State<FoodMenu> with SingleTickerProviderStateMixin
             ),
             IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: (){},
+              onPressed: (){
+                Navigator.pushNamed(context, Cart.routeName,
+
+                );
+              },
             ),
           ],
           bottom: PreferredSize(

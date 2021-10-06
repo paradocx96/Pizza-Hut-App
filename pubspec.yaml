@@ -29,6 +29,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   cloud_firestore: ^2.5.3
+  provider: ^6.0.0
+  flutter_svg: ^0.19.1
 
 dev_dependencies:
   flutter_test:
@@ -101,6 +103,10 @@ flutter:
     - images/pizza/cheese_lovers_pizza.jpg
     - images/pizza/hotspicy_chicken.jpg
     - images/vege_pizza.jpg
+    - assets/images/gets_started_page/
+    - assets/images/splash_page/
+    - assets/images/login_page/
+    - assets/images/register_page/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
