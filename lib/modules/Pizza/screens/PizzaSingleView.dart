@@ -286,7 +286,8 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                   currentIndex == 1? PizzaToppingSelector(onChanged: _handleToppingChange,):
                   currentIndex == 2? PizzaCrustSelector(
                     onChanged: _handleCrustChange, selectedCrust: crust,):
-                  currentIndex == 3? PizzaExtrasSelector(onChanged: _handleExtrasChange,):
+                  currentIndex == 3? PizzaExtrasSelector(
+                    onChanged: _handleExtrasChange, selectedExtras:  extras,):
                   currentIndex == 4? SpecialInstructions(onChanged: _handleSpecialInstructionChange):
                   Text("data"),
                 ),
