@@ -12,6 +12,7 @@ import 'package:pizzahut/modules/homepage/screens/register/components/rounded_in
 import 'package:pizzahut/modules/homepage/screens/register/components/rounded_input_field_username.dart';
 import 'package:pizzahut/modules/homepage/screens/register/components/rounded_password_field.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/signin_button_red.dart';
+import 'package:pizzahut/modules/homepage/screens/edit_profile/edit_profile.dart';
 //import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
 //import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
 
@@ -93,7 +94,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return EditProfile();
                     },
                   ),
                 );
