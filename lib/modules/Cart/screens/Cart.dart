@@ -72,7 +72,8 @@ class _CartState extends State<Cart> {
                                   //cart.items[index].extras == 'none'? "": ""
                               )   :
                               Text(cart.items[index].name),
-                              subtitle: Text("Rs."+cart.items[index].price.toString() + "/="),
+                              subtitle: Text("Quantity: " + cart.items[index].quantity.toString() +
+                                  "\n" + "Rs."+cart.items[index].price.toString() + "/="),
                               trailing: IconButton(onPressed: (){
 
                                 showDialog(

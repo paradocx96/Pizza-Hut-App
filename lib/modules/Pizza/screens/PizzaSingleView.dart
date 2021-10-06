@@ -87,7 +87,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
 
   void _addToCart(String name){
     Provider.of<CartModel>(context, listen: false).add(
-        CartItem("Pizza", "pizza chicken", 1200, "Classic", size, crust, "single", extras, "none")
+        CartItem("Pizza", "pizza chicken", 1200,quantity, "Classic", size, crust, "single", extras, "none")
     );
   }
 

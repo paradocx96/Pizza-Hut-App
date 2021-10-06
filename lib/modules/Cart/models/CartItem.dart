@@ -2,6 +2,7 @@ class CartItem {
   late String itemType;
   late String name;
   late int  price;
+  late int quantity;
 
   //pizza attributes
   late String pizzaRange;
@@ -24,6 +25,7 @@ class CartItem {
       this.itemType,
       this.name,
       this.price,
+      this.quantity,
       this.pizzaRange,
       this.pizzaSize,
       this.crust,
