@@ -1,3 +1,4 @@
+import 'package:pizzahut/modules/Pizza/models/PizzaExtrasModel.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaRangeModel.dart';
 
 class PizzaPriceCalculator{
@@ -86,5 +87,44 @@ class PizzaPriceCalculator{
     }
 
     return price;
+  }
+
+  static int calculatePriceWithExtras(String range, String size, String crust, String extras){
+
+    print("Running PizzaPriceCalculator.calculatePriceWithExtras");
+
+    print("PizzaPriceCalculator.calculatePriceWithExtras extras received : " +extras);
+
+    PizzaExtrasModel pizzaExtrasModel =  new PizzaExtrasModel(200, 150, 100, 70);
+
+    int priceWithoutExtras = 0;
+    int priceWithExtras = 0;
+    int extraItemPrice = 0;
+    priceWithoutExtras = calculatePrice(range, size, crust);
+
+    if(extras == "none"){
+      return priceWithoutExtras;
+    }
+    else if(extras == "Cheese"){
+      extraItemPrice = pizzaExtrasModel.cheesePrice;
+      print("Extra items price: " + extraItemPrice.toString());
+      priceWithExtras = priceWithoutExtras + extraItemPrice;
+    }
+    else if(extras == "Olives"){
+      extraItemPrice = pizzaExtrasModel.olivesPrice;
+      priceWithExtras = priceWithoutExtras + extraItemPrice;
+    }
+    else if(extras == "Onions"){
+      extraItemPrice = pizzaExtrasModel.onionsPrice;
+      priceWithExtras = priceWithoutExtras + extraItemPrice;
+    }
+    else if(extras == "Capsicum"){
+      extraItemPrice = pizzaExtrasModel.capsicumPrice;
+      priceWithExtras = priceWithoutExtras + extraItemPrice;
+    }
+    else{
+      print("Invalid extras value received");
+    }
+    return priceWithExtras;
   }
 }

@@ -67,12 +67,13 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
     print(crust);
   }
 
-  void _handleExtrasChange(String newExtra){
+  void _handleExtrasChange(String newExtra) {
     setState(() {
       extras = newExtra;
+
     });
 
-    print(extras);
+    print("_handleExtrasChange : unit price : " + unitPrice.toString());
   }
 
   void _handleToppingChange(PizzaToppingModel toppingModel){
@@ -91,7 +92,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   void _incrementQuantity(){
     setState(() {
       quantity++;
-      totalPrice = unitPrice * quantity;
+      //totalPrice = unitPrice * quantity;
     });
   }
 
@@ -100,7 +101,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
     if(quantity > 1){
       setState(() {
         quantity--;
-        totalPrice = unitPrice * quantity;
+        //totalPrice = unitPrice * quantity;
       });
     }
 
@@ -124,11 +125,17 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
 
           //initial unit price will always be pan personal price
           unitPrice = PizzaPriceCalculator.calculatePrice(range, size, crust);
+
+          if(extras != "none"){
+            unitPrice = PizzaPriceCalculator.calculatePriceWithExtras(range, size, crust, extras);
+          }
           totalPrice = unitPrice * quantity;
         });
       }
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {

@@ -30,7 +30,7 @@ class _PizzaExtrasSelectorState extends State<PizzaExtrasSelector> {
             children: [
               GestureDetector(
                 onTap: (){
-                  changeExtra("cheese");
+                  changeExtra("Cheese");
                   activeItem = 'cheese';
                 },
                 child: Container(
@@ -58,7 +58,7 @@ class _PizzaExtrasSelectorState extends State<PizzaExtrasSelector> {
               ),
               Spacer(),
               GestureDetector(onTap:(){
-                changeExtra("olives");
+                changeExtra("Olives");
                 activeItem ='olives';
               },
                 child: Container(
@@ -88,7 +88,7 @@ class _PizzaExtrasSelectorState extends State<PizzaExtrasSelector> {
               Spacer(),
               GestureDetector(
                 onTap: (){
-                  changeExtra("onions");
+                  changeExtra("Onions");
                   activeItem = "onions";
                 },
                 child: Container(
@@ -118,7 +118,7 @@ class _PizzaExtrasSelectorState extends State<PizzaExtrasSelector> {
 
               GestureDetector(
                 onTap: (){
-                  changeExtra("capsicum");
+                  changeExtra("Capsicum");
                   activeItem = "capsicum";
                 },
                 child: Container(
