@@ -34,6 +34,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   String toppingHalf = "none";
   String specialInstructions = "none";
   bool mayo = false;
+  bool isHalf = false;
   int quantity = 1;
 
   String range = "initial";
@@ -81,6 +82,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
     setState(() {
       toppingHalf = toppingModel.toppingHalf;
       mayo = toppingModel.mayo;
+      isHalf = toppingModel.isHalf;
     });
   }
 
@@ -283,7 +285,9 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                     onChanged: _handleSizeChange, selectedSize: size,
 
                   ) :
-                  currentIndex == 1? PizzaToppingSelector(onChanged: _handleToppingChange,):
+                  currentIndex == 1? PizzaToppingSelector(
+                    onChanged: _handleToppingChange, mayoStatus: mayo, halfToppingStatus: isHalf,
+                    otherHalf: toppingHalf,):
                   currentIndex == 2? PizzaCrustSelector(
                     onChanged: _handleCrustChange, selectedCrust: crust,):
                   currentIndex == 3? PizzaExtrasSelector(

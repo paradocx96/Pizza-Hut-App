@@ -3,9 +3,13 @@ import 'package:pizzahut/modules/Pizza/models/PizzaModel.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaToppingModel.dart';
 
 class PizzaToppingSelector extends StatefulWidget {
-  const PizzaToppingSelector({Key? key, required this.onChanged}) : super(key: key);
+  const PizzaToppingSelector({Key? key, required this.onChanged,
+    required this.mayoStatus, required this.halfToppingStatus, required this.otherHalf}) : super(key: key);
 
   final ValueChanged<PizzaToppingModel> onChanged;
+  final bool mayoStatus;
+  final bool halfToppingStatus;
+  final String otherHalf;
 
   @override
   _PizzaToppingSelectorState createState() => _PizzaToppingSelectorState();
@@ -31,24 +35,47 @@ class _PizzaToppingSelectorState extends State<PizzaToppingSelector> {
         description: "This a description of the pizza. This a description of the pizza."),
   ];
 
-  PizzaToppingModel toppingModel = PizzaToppingModel(false, "none");
+  PizzaToppingModel toppingModel = PizzaToppingModel(false, false, "none");
   bool isMayo = false;
   bool isHalf = false;
+  String otherHalf = "none";
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      isMayo = widget.mayoStatus;
+      isHalf = widget.halfToppingStatus;
+      otherHalf = widget.otherHalf;
+      toppingModel.isHalf = isHalf;
+      toppingModel.mayo = isMayo;
+      toppingModel.toppingHalf = otherHalf;
+    });
+  }
+
+  void _notifyParent(){
+    widget.onChanged(toppingModel);
+  }
 
   changeMayo(bool value){
     setState(() {
-      //change the mayo state in topping model
-      toppingModel.mayo = !isMayo;
       //flip the local isMayo
       isMayo = !isMayo;
 
-      widget.onChanged(toppingModel);
+      //change the mayo state in topping model
+      toppingModel.mayo = isMayo;
+
+
+      //widget.onChanged(toppingModel);
+      _notifyParent();
 
       print("Mayo local: "+isMayo.toString());
       print("Mayo topping model: "+toppingModel.mayo.toString());
 
     });
   }
+
+
 
   flipIsHalf(bool value){
 
@@ -61,9 +88,11 @@ class _PizzaToppingSelectorState extends State<PizzaToppingSelector> {
       }
       else{
         //
+        toppingModel.isHalf = true;
       }
     });
-    widget.onChanged(toppingModel);
+    //widget.onChanged(toppingModel);
+    _notifyParent();
 
   }
 
@@ -71,7 +100,8 @@ class _PizzaToppingSelectorState extends State<PizzaToppingSelector> {
     setState(() {
       toppingModel.toppingHalf = half;
     });
-    widget.onChanged(toppingModel);
+    //widget.onChanged(toppingModel);
+    _notifyParent();
     print("Pizza model half: " + toppingModel.toppingHalf);
   }
 
