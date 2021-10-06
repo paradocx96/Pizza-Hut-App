@@ -110,9 +110,18 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
 
   void _addToCart(String name){
     final args = ModalRoute.of(context)!.settings.arguments as PizzaSingleViewArguments;
-    Provider.of<CartModel>(context, listen: false).add(
-        CartItem("Pizza", args.pizza.name, totalPrice ,quantity, args.pizza.range, size, crust, "single", extras, "none")
-    );
+
+    if(toppingHalf == " none"){
+      Provider.of<CartModel>(context, listen: false).add(
+          CartItem("Pizza", args.pizza.name, totalPrice ,quantity, args.pizza.range, size, crust, "single", extras, "none")
+      );
+    }
+    else{
+      Provider.of<CartModel>(context, listen: false).add(
+          CartItem("Pizza", args.pizza.name, totalPrice ,quantity, args.pizza.range, size, crust, toppingHalf + " half ", extras, "none")
+      );
+    }
+
   }
 
   void _setBasePrice(String range){

@@ -65,9 +65,9 @@ class _CartState extends State<Cart> {
                             padding: const EdgeInsets.only(top:12.0),
                             child: ListTile(
                               title: cart.items[index].itemType == 'Pizza'?
-                              Text(cart.items[index].name +" " +
-                                  cart.items[index].topping+ " topping " +
-                                  cart.items[index].pizzaSize + " " +
+                              Text(cart.items[index].name +", " +
+                                  cart.items[index].topping+ " topping, " +
+                                  cart.items[index].pizzaSize + ", " +
                                   cart.items[index].crust + " "
                                   //cart.items[index].extras == 'none'? "": ""
                               )   :
