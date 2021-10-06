@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/models/CartItem.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
+import 'package:pizzahut/modules/Pizza/models/PizzaExtrasModel.dart';
+import 'package:pizzahut/modules/Pizza/models/PizzaRangeModel.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaSingleViewArguments.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaToppingModel.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaSizeSelector.dart';
@@ -31,6 +33,20 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   String specialInstructions = "none";
   bool mayo = false;
   int quantity = 1;
+
+  String range = "initial";
+
+  int unitPrice = 0;
+  int totalPrice = 0;
+
+  //instantiate an extras model
+  PizzaExtrasModel extrasModel =  new PizzaExtrasModel(200,150,50,70);
+
+  //instantiate a pizza range model list
+  List<PizzaRangeModel> ranges = [
+    PizzaRangeModel("Classic", 500, 1100, 1900, 530, 1200, 2200, 520, 1150, 2100, 450, 900, 1700),
+    PizzaRangeModel("Favourites", 500, 1100, 1900, 530, 1200, 2200, 520, 1150, 2100, 450, 900, 1700),
+  ];
 
   void _handleSizeChange(String newSize){
     setState(() {
@@ -91,9 +107,24 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
     );
   }
 
+  void _setBasePrice(String range){
+    for(var i = 0; i < ranges.length; i++){
+      if(ranges[i].name == range){
+        setState(() {
+          range = range;
+
+          //initial unit price will always be pan personal price
+          unitPrice = ranges[i].panPersonalPrice;
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as PizzaSingleViewArguments;
+
+    _setBasePrice(args.pizza.range);
 
     //image for the pizza hut logo
     Widget pizzaHutLogo_image = Container(
