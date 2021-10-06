@@ -6,6 +6,7 @@ import 'package:pizzahut/modules/Pizza/models/PizzaExtrasModel.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaRangeModel.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaSingleViewArguments.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaToppingModel.dart';
+import 'package:pizzahut/modules/Pizza/util/PizzaPriceCalculator.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaSizeSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaCrustSelector.dart';
 import 'package:pizzahut/modules/Pizza/widgets/PizzaExtrasSelector.dart';
@@ -51,6 +52,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   void _handleSizeChange(String newSize){
     setState(() {
       size = newSize;
+      unitPrice = PizzaPriceCalculator.calculatePrice(range, size, crust);
     });
 
     print(size);
@@ -59,6 +61,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   void _handleCrustChange(String newCrust){
     setState(() {
       crust = newCrust;
+      unitPrice = PizzaPriceCalculator.calculatePrice(range, size, crust);
     });
 
     print(crust);
@@ -88,6 +91,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   void _incrementQuantity(){
     setState(() {
       quantity++;
+      totalPrice = unitPrice * quantity;
     });
   }
 
@@ -96,6 +100,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
     if(quantity > 1){
       setState(() {
         quantity--;
+        totalPrice = unitPrice * quantity;
       });
     }
 
@@ -108,13 +113,18 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
   }
 
   void _setBasePrice(String range){
+
+    print("running _setBasePrice");
     for(var i = 0; i < ranges.length; i++){
       if(ranges[i].name == range){
+
+        //range is set once per single view
         setState(() {
           range = range;
 
           //initial unit price will always be pan personal price
-          unitPrice = ranges[i].panPersonalPrice;
+          unitPrice = PizzaPriceCalculator.calculatePrice(range, size, crust);
+          totalPrice = unitPrice * quantity;
         });
       }
     }
@@ -267,7 +277,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
               Padding(
                 padding: const EdgeInsets.only(top: 50.0),
                 child: Center(
-                  child: Text("Rs.1437.00", style: TextStyle(fontSize: 20),),
+                  child: Text("Rs." + totalPrice.toString(), style: TextStyle(fontSize: 20),),
                 ),
               ),
 

@@ -1,15 +1,19 @@
 import 'package:pizzahut/modules/Pizza/models/PizzaRangeModel.dart';
 
 class PizzaPriceCalculator{
-  List<PizzaRangeModel> ranges = [
-    PizzaRangeModel("Classic", 500, 1100, 1900, 530, 1200, 2200, 520, 1150, 2100, 450, 900, 1700),
-    PizzaRangeModel("Favourites", 500, 1100, 1900, 530, 1200, 2200, 520, 1150, 2100, 450, 900, 1700),
-  ];
 
-  int calculatePrice(String range, String size, String crust){
+
+  static int calculatePrice(String range, String size, String crust){
+
+    List<PizzaRangeModel> ranges = [
+      PizzaRangeModel("Classic", 500, 1100, 1900, 530, 1200, 2200, 520, 1150, 2100, 450, 900, 1700),
+      PizzaRangeModel("Favourites", 500, 1100, 1900, 530, 1200, 2200, 520, 1150, 2100, 450, 900, 1700),
+    ];
+
+
     int price = 0;
 
-    late PizzaRangeModel selectedRange;
+    late PizzaRangeModel selectedRange = ranges[0];
 
     //iterate through the ranges
     for(var i = 0; i < ranges.length; i++){
@@ -18,6 +22,7 @@ class PizzaPriceCalculator{
       // select the range in the list to selectedRange
       if(range == ranges[i].name){
         selectedRange = ranges[i];
+        print("selected range assigned");
       }
     }
 
