@@ -9,7 +9,7 @@ import 'package:pizzahut/modules/promos/screens/promos.dart';
 
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/home',
+  initialRoute: '/contact',
   routes: {
     '/home': (context) => Home(),
     '/appetizers': (context) => Appetizers(),
