@@ -75,6 +75,7 @@ flutter:
     - assets/images/beverages/Image9.jpg
     - assets/images/beverages/Image10.jpg
     - assets/images/beverages/Image11.jpg
+    - assets/images/beverages/Image12.jpg
     - assets/images/desserts/Image1.jpg
     - assets/images/desserts/Image2.jpg
     - assets/images/desserts/Image3.jpg
@@ -108,6 +109,7 @@ flutter:
     - assets/images/login_page/
     - assets/images/register_page/
     - assets/images/view_profile_page/
+    - assets/images/promo_pizza/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

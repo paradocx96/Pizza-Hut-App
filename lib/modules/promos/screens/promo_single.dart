@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/models/CartItem.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
-import 'package:pizzahut/modules/promos/models/custom_model.dart';
 import 'package:pizzahut/modules/promos/widgets/custom_select.dart';
 import 'package:pizzahut/utils/helpers/Constants.dart';
 import 'package:provider/provider.dart';
@@ -508,165 +507,97 @@ class _PromoSingleState extends State<PromoSingle> {
     } else if (widget.type == '2') {
       return Container(
         child: currentIndex == 0
-            ? Container(
-                child: Text('Type 2 Option 1'),
-              )
+            ? CustomSelect(list: Constants.promoPizzasListTwo)
             : currentIndex == 1
-                ? Container(
-                    child: Text('Type 2 Option 2'),
-                  )
+                ? CustomSelect(list: Constants.promoAppetizerListTwo)
                 : currentIndex == 2
-                    ? Container(
-                        child: Text('Type 2 Option 3'),
-                      )
+                    ? CustomSelect(list: Constants.promoDessertListTwo)
                     : currentIndex == 3
-                        ? Container(
-                            child: Text('Type 2 Option 4'),
-                          )
+                        ? CustomSelect(list: Constants.promoBeverageListOne)
                         : Text('ERROR'),
       );
     } else if (widget.type == '3') {
       return Container(
         child: currentIndex == 0
-            ? Container(
-                child: Text('Type 3 Option 1'),
-              )
+            ? CustomSelect(list: Constants.promoPizzasListThree)
             : currentIndex == 1
-                ? Container(
-                    child: Text('Type 3 Option 2'),
-                  )
+                ? CustomSelect(list: Constants.promoAppetizerListTwo)
                 : currentIndex == 2
-                    ? Container(
-                        child: Text('Type 3 Option 3'),
-                      )
+                    ? CustomSelect(list: Constants.promoDessertListThree)
                     : currentIndex == 3
-                        ? Container(
-                            child: Text('Type 3 Option 4'),
-                          )
+                        ? CustomSelect(list: Constants.promoBeverageListOne)
                         : Text('ERROR'),
       );
     } else if (widget.type == '4') {
       return Container(
         child: currentIndex == 0
-            ? Container(
-                child: Text('Type 4 Option 1'),
-              )
+            ? CustomSelect(list: Constants.promoPizzasListFour)
             : currentIndex == 1
-                ? Container(
-                    child: Text('Type 4 Option 2'),
-                  )
+                ? CustomSelect(list: Constants.promoPizzasListFive)
                 : Text('ERROR'),
       );
     } else if (widget.type == '5') {
       return Container(
         child: currentIndex == 0
-            ? Container(
-                child: Text('Type 5 Option 1'),
-              )
+            ? CustomSelect(list: Constants.promoPizzasListSix)
             : currentIndex == 1
-                ? Container(
-                    child: Text('Type 5 Option 2'),
-                  )
+                ? CustomSelect(list: Constants.promoPizzasListSix)
                 : Text('ERROR'),
       );
     } else if (widget.type == '6') {
       return Container(
         child: currentIndex == 0
-            ? Container(
-                child: Text('Type 6 Option 1'),
-              )
+            ? CustomSelect(list: Constants.promoPastaListOne)
             : currentIndex == 1
-                ? Container(
-                    child: Text('Type 6 Option 2'),
-                  )
+                ? CustomSelect(list: Constants.promoDessertListFour)
                 : currentIndex == 2
-                    ? Container(
-                        child: Text('Type 6 Option 3'),
-                      )
+                    ? CustomSelect(list: Constants.promoBeverageListTwo)
                     : currentIndex == 3
-                        ? Container(
-                            child: Text('Type 6 Option 4'),
-                          )
+                        ? CustomSelect(list: Constants.promoAppetizerListThree)
                         : Text('ERROR'),
       );
     } else if (widget.type == '7') {
       return Container(
         child: currentIndex == 0
-            ? Container(
-                child: Text('Type 7 Option 1'),
-              )
+            ? CustomSelect(list: Constants.promoPizzasListFive)
             : currentIndex == 1
-                ? Container(
-                    child: Text('Type 7 Option 2'),
-                  )
+                ? CustomSelect(list: Constants.promoPizzasListFive)
                 : currentIndex == 2
-                    ? Container(
-                        child: Text('Type 7 Option 3'),
-                      )
+                    ? CustomSelect(list: Constants.promoAppetizerListOne)
                     : currentIndex == 3
-                        ? Container(
-                            child: Text('Type 7 Option 4'),
-                          )
+                        ? CustomSelect(list: Constants.promoAppetizerListOne)
                         : currentIndex == 4
-                            ? Container(
-                                child: Text('Type 7 Option 5'),
-                              )
+                            ? CustomSelect(list: Constants.promoAppetizerListOne)
                             : currentIndex == 5
-                                ? Container(
-                                    child: Text('Type 7 Option 6'),
-                                  )
+                                ? CustomSelect(list: Constants.promoDessertListSix)
                                 : currentIndex == 6
-                                    ? Container(
-                                        child: Text('Type 7 Option 7'),
-                                      )
+                                    ? CustomSelect(list: Constants.promoDessertListSix)
                                     : currentIndex == 7
-                                        ? Container(
-                                            child: Text('Type 7 Option 8'),
-                                          )
+                                        ? CustomSelect(list: Constants.promoBeverageListThree)
                                         : currentIndex == 8
-                                            ? Container(
-                                                child: Text('Type 7 Option 9'),
-                                              )
+                                            ? CustomSelect(list: Constants.promoBeverageListThree)
                                             : Text('ERROR'),
       );
     } else if (widget.type == '8') {
       return Container(
         child: currentIndex == 0
-            ? Container(
-                child: Text('Type 8 Option 1'),
-              )
+            ? CustomSelect(list: Constants.promoPizzasListSeven)
             : currentIndex == 1
-                ? Container(
-                    child: Text('Type 8 Option 2'),
-                  )
+                ? CustomSelect(list: Constants.promoPizzasListSeven)
                 : currentIndex == 2
-                    ? Container(
-                        child: Text('Type 8 Option 3'),
-                      )
+                    ? CustomSelect(list: Constants.promoAppetizerListFour)
                     : currentIndex == 3
-                        ? Container(
-                            child: Text('Type 8 Option 4'),
-                          )
+                        ? CustomSelect(list: Constants.promoAppetizerListFour)
                         : currentIndex == 4
-                            ? Container(
-                                child: Text('Type 8 Option 5'),
-                              )
+                            ? CustomSelect(list: Constants.promoAppetizerListFour)
                             : currentIndex == 5
-                                ? Container(
-                                    child: Text('Type 8 Option 6'),
-                                  )
+                                ? CustomSelect(list: Constants.promoDessertListSix)
                                 : currentIndex == 6
-                                    ? Container(
-                                        child: Text('Type 8 Option 7'),
-                                      )
+                                    ? CustomSelect(list: Constants.promoDessertListSix)
                                     : currentIndex == 7
-                                        ? Container(
-                                            child: Text('Type 8 Option 8'),
-                                          )
+                                        ? CustomSelect(list: Constants.promoBeverageListThree)
                                         : currentIndex == 8
-                                            ? Container(
-                                                child: Text('Type 8 Option 9'),
-                                              )
+                                            ? CustomSelect(list: Constants.promoBeverageListThree)
                                             : Text('ERROR'),
       );
     } else {
