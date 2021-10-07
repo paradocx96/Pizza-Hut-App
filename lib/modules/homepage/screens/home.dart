@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   List<Promo> promos = [
     Promo(
       name: 'Triple Treat Box',
-      price: 'Rs.3200.00',
+      price: 3200,
       description:
           '2 Medium Pan Pizzas\n2 Appetizers\n2 Portions of Cinnamon Rolls',
       flag: 'assets/images/promos/Image1.jpg',
@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
     ),
     Promo(
       name: 'My Box Lite',
-      price: 'Rs.920.00',
+      price: 920,
       description:
           '1 Personal Pan Pizza(Classic)\n1/2 portion of an Appetizer\n1 Sweet Treat\n1 Pet Coke (400ml)',
       flag: 'assets/images/promos/Image2.jpg',
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
     ),
     Promo(
       name: 'My Box Pro',
-      price: 'Rs.1030.00',
+      price: 1030,
       description:
           '1 Personal Pan Pizza(Classic Signature)\n1/2 portion of an Appetizer\n1 Sweet Treat or Lava Cake\n1 Pet Coke (400ml)',
       flag: 'assets/images/promos/Image3.jpg',
@@ -37,14 +37,14 @@ class _HomeState extends State<Home> {
     ),
     Promo(
       name: 'Exclusive Cyber Saving Offer 1',
-      price: 'Rs.3500.00',
+      price: 3500,
       description: '1 Signature Large Pan Pizza\n1 Classic Large Pan Pizza',
       flag: 'assets/images/promos/Image5.jpg',
       type: '4',
     ),
     Promo(
       name: 'Exclusive Cyber Saving Offer 2',
-      price: 'Rs.1780.00',
+      price: 1780,
       description: '2 Class Medium Pan Pizza',
       flag: 'assets/images/promos/Image4.jpg',
       type: '5',
@@ -93,14 +93,13 @@ class _HomeState extends State<Home> {
                                       builder: (_) => PromoSingle(
                                             name: promos[index].name,
                                             price: promos[index].price,
-                                            description:
-                                                promos[index].description,
+                                            description: promos[index].description,
                                             flag: promos[index].flag,
                                             type: promos[index].type,
                                           )));
                             },
                             title: Text(
-                                '${promos[index].name}\n${promos[index].price}'),
+                                '${promos[index].name}\nRs.${promos[index].price}.00'),
                             subtitle: Text(promos[index].description),
                             leading: Image(
                               image: AssetImage(promos[index].flag),

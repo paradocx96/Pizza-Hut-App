@@ -13,61 +13,61 @@ class _BeveragesState extends State<Beverages> {
   List<Beverage> beverages = [
     Beverage(
         name: 'Strawberry Milk Shake (300ml)',
-        price: 'Rs.480.00',
+        price: 480,
         description:
             'Go red with the delicious flavour of strawberry, mixed and blended into a creamy shake.',
         flag: 'assets/images/beverages/Image1.jpg'),
     Beverage(
         name: 'Double Chocolate Milk Shake (300ml)',
-        price: 'Rs.480.00',
+        price: 480,
         description:
             'Take a sip of a creamy concoction of double chocolate and lose yourself in a chocolate coma.',
         flag: 'assets/images/beverages/Image2.jpg'),
     Beverage(
         name: 'Thick Mango Magic (300ml)',
-        price: 'Rs.400.00',
+        price: 400,
         description:
             'A tropical blend of the juiciest mango flavour creating the perfect beverage to soothe your taste-buds.',
         flag: 'assets/images/beverages/Image3.jpg'),
     Beverage(
         name: 'Vanilla Milk Shake (300ml)',
-        price: 'Rs.400.00',
+        price: 400,
         description:
             'Go classic on a hot day, sit back and relax with a cold vanilla shake made to quench more than the thirst in you.',
         flag: 'assets/images/beverages/Image4.jpg'),
     Beverage(
         name: 'Pet Coca-Cola',
-        price: 'Rs.120.00',
+        price: 120,
         description: '400ml',
         flag: 'assets/images/beverages/Image5.jpg'),
     Beverage(
         name: 'Coca-Cola',
-        price: 'Rs.300.00',
+        price: 300,
         description: '1.5l',
         flag: 'assets/images/beverages/Image6.jpg'),
     Beverage(
         name: 'Coke Zero',
-        price: 'Rs.100.00',
+        price: 100,
         description: '400ml',
         flag: 'assets/images/beverages/Image7.jpg'),
     Beverage(
         name: 'Sprite',
-        price: 'Rs.300.00',
+        price: 300,
         description: '1.5l',
         flag: 'assets/images/beverages/Image8.jpg'),
     Beverage(
         name: 'Pet Sprite',
-        price: 'Rs.120.00',
+        price: 120,
         description: '400ml',
         flag: 'assets/images/beverages/Image9.jpg'),
     Beverage(
         name: 'Fanta',
-        price: 'Rs.300.00',
+        price: 300,
         description: '1.5l',
         flag: 'assets/images/beverages/Image10.jpg'),
     Beverage(
         name: 'Pet Fanta Orange',
-        price: 'Rs.120.00',
+        price: 120,
         description: '400ml',
         flag: 'assets/images/beverages/Image11.jpg'),
   ];
@@ -116,7 +116,8 @@ class _BeveragesState extends State<Beverages> {
                                           flag: beverages[index].flag)));
                             },
                             title: Text(beverages[index].name),
-                            subtitle: Text(beverages[index].price),
+                            subtitle: Text('Rs.' +
+                                beverages[index].price.toString() + '.00'),
                             leading: Image(
                               image: AssetImage(beverages[index].flag),
                             ),

@@ -1,6 +1,6 @@
 class Dessert {
   late String name;
-  late String price;
+  late int price;
   late String description;
   late String flag;
 

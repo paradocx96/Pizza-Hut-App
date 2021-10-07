@@ -13,19 +13,19 @@ class _DessertsState extends State<Desserts> {
   List<Dessert> desserts = [
     Dessert(
         name: 'Cinnamon Rolls (2 pcs per portion)',
-        price: 'Rs.220.00',
+        price: 220,
         description:
             'Swirls made of authentic cinnamon powder topped with a tantalizing icing sugar glaze.',
         flag: 'assets/images/desserts/Image1.jpg'),
     Dessert(
         name: 'Chocolate Delights (2 pcs per portion)',
-        price: 'Rs.300.00',
+        price: 300,
         description:
             'A tempting delicacy made with chocolate chips and topped with rich chocolate sauce.',
         flag: 'assets/images/desserts/Image2.jpg'),
     Dessert(
         name: 'Chocolate Melt Lava Cake',
-        price: 'Rs.310.00',
+        price: 310,
         description:
             'Soft, moist chocolate cake with a burst of thick, hot liquid chocolate inside.',
         flag: 'assets/images/desserts/Image3.jpg'),
@@ -75,7 +75,8 @@ class _DessertsState extends State<Desserts> {
                                           flag: desserts[index].flag)));
                             },
                             title: Text(desserts[index].name),
-                            subtitle: Text(desserts[index].price),
+                            subtitle: Text('Rs.' +
+                                desserts[index].price.toString() + '.00'),
                             leading: Image(
                               image: AssetImage(desserts[index].flag),
                             ),

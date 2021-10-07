@@ -3,7 +3,7 @@ import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 
 class PromoSingle extends StatefulWidget {
   final String name;
-  final String price;
+  final int price;
   final String description;
   final String flag;
   final String type;
@@ -114,7 +114,33 @@ class _PromoSingleState extends State<PromoSingle> {
     );
   }
 
+  int totalPrice = 0;
+  int unitPrice = 0;
+  int quantity = 1;
+
+  void _incrementQuantity() {
+    if (quantity < 5) {
+      setState(() {
+        quantity++;
+      });
+    }
+  }
+
+  void _decrementQuantity() {
+    if (quantity > 1) {
+      setState(() {
+        quantity--;
+      });
+    }
+  }
+
+  void _priceCalculator() {
+    unitPrice = widget.price;
+    totalPrice = unitPrice * quantity;
+  }
+
   Widget getDescription() {
+    _priceCalculator();
     return Container(
       constraints: BoxConstraints(minHeight: 120, maxHeight: 150),
       margin: EdgeInsets.all(10.0),
@@ -159,7 +185,7 @@ class _PromoSingleState extends State<PromoSingle> {
           Container(
             margin: EdgeInsets.all(5.0),
             child: Text(
-              widget.price,
+              'Rs.' + totalPrice.toString() + '.00',
               style: TextStyle(
                   height: 1.2, fontSize: 18, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -637,24 +663,6 @@ class _PromoSingleState extends State<PromoSingle> {
       return Container(
         child: Text('ERROR'),
       );
-    }
-  }
-
-  int quantity = 1;
-
-  void _incrementQuantity() {
-    if (quantity < 5) {
-      setState(() {
-        quantity++;
-      });
-    }
-  }
-
-  void _decrementQuantity() {
-    if (quantity > 1) {
-      setState(() {
-        quantity--;
-      });
     }
   }
 

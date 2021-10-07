@@ -15,7 +15,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Wing It - BBQ',
         startPrice: 'Starting from Rs.490.00',
         size: ['6Pcs', '12Pcs', '24Pcs'],
-        price: ['Rs.490', 'Rs.940', 'Rs.1750'],
+        price: [490, 940, 1750],
         description:
             'Succulent chicken wings tossed in our famous BBQ sauce & baked to perfection.',
         type: 'advanced',
@@ -24,7 +24,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Wing It - Garlic Parmesan',
         startPrice: 'Starting from Rs.490.00',
         size: ['6Pcs', '12Pcs', '24Pcs'],
-        price: ['Rs.490', 'Rs.940', 'Rs.1750'],
+        price: [490, 940, 1750],
         description:
             'Succulent chicken wings tossed in our creamy Garlic Parmesan sauce & baked to perfection.',
         type: 'advanced',
@@ -33,7 +33,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Wing It - Peri Peri',
         startPrice: 'Starting from Rs.490.00',
         size: ['6Pcs', '12Pcs', '24Pcs'],
-        price: ['Rs.490', 'Rs.940', 'Rs.1750'],
+        price: [490, 940, 1750],
         description:
             'Succulent chicken wings tossed in our flavourful Peri Peri sauce & baked to perfection.',
         type: 'advanced',
@@ -42,7 +42,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Wing It - Sriracha',
         startPrice: 'Starting from Rs.490.00',
         size: ['6Pcs', '12Pcs', '24Pcs'],
-        price: ['Rs.490', 'Rs.940', 'Rs.1750'],
+        price: [490, 940, 1750],
         description:
             'Succulent chicken wings tossed in our spicy Sriracha sauce & baked to perfection.',
         type: 'advanced',
@@ -51,7 +51,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Garlic Bread',
         startPrice: 'Rs.300.00',
         size: [''],
-        price: ['Rs.300.00'],
+        price: [300],
         description:
             'Sliced & spread with garlic buttery goodness.',
         type: 'normal',
@@ -60,7 +60,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Cheesy Garlic Bread Supreme',
         startPrice: 'Rs.480.00',
         size: [''],
-        price: ['Rs.480.00'],
+        price: [480],
         description:
             'Layered with garlic butter & mozzarella cheese.',
         type: 'normal',
@@ -69,7 +69,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Potato Wedges',
         startPrice: 'Rs.440.00',
         size: [''],
-        price: ['Rs.440'],
+        price: [440],
         description:
             'Our delicious wedges are soft on the inside, crunchy on the outside and is the perfect snack to take delight in.',
         type: 'normal',
@@ -78,7 +78,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Spicy Chicken & Cheese Balls',
         startPrice: 'Rs.440.00',
         size: [''],
-        price: ['Rs.440'],
+        price: [440],
         description:
             'Chicken and cheese are two things that go so well together, and with this delectable appetizer.',
         type: 'normal',
@@ -87,7 +87,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Baked Chicken Wings in  BBQ Sauce',
         startPrice: 'Rs.490.00',
         size: [''],
-        price: ['Rs.490'],
+        price: [490],
         description:
             'Everyone’s favourite wings, baked just the right amount and given the tangy flavor of BBQ sauce to tantalize your taste-buds.',
         type: 'normal',
@@ -96,7 +96,7 @@ class _AppetizersState extends State<Appetizers> {
         name: 'Chicken Sausage Roll',
         startPrice: 'Rs.190.00',
         size: [''],
-        price: ['Rs.190'],
+        price: [190],
         description:
             'Chicken sausage roll 1pc.',
         type: 'normal',
