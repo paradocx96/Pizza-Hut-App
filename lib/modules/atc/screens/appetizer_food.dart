@@ -156,11 +156,16 @@ class _AppetizerFoodState extends State<AppetizerFood> {
   }
 
   int quantity = 1;
+  int totalPrice = 0;
+  int unitPrice = 0;
 
   void _incrementQuantity() {
     if (quantity < 5) {
       setState(() {
         quantity++;
+        setState(() {
+          totalPrice = unitPrice * quantity;
+        });
       });
     }
   }
@@ -169,72 +174,118 @@ class _AppetizerFoodState extends State<AppetizerFood> {
     if (quantity > 1) {
       setState(() {
         quantity--;
+        setState(() {
+          totalPrice = unitPrice * quantity;
+        });
       });
     }
+  }
+
+  void _priceCalculator(int val) {
+    unitPrice = val;
+    setState(() {
+      totalPrice = unitPrice * quantity;
+    });
   }
 
   Widget typeCheck() {
     if (widget.type == 'advanced') {
       return Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Column(
           children: [
             Container(
-              height: 70,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+              margin: EdgeInsets.only(bottom: 10.0),
+              width: 120,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30.0),
+                  topLeft: Radius.circular(30.0),
+                  bottomLeft: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
                 ),
-                onPressed: () {},
+              ),
+              child: Container(
+                margin: EdgeInsets.all(5.0),
                 child: Text(
-                  widget.size[0] + '\nRs.' + widget.price[0].toString(),
-                  style:
-                      TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
+                  'Rs.' + totalPrice.toString() + '.00',
+                  style: TextStyle(
+                      height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ),
             ),
             Container(
-              height: 70,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
-                ),
-                onPressed: () {},
-                child: Text(
-                  widget.size[1] + '\nRs.' + widget.price[1].toString(),
-                  style:
-                      TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-            Container(
-              height: 70,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
-                ),
-                onPressed: () {},
-                child: Text(
-                  widget.size[2] + '\nRs.' + widget.price[2].toString(),
-                  style:
-                      TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 70,
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                      ),
+                      onPressed: () {
+                        _priceCalculator(widget.price[0].toInt());
+                      },
+                      child: Text(
+                        widget.size[0] + '\nRs.' + widget.price[0].toString(),
+                        style: TextStyle(
+                            height: 1.2, fontSize: 20, color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 70,
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                      ),
+                      onPressed: () {
+                        _priceCalculator(widget.price[1].toInt());
+                      },
+                      child: Text(
+                        widget.size[1] + '\nRs.' + widget.price[1].toString(),
+                        style: TextStyle(
+                            height: 1.2, fontSize: 20, color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 70,
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                      ),
+                      onPressed: () {
+                        _priceCalculator(widget.price[2].toInt());
+                      },
+                      child: Text(
+                        widget.size[2] + '\nRs.' + widget.price[2].toString(),
+                        style: TextStyle(
+                            height: 1.2, fontSize: 20, color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
         ),
       );
     } else {
+      _priceCalculator(widget.price[0].toInt());
       return Container(
         width: 120,
         height: 50,
@@ -250,7 +301,7 @@ class _AppetizerFoodState extends State<AppetizerFood> {
         child: Container(
           margin: EdgeInsets.all(5.0),
           child: Text(
-            'Rs.' + widget.price[0].toString() + '.00',
+            'Rs.' + totalPrice.toString() + '.00',
             style: TextStyle(
                 height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
