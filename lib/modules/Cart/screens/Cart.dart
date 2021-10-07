@@ -12,7 +12,14 @@ class Cart extends StatefulWidget {
   _CartState createState() => _CartState();
 }
 
+const secondaryColor = Color(0xffF1F1F1);
+const cardColor = Color(0xffDCFFDF);
+
 class _CartState extends State<Cart> {
+
+  bool isCheckoutEnabled = false;
+
+
   @override
   Widget build(BuildContext context) {
     //image for the pizza hut logo
@@ -45,6 +52,7 @@ class _CartState extends State<Cart> {
         ],
       ),
       body: Container(
+        color: secondaryColor,
         child: Column(
           children: [
             //Text("Cart"),
@@ -65,6 +73,7 @@ class _CartState extends State<Cart> {
                       return Padding(
                         padding: EdgeInsets.all(5),
                         child: Card(
+                          color: cardColor,
                           shape: RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
@@ -135,7 +144,134 @@ class _CartState extends State<Cart> {
             Consumer<CartModel>(builder: (context, cart, child) {
               return Column(
                 children: [
-                  Text(
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ElevatedButton(
+                              onPressed: (){
+                                Navigator.of(context).pop();
+                              },
+                              child: Text("Continue shopping",
+                                style: TextStyle(color: Colors.black, fontSize: 15),),
+                              style: ButtonStyle(
+                                foregroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor: MaterialStateProperty.all<Color>(
+                                    Colors.amber),
+                                minimumSize: MaterialStateProperty.all(Size(180, 40)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (BuildContext context) {
+                                      return CupertinoAlertDialog(
+                                        title:
+                                        const Text("Remove all items from the cart?"),
+                                        content: SingleChildScrollView(
+                                          child: ListBody(
+                                            children: const <Widget>[
+                                              Text("This cannot be undone")
+                                            ],
+                                          ),
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text("No")),
+                                          TextButton(
+                                              onPressed: () {
+                                                cart.removeAll();
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text("Yes"))
+                                        ],
+                                      );
+                                    });
+                              },
+                              child: Text("Clear cart", style: TextStyle(fontSize: 15),),
+                              style: ButtonStyle(
+                                foregroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor: MaterialStateProperty.all<Color>(
+                                    Theme.of(context).accentColor),
+                                minimumSize: MaterialStateProperty.all(Size(180, 40)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+
+                    ],
+                  ),
+                  Container(
+                    width: 380,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15.0),
+                            child: Text(
+                              "Total Price",
+                              style: TextStyle(
+                                  fontSize: 25, color: Theme.of(context).accentColor),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 15),
+                            child: Text(
+                              "Rs." + cart.totPrice.toString() + "/=",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  cart.items.isEmpty?
+                  ElevatedButton(
+                      onPressed: null ,
+                      style: ButtonStyle(
+                        foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.grey),
+                        minimumSize: MaterialStateProperty.all(Size(370, 40)),
+                      ),
+                      child: Text("Checkout",style: TextStyle(fontSize: 25),)
+                  ):
+                      ElevatedButton(onPressed: (){},
+                          style: ButtonStyle(
+                            foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.green),
+                            minimumSize: MaterialStateProperty.all(Size(370, 40)),
+                          ),
+                          child:Text("Checkout",style: TextStyle(fontSize: 25),) )
+
+
+                  /*Text(
                     "Total Price",
                     style: TextStyle(
                         fontSize: 25, color: Theme.of(context).accentColor),
@@ -143,48 +279,8 @@ class _CartState extends State<Cart> {
                   Text(
                     "Rs." + cart.totPrice.toString() + "/=",
                     style: TextStyle(fontSize: 20),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (BuildContext context) {
-                            return CupertinoAlertDialog(
-                              title:
-                                  const Text("Remove all items from the cart?"),
-                              content: SingleChildScrollView(
-                                child: ListBody(
-                                  children: const <Widget>[
-                                    Text("This cannot be undone")
-                                  ],
-                                ),
-                              ),
-                              actions: [
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text("No")),
-                                TextButton(
-                                    onPressed: () {
-                                      cart.removeAll();
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text("Yes"))
-                              ],
-                            );
-                          });
-                    },
-                    child: Text("Clear cart"),
-                    style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Theme.of(context).accentColor),
-                      minimumSize: MaterialStateProperty.all(Size(180, 40)),
-                    ),
-                  )
+                  ),*/
+
                 ],
               );
             })
