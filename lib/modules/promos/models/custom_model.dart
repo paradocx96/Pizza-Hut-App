@@ -1,9 +1,9 @@
-class PromoPizza {
+class CustomModel {
   late String name;
   late String size;
   late String flag;
 
-  PromoPizza({
+  CustomModel({
     required this.name,
     required this.size,
     required this.flag

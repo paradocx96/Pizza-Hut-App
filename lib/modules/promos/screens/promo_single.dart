@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/models/CartItem.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
-import 'package:pizzahut/modules/promos/widgets/promo_pizza_select.dart';
+import 'package:pizzahut/modules/promos/models/custom_model.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select.dart';
+import 'package:pizzahut/utils/helpers/Constants.dart';
 import 'package:provider/provider.dart';
 
 class PromoSingle extends StatefulWidget {
@@ -265,21 +267,6 @@ class _PromoSingleState extends State<PromoSingle> {
           label: '3RD OPTION',
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        BottomNavigationBarItem(
-          icon: Text(''),
-          label: '4TH OPTION',
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        BottomNavigationBarItem(
-          icon: Text(''),
-          label: '5TH OPTION',
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        BottomNavigationBarItem(
-          icon: Text(''),
-          label: '6TH OPTION',
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
       ];
     } else if (widget.type == '2') {
       typeSelected = [
@@ -511,26 +498,12 @@ class _PromoSingleState extends State<PromoSingle> {
     if (widget.type == '1') {
       return Container(
         child: currentIndex == 0
-            ? PromoPizzaSelect()
+            ? CustomSelect(list: Constants.promoPizzasListOne)
             : currentIndex == 1
-                ? PromoPizzaSelect()
+                ? CustomSelect(list: Constants.promoAppetizerListOne)
                 : currentIndex == 2
-                    ? Container(
-                        child: Text('Type 1 Option 3'),
-                      )
-                    : currentIndex == 3
-                        ? Container(
-                            child: Text('Type 1 Option 4'),
-                          )
-                        : currentIndex == 4
-                            ? Container(
-                                child: Text('Type 1 Option 5'),
-                              )
-                            : currentIndex == 5
-                                ? Container(
-                                    child: Text('Type 1 Option 6'),
-                                  )
-                                : Text('ERROR'),
+                    ? CustomSelect(list: Constants.promoDessertListOne)
+                    : Text('ERROR'),
       );
     } else if (widget.type == '2') {
       return Container(
