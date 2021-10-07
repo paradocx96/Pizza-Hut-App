@@ -19,6 +19,7 @@ class RoundedInputFieldContactNo extends StatelessWidget {
       child: TextField(
         onChanged: onChanged,
         cursorColor: Colors.black54,
+        keyboardType: TextInputType.phone,
         decoration: InputDecoration(
           icon: Icon(
             icon,

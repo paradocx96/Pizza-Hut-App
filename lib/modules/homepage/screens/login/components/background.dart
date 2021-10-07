@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/forgot_password_check.dart';
-import 'package:pizzahut/modules/homepage/screens/login/components/signin_button_red.dart';
-import 'package:pizzahut/modules/homepage/screens/login/components/signup_button_white.dart';
-import 'package:pizzahut/modules/homepage/screens/register/register_screen.dart';
 
 import '../login_screen.dart';
 
@@ -29,40 +26,6 @@ class Background extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
-            Positioned(
-              top:210,
-              right: 95,
-                child: SignInButtonRed(
-                  text: 'Sign in',
-                  press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return LoginScreen();
-                        },
-                      ),
-                    );
-                  },
-                )
-            ),
-            Positioned(
-                top:210,
-                right: 5,
-                child: SignUpButtonRed(
-                  text: 'Sign Up',
-                  press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return RegisterScreen();
-                        },
-                      ),
-                    );
-                  },
-                )
-            ),
             Positioned(
               top: 0,
               left: 0,
@@ -94,22 +57,6 @@ class Background extends StatelessWidget {
                 "assets/images/login_page/login_bottom_design.jpg",
                 width: size.width * 1,
               ),
-            ),
-            Positioned(
-                bottom:170,
-                right: 50,
-                child: ForgotPasswordCheck(
-                  press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return LoginScreen();
-                        },
-                      ),
-                    );
-                  },
-                )
             ),
             child,
           ],

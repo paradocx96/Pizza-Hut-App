@@ -5,12 +5,14 @@ class RoundedButtonWhite extends StatelessWidget {
   final String text;
   final VoidCallback press;
   final Color color, textColor;
+  final IconData icon;
 
   const RoundedButtonWhite({
     Key? key,
     required this.text,
     required this.press,
     this.color = Colors.white,
+    this.icon = Icons.g_translate,
     this.textColor = Colors.black54,
   }) : super(key: key);
 
@@ -32,7 +34,7 @@ class RoundedButtonWhite extends StatelessWidget {
               color: Colors.black.withOpacity(0.3),
               spreadRadius: 0.1,
               blurRadius: 8,
-              offset: Offset(0, 9), // changes position of shadow
+              offset: Offset(0, 9),// changes position of shadow
             ),
           ],
       ),

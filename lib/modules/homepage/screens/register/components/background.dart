@@ -29,40 +29,6 @@ class Background extends StatelessWidget {
           alignment: Alignment.center,
           children: <Widget>[
             Positioned(
-              top:210,
-              left: 95,
-                child: SignInButtonRed(
-                  text: 'Sign up',
-                  press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return LoginScreen();
-                        },
-                      ),
-                    );
-                  },
-                )
-            ),
-            Positioned(
-                top:210,
-                left: 5,
-                child: SignUpButtonRed(
-                  text: 'Sign in',
-                  press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return RegisterScreen();
-                        },
-                      ),
-                    );
-                  },
-                )
-            ),
-            Positioned(
               top: 0,
               right: 0,
               child: Image.asset(

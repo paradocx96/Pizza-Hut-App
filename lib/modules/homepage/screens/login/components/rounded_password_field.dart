@@ -6,6 +6,7 @@ class RoundedPasswordField extends StatelessWidget {
   const RoundedPasswordField({
     Key? key,
     required this.onChanged,
+    bool isObscurePassword = true,
   }) : super(key: key);
 
   @override
@@ -21,9 +22,11 @@ class RoundedPasswordField extends StatelessWidget {
             Icons.lock,
             color: Colors.black54,
           ),
-          suffixIcon: Icon(
-            Icons.visibility,
-            color: Colors.black54,
+          suffixIcon:
+          IconButton (
+            icon: Icon(Icons.visibility, color: Colors.black54),
+            onPressed: () {
+            },
           ),
           border: InputBorder.none,
         ),
