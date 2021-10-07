@@ -78,9 +78,7 @@ class _PromosState extends State<Promos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-      ),
+
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(color: Color(0xFFF4EFEF)),
@@ -97,7 +95,7 @@ class _PromosState extends State<Promos> {
                 ),
               ),
               Container(
-                height: MediaQuery.of(context).size.height - 110,
+                height: MediaQuery.of(context).size.height - 210,
                 child: ListView.builder(
                     itemCount: promos.length,
                     itemBuilder: (context, index) {
