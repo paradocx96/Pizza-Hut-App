@@ -13,7 +13,7 @@ class _PromosState extends State<Promos> {
   List<Promo> promos = [
     Promo(
       name: 'Triple Treat Box',
-      price: 'Rs.3200.00',
+      price: 3200,
       description:
           '2 Medium Pan Pizzas\n2 Appetizers\n2 Portions of Cinnamon Rolls',
       flag: 'assets/images/promos/Image1.jpg',
@@ -21,7 +21,7 @@ class _PromosState extends State<Promos> {
     ),
     Promo(
       name: 'My Box Lite',
-      price: 'Rs.920.00',
+      price: 920,
       description:
           '1 Personal Pan Pizza(Classic)\n1/2 portion of an Appetizer\n1 Sweet Treat\n1 Pet Coke (400ml)',
       flag: 'assets/images/promos/Image2.jpg',
@@ -29,7 +29,7 @@ class _PromosState extends State<Promos> {
     ),
     Promo(
       name: 'My Box Pro',
-      price: 'Rs.1030.00',
+      price: 1030,
       description:
           '1 Personal Pan Pizza(Classic Signature)\n1/2 portion of an Appetizer\n1 Sweet Treat or Lava Cake\n1 Pet Coke (400ml)',
       flag: 'assets/images/promos/Image3.jpg',
@@ -37,21 +37,21 @@ class _PromosState extends State<Promos> {
     ),
     Promo(
       name: 'Exclusive Cyber Saving Offer 1',
-      price: 'Rs.3500.00',
+      price: 3500,
       description: '1 Signature Large Pan Pizza\n1 Classic Large Pan Pizza',
       flag: 'assets/images/promos/Image5.jpg',
       type: '4',
     ),
     Promo(
       name: 'Exclusive Cyber Saving Offer 2',
-      price: 'Rs.1780.00',
+      price: 1780,
       description: '2 Class Medium Pan Pizza',
       flag: 'assets/images/promos/Image4.jpg',
       type: '5',
     ),
     Promo(
       name: 'My Pasta Treat',
-      price: 'Rs.1180.00',
+      price: 1180,
       description:
           '1 Pasta served with\n2 slices of Garlic Bread\n1 Sweet Treat\n1 Pet Coke (400ml)',
       flag: 'assets/images/promos/Image6.jpg',
@@ -59,7 +59,7 @@ class _PromosState extends State<Promos> {
     ),
     Promo(
       name: 'Party Combo - Signature Pizza',
-      price: 'Rs.6300.00',
+      price: 6300,
       description:
           '2 Signature Large Pan Pizzas\n3 Appetizers\n4 portions of Sweet Treats\n2 Cokes (1.5L)',
       flag: 'assets/images/promos/Image7.jpg',
@@ -67,7 +67,7 @@ class _PromosState extends State<Promos> {
     ),
     Promo(
       name: 'Party Combo - Classic Pizza',
-      price: 'Rs.5400.00',
+      price: 5400,
       description:
           '2 Classic Large Pan Pizzas\n3 portions of Garlic Bread\n4 portions of Sweet Treats\n2 Cokes (1.5L)',
       flag: 'assets/images/promos/Image8.jpg',
@@ -112,15 +112,14 @@ class _PromosState extends State<Promos> {
                                       builder: (_) => PromoSingle(
                                             name: promos[index].name,
                                             price: promos[index].price,
-                                            description:
-                                                promos[index].description,
+                                            description: promos[index].description,
                                             flag: promos[index].flag,
                                             type: promos[index].type,
                                           )));
                             },
                             title: Text(promos[index].name),
                             subtitle: Text(
-                                '${promos[index].price}\n${promos[index].description}'),
+                                'Rs.${promos[index].price}.00\n${promos[index].description}'),
                             leading: Image(
                               image: AssetImage(promos[index].flag),
                             ),
