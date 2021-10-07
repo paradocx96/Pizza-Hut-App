@@ -46,6 +46,36 @@ class CartModel extends ChangeNotifier{
     notifyListeners();
   }
 
+  //decrementing quantity from cart
+  void decrementQuantity(CartItem item){
+    int index = _items.indexOf(item);
+
+    //decrement quantity
+    item.quantity --;
+
+    //if decrementing results zero equate to one
+    if(item.quantity <= 0){
+      item.quantity = 1;
+    }
+
+    _items[index] = item;
+  }
+
+  //incrementing quantity from cart
+  void incrementQuantity(CartItem item){
+    int index = _items.indexOf(item);
+
+    //decrement quantity
+    item.quantity ++;
+
+    //if decrementing results zero equate to one
+    if(item.quantity <= 0){
+      item.quantity = 1;
+    }
+
+    _items[index] = item;
+  }
+
 
 
 }
