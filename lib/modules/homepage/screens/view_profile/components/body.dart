@@ -2,10 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:pizzahut/modules/homepage/screens/view_addresses//components/view_addresses_link.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/components/view_addresses_link.dart';
+import 'package:pizzahut/modules/homepage/screens/edit_profile/edit_profile.dart';
 import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
 import 'package:pizzahut/modules/homepage/screens/view_addresses/view_addresses.dart';
-import 'package:pizzahut/modules/homepage/screens/view_profile/view_profile.dart';
 
 import 'background.dart';
 
@@ -22,31 +22,15 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.redAccent,
       ),
       body: getProfile(),
     );
   }
 
-    // Widget getBody(){
-    //   Size size = MediaQuery.of(context).size;
-    //   // This size provide us total height and width of our screen
-    //   return Background(
-    //     child: SingleChildScrollView(
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         children: <Widget>[
-    //         // Container(
-    //         //   child: getProfile(),
-    //         // )
-    //         ],
-    //       ),
-    //     ),
-    //   );
-    // }
-
     Widget getProfile(){
       //Size size = MediaQuery.of(context).size;
+      final IconData icon;
       return Scaffold(
         body: Container(
             padding: EdgeInsets.only(left: 35, top: 20, right: 35),
@@ -56,15 +40,17 @@ class _BodyState extends State<Body> {
               },
               child: ListView(
                 children: [
+                  // Container(
+                  //   child: Text(
+                  //     'View Profile',
+                  //     textAlign: TextAlign.center,
+                  //     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: Colors.redAccent),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 30),
                   Center(
                     child: Stack(
                       children: [
-                        // Container(
-                        //   child: Image.asset(
-                        //     'assets/images/view_profile_page/view_profile_top_design.png',
-                        //     alignment: Alignment.center,
-                        //   ),
-                        // ),
                         Container(
                           width: 130,
                           height: 130,
@@ -86,26 +72,6 @@ class _BodyState extends State<Body> {
                             ),
                           ),
                         ),
-                        Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: Container(
-                              height: 40,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  width: 4,
-                                  color: Colors.white
-                                ),
-                                color: Colors.blue
-                              ),
-                              child: Icon(
-                                Icons.edit,
-                                color: Colors.white,
-                              ),
-                            )
-                        )
                       ],
                     ),
                   ),
@@ -113,7 +79,6 @@ class _BodyState extends State<Body> {
                   getEmailTextField("Email", "anderson@gmail.com", false),
                   getPhoneTextField("Phone", "0777-1212-12 ", false),
                   getAddressTextField("Address", "Jason Anderson", false),
-
                   getUsernameTextField("Username", "Anderson", false),
                   getPasswordTextField("Password", "**********", true),
                   SizedBox(height: 20),
@@ -126,19 +91,27 @@ class _BodyState extends State<Body> {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.rightToLeftWithFade,
-                                    child: ViewProfile()
+                                    child: EditProfile()
                                 )
                             );
 
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) {
+                            //       return EditProfile();
+                            //     },
+                            //   ),
+                            // );
                           },
-                          child: Text("Save Changes", style: TextStyle(
+                          child: Text("Edit Profile", style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.5,
                               color: Colors.white
                             )),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
+                          primary: Colors.redAccent,
                           padding: EdgeInsets.only(left: 10,top: 15,right: 10,bottom: 15),
                           shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                         )
@@ -158,6 +131,8 @@ class _BodyState extends State<Body> {
       return Padding(
           padding: EdgeInsets.only(bottom: 30),
           child: TextField(
+            enabled: false,
+            readOnly: true,
             obscureText: isPasswordTextField ? isObscurePassword : false,
             decoration: InputDecoration(
               icon: Icon(
@@ -196,6 +171,8 @@ class _BodyState extends State<Body> {
     return Padding(
       padding: EdgeInsets.only(bottom: 30),
       child: TextField(
+        enabled: false,
+        readOnly: true,
         keyboardType: TextInputType.phone,
         obscureText: isPasswordTextField ? isObscurePassword : false,
         decoration: InputDecoration(
@@ -324,6 +301,8 @@ class _BodyState extends State<Body> {
     return Padding(
       padding: EdgeInsets.only(bottom: 30),
       child: TextField(
+        enabled: false,
+        readOnly: true,
         obscureText: isPasswordTextField ? isObscurePassword : false,
         decoration: InputDecoration(
             icon: Icon(
@@ -362,20 +341,22 @@ class _BodyState extends State<Body> {
     return Padding(
       padding: EdgeInsets.only(bottom: 30),
       child: TextField(
+        enabled: false,
+        readOnly: true,
         obscureText: isPasswordTextField ? isObscurePassword : false,
         decoration: InputDecoration(
             icon: Icon(
               icon = Icons.lock,
             ),
-            suffixIcon: isPasswordTextField ?
-            IconButton(
-                icon: Icon(Icons.remove_red_eye, color: Colors.grey),
-                onPressed: (){
-                  setState(() {
-                    isObscurePassword = !isObscurePassword;
-                  });
-                }
-            ): null,
+            // suffixIcon: isPasswordTextField ?
+            // IconButton(
+            //     icon: Icon(Icons.remove_red_eye, color: Colors.grey),
+            //     onPressed: (){
+            //       setState(() {
+            //         isObscurePassword = !isObscurePassword;
+            //       });
+            //     }
+            // ): null,
             contentPadding: EdgeInsets.only(bottom: 5),
             labelText: labelText,
             floatingLabelBehavior: FloatingLabelBehavior.always,
