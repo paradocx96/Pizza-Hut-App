@@ -3,7 +3,7 @@ import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 
 class NormalFood extends StatefulWidget {
   final String name;
-  final String price;
+  final int price;
   final String description;
   final String flag;
 
@@ -169,7 +169,7 @@ class _NormalFoodState extends State<NormalFood> {
         child: Container(
           margin: EdgeInsets.all(5.0),
           child: Text(
-            widget.price,
+            'Rs.' + widget.price.toString() + '.00',
             style: TextStyle(height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
