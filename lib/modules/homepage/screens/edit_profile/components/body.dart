@@ -1,6 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:pizzahut/modules/homepage/screens/edit_profile/components/view_addresses.dart';
+import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/view_profile/view_profile.dart';
 
 import 'background.dart';
 
@@ -108,6 +112,7 @@ class _BodyState extends State<Body> {
                   getEmailTextField("Email", "anderson@gmail.com", false),
                   getPhoneTextField("Phone", "0777-1212-12 ", false),
                   getAddressTextField("Address", "Jason Anderson", false),
+
                   getUsernameTextField("Username", "Anderson", false),
                   getPasswordTextField("Password", "**********", true),
                   SizedBox(height: 20),
@@ -115,7 +120,16 @@ class _BodyState extends State<Body> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       ElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.rightToLeftWithFade,
+                                    child: ViewProfile()
+                                )
+                            );
+
+                          },
                           child: Text("Save Changes", style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -216,39 +230,92 @@ class _BodyState extends State<Body> {
   }
   Widget getAddressTextField(String labelText, String placeholder, bool isPasswordTextField){
     final IconData icon;
-    return Padding(
+    return Container(
       padding: EdgeInsets.only(bottom: 30),
-      child: TextField(
-        obscureText: isPasswordTextField ? isObscurePassword : false,
-        decoration: InputDecoration(
-            icon: Icon(
-              icon = Icons.home,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ViewAddresses(press: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginScreen();
+                    },
+                  ),
+                );
+              })
+            ],
+          ),
+          Container(
+            child: TextField(
+              obscureText: isPasswordTextField ? isObscurePassword : false,
+              decoration: InputDecoration(
+                  icon: Icon(
+                    icon = Icons.home,
+                  ),
+                  suffixIcon: isPasswordTextField ?
+                  IconButton(
+                      icon: Icon(Icons.remove_red_eye, color: Colors.grey),
+                      onPressed: (){
+                        setState(() {
+                          isObscurePassword = !isObscurePassword;
+                        });
+                      }
+                  ): null,
+                  contentPadding: EdgeInsets.only(bottom: 5),
+                  labelText: labelText,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  hintText: placeholder,
+                  labelStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black
+                  ),
+                  hintStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey
+                  )
+              ),
             ),
-            suffixIcon: isPasswordTextField ?
-            IconButton(
-                icon: Icon(Icons.remove_red_eye, color: Colors.grey),
-                onPressed: (){
-                  setState(() {
-                    isObscurePassword = !isObscurePassword;
-                  });
-                }
-            ): null,
-            contentPadding: EdgeInsets.only(bottom: 5),
-            labelText: labelText,
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placeholder,
-            labelStyle: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.normal,
-                color: Colors.black
-            ),
-            hintStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey
-            )
-        ),
+          ),
+        ],
       ),
+      // padding: EdgeInsets.only(bottom: 30),
+      // child: TextField(
+      //   obscureText: isPasswordTextField ? isObscurePassword : false,
+      //   decoration: InputDecoration(
+      //       icon: Icon(
+      //         icon = Icons.home,
+      //       ),
+      //       suffixIcon: isPasswordTextField ?
+      //       IconButton(
+      //           icon: Icon(Icons.remove_red_eye, color: Colors.grey),
+      //           onPressed: (){
+      //             setState(() {
+      //               isObscurePassword = !isObscurePassword;
+      //             });
+      //           }
+      //       ): null,
+      //       contentPadding: EdgeInsets.only(bottom: 5),
+      //       labelText: labelText,
+      //       floatingLabelBehavior: FloatingLabelBehavior.always,
+      //       hintText: placeholder,
+      //       labelStyle: TextStyle(
+      //           fontSize: 20,
+      //           fontWeight: FontWeight.normal,
+      //           color: Colors.black
+      //       ),
+      //       hintStyle: TextStyle(
+      //           fontSize: 16,
+      //           fontWeight: FontWeight.bold,
+      //           color: Colors.grey
+      //       )
+      //   ),
+      // ),
     );
   }
   Widget getUsernameTextField(String labelText, String placeholder, bool isPasswordTextField){
