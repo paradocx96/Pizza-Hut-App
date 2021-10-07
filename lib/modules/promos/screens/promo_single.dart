@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/models/CartItem.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
+import 'package:pizzahut/modules/promos/widgets/promo_pizza_select.dart';
 import 'package:provider/provider.dart';
 
 class PromoSingle extends StatefulWidget {
@@ -510,13 +511,9 @@ class _PromoSingleState extends State<PromoSingle> {
     if (widget.type == '1') {
       return Container(
         child: currentIndex == 0
-            ? Container(
-                child: Text('Type 1 Option 1'),
-              )
+            ? PromoPizzaSelect()
             : currentIndex == 1
-                ? Container(
-                    child: Text('Type 1 Option 2'),
-                  )
+                ? PromoPizzaSelect()
                 : currentIndex == 2
                     ? Container(
                         child: Text('Type 1 Option 3'),
