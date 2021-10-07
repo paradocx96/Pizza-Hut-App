@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Landing/routes/LandingPageArguments.dart';
 import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
+import 'package:pizzahut/modules/More/screens/MorePage.dart';
 import 'package:pizzahut/modules/homepage/screens/home.dart';
 
 class LandingPage extends StatefulWidget {
@@ -21,8 +22,8 @@ class _LandingPageState extends State<LandingPage> {
   final screens = [
     Home(),
     MainMenu(),
-    Center(child: Text("Track Order"),),
-    Center(child: Text("More"),),
+    Center(child: Text("Order tracking coming soon"),),
+    MorePage(),
   ];
 
 
