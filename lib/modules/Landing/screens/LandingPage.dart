@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/Landing/routes/LandingPageArguments.dart';
 import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
 import 'package:pizzahut/modules/More/screens/MorePage.dart';
@@ -54,7 +55,9 @@ class _LandingPageState extends State<LandingPage> {
             ),
             IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: (){},
+              onPressed: (){
+                Navigator.pushNamed(context, Cart.routeName);
+              },
             ),
           ],
         ),
