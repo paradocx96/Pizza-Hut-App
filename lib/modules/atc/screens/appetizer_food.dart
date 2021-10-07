@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/models/CartItem.dart';
+import 'package:pizzahut/modules/Cart/models/CartModel.dart';
+import 'package:provider/provider.dart';
 
 class AppetizerFood extends StatefulWidget {
   final String name;
@@ -156,11 +160,24 @@ class _AppetizerFoodState extends State<AppetizerFood> {
   }
 
   int quantity = 1;
+  int totalPrice = 0;
+  int unitPrice = 0;
+  String typeSelected = 'none';
+  String qtySelected = 'none';
+  late ButtonStyle _buttonStyleOne = ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
+  late ButtonStyle _buttonStyleTwo = ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
+  late ButtonStyle _buttonStyleThree = ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
 
   void _incrementQuantity() {
     if (quantity < 5) {
       setState(() {
         quantity++;
+        setState(() {
+          totalPrice = unitPrice * quantity;
+        });
       });
     }
   }
@@ -169,72 +186,239 @@ class _AppetizerFoodState extends State<AppetizerFood> {
     if (quantity > 1) {
       setState(() {
         quantity--;
+        setState(() {
+          totalPrice = unitPrice * quantity;
+        });
       });
+    }
+  }
+
+  void _priceCalculator(int val) {
+    unitPrice = val;
+    setState(() {
+      totalPrice = unitPrice * quantity;
+    });
+  }
+
+  void _buttonColorChanger(String val) {
+    if (val == 'one') {
+      setState(() {
+        _buttonStyleOne = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.redAccent));
+        _buttonStyleTwo = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
+        _buttonStyleThree = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
+      });
+    } else if (val == 'two') {
+      setState(() {
+        _buttonStyleOne = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
+        _buttonStyleTwo = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.redAccent));
+        _buttonStyleThree = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
+      });
+    } else if (val == 'three') {
+      setState(() {
+        _buttonStyleOne = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
+        _buttonStyleTwo = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFFFECE00)));
+        _buttonStyleThree = ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.redAccent));
+      });
+    }
+  }
+
+  void _setTypeSelected(String val) {
+    setState(() {
+      typeSelected = val;
+    });
+  }
+
+  void _setQtySelected(String val) {
+    setState(() {
+      qtySelected = val;
+    });
+  }
+
+  void _addToCart() {
+    if (totalPrice != 0) {
+      if (typeSelected == 'advanced') {
+        Provider.of<CartModel>(context, listen: false).add(CartItem(
+            "Another",
+            widget.name,
+            totalPrice,
+            quantity,
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            qtySelected));
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return CupertinoAlertDialog(
+                title: const Text("Added to cart"),
+                content: SingleChildScrollView(
+                  child: ListBody(
+                    children: const <Widget>[],
+                  ),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("OK"),
+                  ),
+                ],
+              );
+            });
+      } else {
+        Provider.of<CartModel>(context, listen: false).add(CartItem(
+            "Another",
+            widget.name,
+            totalPrice,
+            quantity,
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"));
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return CupertinoAlertDialog(
+                title: const Text("Added to cart"),
+                content: SingleChildScrollView(
+                  child: ListBody(
+                    children: const <Widget>[],
+                  ),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("OK"),
+                  ),
+                ],
+              );
+            });
+      }
     }
   }
 
   Widget typeCheck() {
     if (widget.type == 'advanced') {
+      _setTypeSelected(widget.type);
       return Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Column(
           children: [
             Container(
-              height: 70,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+              margin: EdgeInsets.only(bottom: 10.0),
+              width: 120,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30.0),
+                  topLeft: Radius.circular(30.0),
+                  bottomLeft: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
                 ),
-                onPressed: () {},
+              ),
+              child: Container(
+                margin: EdgeInsets.all(5.0),
                 child: Text(
-                  widget.size[0] + '\nRs.' + widget.price[0].toString(),
-                  style:
-                      TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
+                  'Rs.' + totalPrice.toString() + '.00',
+                  style: TextStyle(
+                      height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ),
             ),
             Container(
-              height: 70,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
-                ),
-                onPressed: () {},
-                child: Text(
-                  widget.size[1] + '\nRs.' + widget.price[1].toString(),
-                  style:
-                      TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-            Container(
-              height: 70,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
-                ),
-                onPressed: () {},
-                child: Text(
-                  widget.size[2] + '\nRs.' + widget.price[2].toString(),
-                  style:
-                      TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 70,
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      style: _buttonStyleOne,
+                      onPressed: () {
+                        _priceCalculator(widget.price[0].toInt());
+                        _setQtySelected(widget.size[0]);
+                        _buttonColorChanger('one');
+                      },
+                      child: Text(
+                        widget.size[0] + '\nRs.' + widget.price[0].toString(),
+                        style: TextStyle(
+                            height: 1.2, fontSize: 20, color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 70,
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      style: _buttonStyleTwo,
+                      onPressed: () {
+                        _priceCalculator(widget.price[1].toInt());
+                        _setQtySelected(widget.size[1]);
+                        _buttonColorChanger('two');
+                      },
+                      child: Text(
+                        widget.size[1] + '\nRs.' + widget.price[1].toString(),
+                        style: TextStyle(
+                            height: 1.2, fontSize: 20, color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 70,
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      style: _buttonStyleThree,
+                      onPressed: () {
+                        _priceCalculator(widget.price[2].toInt());
+                        _setQtySelected(widget.size[2]);
+                        _buttonColorChanger('three');
+                      },
+                      child: Text(
+                        widget.size[2] + '\nRs.' + widget.price[2].toString(),
+                        style: TextStyle(
+                            height: 1.2, fontSize: 20, color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
         ),
       );
     } else {
+      _setTypeSelected(widget.type);
+      _priceCalculator(widget.price[0].toInt());
       return Container(
         width: 120,
         height: 50,
@@ -250,7 +434,7 @@ class _AppetizerFoodState extends State<AppetizerFood> {
         child: Container(
           margin: EdgeInsets.all(5.0),
           child: Text(
-            'Rs.' + widget.price[0].toString() + '.00',
+            'Rs.' + totalPrice.toString() + '.00',
             style: TextStyle(
                 height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
@@ -338,7 +522,9 @@ class _AppetizerFoodState extends State<AppetizerFood> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _addToCart();
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
