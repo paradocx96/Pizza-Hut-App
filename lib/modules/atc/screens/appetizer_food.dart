@@ -25,7 +25,6 @@ class AppetizerFood extends StatefulWidget {
 class _AppetizerFoodState extends State<AppetizerFood> {
   @override
   Widget build(BuildContext context) {
-
     //image for the pizza hut logo
     Widget pizzaHutLogo_image = Container(
       height: 50,
@@ -37,18 +36,18 @@ class _AppetizerFoodState extends State<AppetizerFood> {
         title: pizzaHutLogo_image,
         leading: IconButton(
           icon: Icon(Icons.navigate_before_sharp),
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.delivery_dining),
-            onPressed: (){},
+            onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: (){},
+            onPressed: () {},
           ),
         ],
       ),
@@ -139,7 +138,8 @@ class _AppetizerFoodState extends State<AppetizerFood> {
           Container(
             child: Text(
               widget.name,
-              style: TextStyle(height: 2, fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  height: 2, fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           Container(
@@ -153,6 +153,24 @@ class _AppetizerFoodState extends State<AppetizerFood> {
         ],
       ),
     );
+  }
+
+  int quantity = 1;
+
+  void _incrementQuantity() {
+    if (quantity < 5) {
+      setState(() {
+        quantity++;
+      });
+    }
+  }
+
+  void _decrementQuantity() {
+    if (quantity > 1) {
+      setState(() {
+        quantity--;
+      });
+    }
   }
 
   Widget typeCheck() {
@@ -172,7 +190,7 @@ class _AppetizerFoodState extends State<AppetizerFood> {
                 ),
                 onPressed: () {},
                 child: Text(
-                  widget.size[0] + '\n' + widget.price[0],
+                  widget.size[0] + '\nRs.' + widget.price[0].toString(),
                   style:
                       TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
                   textAlign: TextAlign.center,
@@ -189,7 +207,7 @@ class _AppetizerFoodState extends State<AppetizerFood> {
                 ),
                 onPressed: () {},
                 child: Text(
-                  widget.size[1] + '\n' + widget.price[1],
+                  widget.size[1] + '\nRs.' + widget.price[1].toString(),
                   style:
                       TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
                   textAlign: TextAlign.center,
@@ -206,7 +224,7 @@ class _AppetizerFoodState extends State<AppetizerFood> {
                 ),
                 onPressed: () {},
                 child: Text(
-                  widget.size[2] + '\n' + widget.price[2],
+                  widget.size[2] + '\nRs.' + widget.price[2].toString(),
                   style:
                       TextStyle(height: 1.2, fontSize: 20, color: Colors.black),
                   textAlign: TextAlign.center,
@@ -232,8 +250,9 @@ class _AppetizerFoodState extends State<AppetizerFood> {
         child: Container(
           margin: EdgeInsets.all(5.0),
           child: Text(
-            widget.price[0],
-            style: TextStyle(height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
+            'Rs.' + widget.price[0].toString() + '.00',
+            style: TextStyle(
+                height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
         ),
@@ -255,10 +274,14 @@ class _AppetizerFoodState extends State<AppetizerFood> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).accentColor),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _decrementQuantity();
+                    },
                     child: Text(
                       '-',
                       style: TextStyle(
@@ -280,9 +303,9 @@ class _AppetizerFoodState extends State<AppetizerFood> {
                     ],
                   ),
                   child: Text(
-                    '1',
-                    style:
-                        TextStyle(height: 1.5, fontSize: 20, color: Colors.black),
+                    quantity.toString(),
+                    style: TextStyle(
+                        height: 1.5, fontSize: 20, color: Colors.black),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -290,10 +313,14 @@ class _AppetizerFoodState extends State<AppetizerFood> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).accentColor),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _incrementQuantity();
+                    },
                     child: Text(
                       '+',
                       style: TextStyle(
