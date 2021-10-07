@@ -46,6 +46,67 @@ class CartModel extends ChangeNotifier{
     notifyListeners();
   }
 
+  //decrementing quantity from cart
+  void decrementQuantity(CartItem item){
+    int index = _items.indexOf(item);
+
+    //subtract the item price from total price
+    totalPrice -= item.price;
+
+    //calculate the unit price before decrementing
+    int unitPrice = (item.price / item.quantity).round() ;
+
+    //decrement quantity
+    item.quantity --;
+
+    //if decrementing results zero equate to one
+    if(item.quantity <= 0){
+      item.quantity = 1;
+    }
+
+    //calculate and assign the new price
+    item.price = unitPrice * item.quantity;
+
+    //add the modified item in the same index
+    _items[index] = item;
+
+    //add the new item price to the total price
+    totalPrice += item.price;
+
+    //updates done. Notify the listeners
+    notifyListeners();
+  }
+
+  //incrementing quantity from cart
+  void incrementQuantity(CartItem item){
+    int index = _items.indexOf(item);
+
+    //subtract the item price from total price
+    totalPrice -= item.price;
+
+    //calculate the unit price before decrementing
+    int unitPrice = (item.price / item.quantity).round() ;
+
+    //decrement quantity
+    item.quantity ++;
+
+    //if decrementing results zero equate to one
+    if(item.quantity <= 0){
+      item.quantity = 1;
+    }
+
+    //calculate and assign the new price
+    item.price = unitPrice * item.quantity;
+
+    _items[index] = item;
+
+    //add the new item price to the total price
+    totalPrice += item.price;
+
+    //updates done. Notify the listeners
+    notifyListeners();
+  }
+
 
 
 }

@@ -388,7 +388,24 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
 
                     );
                   },
-                  child: Text("Add to Cart",style: TextStyle(fontSize: 20),),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("Add to Cart",style: TextStyle(fontSize: 20),),
+
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Icon(
+                          Icons.add_shopping_cart,
+                          color: Colors.white,
+                          size: 24.0,
+                          semanticLabel: 'Add To Cart',
+                        ),
+                      ),
+                    ],
+                  ),
+
 
                   style: ButtonStyle(
                     foregroundColor:

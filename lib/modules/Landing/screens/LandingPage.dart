@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/Landing/routes/LandingPageArguments.dart';
 import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
+import 'package:pizzahut/modules/More/screens/MorePage.dart';
 import 'package:pizzahut/modules/homepage/screens/home.dart';
+import 'package:pizzahut/modules/Search/screens/SearchPage.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -21,8 +24,8 @@ class _LandingPageState extends State<LandingPage> {
   final screens = [
     Home(),
     MainMenu(),
-    Center(child: Text("Track Order"),),
-    Center(child: Text("More"),),
+    Center(child: Text("Order tracking coming soon"),),
+    MorePage(),
   ];
 
 
@@ -52,14 +55,18 @@ class _LandingPageState extends State<LandingPage> {
             ),
             IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: (){},
+              onPressed: (){
+                Navigator.pushNamed(context, Cart.routeName);
+              },
             ),
           ],
         ),
         body: screens[currentIndex],
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          onPressed: (){},
+          onPressed: (){
+            Navigator.pushNamed(context, SearchPage.routeName);
+          },
           tooltip: 'Increment',
           child: Icon(Icons.search),
         ),
