@@ -138,7 +138,7 @@ class _CartState extends State<Cart> {
                                       "\n" +
                                       "Rs." +
                                       cart.items[index].price.toString() +
-                                      "/="),
+                                      "/=" ,style: TextStyle(fontSize: 18),),
                                 ],
                               ),
 
