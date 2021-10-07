@@ -4,6 +4,11 @@ import 'package:pizzahut/modules/FoodMenu/routes/FoodMenuArguments.dart';
 import 'package:pizzahut/modules/FoodMenu/widgets/AppbarWithBack.dart';
 import 'package:pizzahut/modules/FoodMenu/widgets/SlidableMenuItem.dart';
 import 'package:pizzahut/modules/Pizza/screens/PizzaMenu.dart';
+import 'package:pizzahut/modules/categories/screens/appetizers.dart';
+import 'package:pizzahut/modules/categories/screens/beverages.dart';
+import 'package:pizzahut/modules/categories/screens/desserts.dart';
+import 'package:pizzahut/modules/categories/screens/pastas.dart';
+import 'package:pizzahut/modules/promos/screens/promos.dart';
 
 class FoodMenu extends StatefulWidget {
   const FoodMenu({Key? key}) : super(key: key);
@@ -85,11 +90,11 @@ class _FoodMenuState extends State<FoodMenu> with SingleTickerProviderStateMixin
         ),
         body: TabBarView( children: [
           PizzaMenu(),
-          Text("Hello"),
-          Text("Hello"),
-          Text("Hello"),
-          Text("Hello"),
-          Text("Hello"),
+          Pastas(),
+          Appetizers(),
+          Desserts(),
+          Beverages(),
+          Promos(),
         ],
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/models/CartItem.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaExtrasModel.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaRangeModel.dart';
 import 'package:pizzahut/modules/Pizza/models/PizzaSingleViewArguments.dart';
@@ -178,7 +179,10 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: (){},
+            onPressed: (){
+              Navigator.pushNamed(context, Cart.routeName,
+              );
+            },
           ),
         ],
       ),

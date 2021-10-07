@@ -47,10 +47,10 @@ class _PastasState extends State<Pastas> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Container(
+              /*Container(
                 height: 100,
                 width: MediaQuery.of(context).size.width,
-              ),
+              ),*/
               Container(
                 height: 30,
                 width: MediaQuery.of(context).size.width,
@@ -60,7 +60,7 @@ class _PastasState extends State<Pastas> {
                 ),
               ),
               Container(
-                height: MediaQuery.of(context).size.height - 154,
+                height: MediaQuery.of(context).size.height - 210,
                 child: ListView.builder(
                     itemCount: pastas.length,
                     itemBuilder: (context, index) {

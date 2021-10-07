@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Landing/routes/LandingPageArguments.dart';
 import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
+import 'package:pizzahut/modules/homepage/screens/home.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _LandingPageState extends State<LandingPage> {
   int currentIndex = 0;
 
   final screens = [
-    Center(child: Text("Home"),),
+    Home(),
     MainMenu(),
     Center(child: Text("Track Order"),),
     Center(child: Text("More"),),

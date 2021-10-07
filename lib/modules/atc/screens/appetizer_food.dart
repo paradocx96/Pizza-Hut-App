@@ -25,10 +25,32 @@ class AppetizerFood extends StatefulWidget {
 class _AppetizerFoodState extends State<AppetizerFood> {
   @override
   Widget build(BuildContext context) {
+
+    //image for the pizza hut logo
+    Widget pizzaHutLogo_image = Container(
+      height: 50,
+      child: Image.asset("images/pizza_hut_logo.png"),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('ADD TO CART'),
-          backgroundColor: Colors.redAccent,
+        title: pizzaHutLogo_image,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before_sharp),
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delivery_dining),
+            onPressed: (){},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: (){},
+          ),
+        ],
       ),
       body: getBody(),
     );

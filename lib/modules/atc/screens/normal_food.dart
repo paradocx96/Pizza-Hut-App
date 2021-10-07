@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 
 class NormalFood extends StatefulWidget {
   final String name;
@@ -21,10 +22,34 @@ class NormalFood extends StatefulWidget {
 class _NormalFoodState extends State<NormalFood> {
   @override
   Widget build(BuildContext context) {
+
+    Widget pizzaHutLogo_image = Container(
+      height: 50,
+      child: Image.asset("images/pizza_hut_logo.png"),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('ADD TO CART'),
-        backgroundColor: Colors.redAccent,
+        title: pizzaHutLogo_image,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before_sharp),
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delivery_dining),
+            onPressed: (){},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: (){
+              Navigator.pushNamed(context, Cart.routeName,
+              );
+            },
+          ),
+        ],
       ),
       body: getBody(),
     );
