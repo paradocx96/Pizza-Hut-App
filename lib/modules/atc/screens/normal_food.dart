@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/models/CartItem.dart';
+import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
+import 'package:provider/provider.dart';
 
 class NormalFood extends StatefulWidget {
   final String name;
@@ -207,6 +211,20 @@ class _NormalFoodState extends State<NormalFood> {
     );
   }
 
+  void _addToCart() {
+    Provider.of<CartModel>(context, listen: false).add(CartItem(
+        "Another",
+        widget.name,
+        totalPrice,
+        quantity,
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"));
+  }
+
   Widget addCart() {
     return Container(
       child: Column(
@@ -283,7 +301,29 @@ class _NormalFoodState extends State<NormalFood> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _addToCart();
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return CupertinoAlertDialog(
+                        title: const Text("Added to cart"),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: const <Widget>[],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text("OK"),
+                          ),
+                        ],
+                      );
+                    });
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
