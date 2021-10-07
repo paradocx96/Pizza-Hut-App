@@ -9,10 +9,10 @@ class NormalFood extends StatefulWidget {
 
   const NormalFood(
       {Key? key,
-        required this.name,
-        required this.price,
-        required this.description,
-        required this.flag})
+      required this.name,
+      required this.price,
+      required this.description,
+      required this.flag})
       : super(key: key);
 
   @override
@@ -22,7 +22,6 @@ class NormalFood extends StatefulWidget {
 class _NormalFoodState extends State<NormalFood> {
   @override
   Widget build(BuildContext context) {
-
     Widget pizzaHutLogo_image = Container(
       height: 50,
       child: Image.asset("images/pizza_hut_logo.png"),
@@ -33,19 +32,21 @@ class _NormalFoodState extends State<NormalFood> {
         title: pizzaHutLogo_image,
         leading: IconButton(
           icon: Icon(Icons.navigate_before_sharp),
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.delivery_dining),
-            onPressed: (){},
+            onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: (){
-              Navigator.pushNamed(context, Cart.routeName,
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                Cart.routeName,
               );
             },
           ),
@@ -88,7 +89,8 @@ class _NormalFoodState extends State<NormalFood> {
                   )
                 ],
               ),
-              child: Image.asset(widget.flag,
+              child: Image.asset(
+                widget.flag,
                 alignment: Alignment.center,
               ),
             ),
@@ -137,7 +139,8 @@ class _NormalFoodState extends State<NormalFood> {
           Container(
             child: Text(
               widget.name,
-              style: TextStyle(height: 2, fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  height: 2, fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           Container(
@@ -153,28 +156,55 @@ class _NormalFoodState extends State<NormalFood> {
     );
   }
 
+  int totalPrice = 0;
+  int unitPrice = 0;
+  int quantity = 1;
+
+  void _incrementQuantity() {
+    if (quantity < 5) {
+      setState(() {
+        quantity++;
+      });
+    }
+  }
+
+  void _decrementQuantity() {
+    if (quantity > 1) {
+      setState(() {
+        quantity--;
+      });
+    }
+  }
+
+  void _priceCalculator() {
+    unitPrice = widget.price;
+    totalPrice = unitPrice * quantity;
+  }
+
   Widget typeCheck() {
+    _priceCalculator();
     return Container(
-        width: 120,
-        height: 50,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30.0),
-            topLeft: Radius.circular(30.0),
-            bottomLeft: Radius.circular(30.0),
-            bottomRight: Radius.circular(30.0),
-          ),
+      width: 120,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(30.0),
+          topLeft: Radius.circular(30.0),
+          bottomLeft: Radius.circular(30.0),
+          bottomRight: Radius.circular(30.0),
         ),
-        child: Container(
-          margin: EdgeInsets.all(5.0),
-          child: Text(
-            'Rs.' + widget.price.toString() + '.00',
-            style: TextStyle(height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
+      ),
+      child: Container(
+        margin: EdgeInsets.all(5.0),
+        child: Text(
+          'Rs.' + totalPrice.toString() + '.00',
+          style:
+              TextStyle(height: 1.5, fontSize: 20, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
         ),
-      );
+      ),
+    );
   }
 
   Widget addCart() {
@@ -192,9 +222,12 @@ class _NormalFoodState extends State<NormalFood> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                          MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _decrementQuantity();
+                      _priceCalculator();
+                    },
                     child: Text(
                       '-',
                       style: TextStyle(
@@ -216,9 +249,9 @@ class _NormalFoodState extends State<NormalFood> {
                     ],
                   ),
                   child: Text(
-                    '1',
-                    style:
-                    TextStyle(height: 1.5, fontSize: 20, color: Colors.black),
+                    quantity.toString(),
+                    style: TextStyle(
+                        height: 1.5, fontSize: 20, color: Colors.black),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -227,9 +260,12 @@ class _NormalFoodState extends State<NormalFood> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                          MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _incrementQuantity();
+                      _priceCalculator();
+                    },
                     child: Text(
                       '+',
                       style: TextStyle(
