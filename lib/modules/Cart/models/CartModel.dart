@@ -50,6 +50,9 @@ class CartModel extends ChangeNotifier{
   void decrementQuantity(CartItem item){
     int index = _items.indexOf(item);
 
+    //calculate the unit price before decrementing
+    int unitPrice = (item.price / item.quantity).round() ;
+
     //decrement quantity
     item.quantity --;
 
@@ -58,12 +61,21 @@ class CartModel extends ChangeNotifier{
       item.quantity = 1;
     }
 
+    //calculate and assign the new price
+    item.price = unitPrice * item.quantity;
+
     _items[index] = item;
+
+    //update done. Notify the listeners
+    notifyListeners();
   }
 
   //incrementing quantity from cart
   void incrementQuantity(CartItem item){
     int index = _items.indexOf(item);
+
+    //calculate the unit price before decrementing
+    int unitPrice = (item.price / item.quantity).round() ;
 
     //decrement quantity
     item.quantity ++;
@@ -73,7 +85,13 @@ class CartModel extends ChangeNotifier{
       item.quantity = 1;
     }
 
+    //calculate and assign the new price
+    item.price = unitPrice * item.quantity;
+
     _items[index] = item;
+
+    //update done. Notify the listeners
+    notifyListeners();
   }
 
 

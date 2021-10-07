@@ -93,12 +93,55 @@ class _CartState extends State<Cart> {
                                       //cart.items[index].extras == 'none'? "": ""
                                       )
                                   : Text(cart.items[index].name),
-                              subtitle: Text("Quantity: " +
-                                  cart.items[index].quantity.toString() +
-                                  "\n" +
-                                  "Rs." +
-                                  cart.items[index].price.toString() +
-                                  "/="),
+                              subtitle: Column(
+                                //mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 8.0),
+                                        child: ElevatedButton(
+                                            onPressed: (){
+                                              cart.decrementQuantity(cart.items[index]);
+                                            },
+                                            child: const Icon(Icons.remove) ,
+                                          style: ButtonStyle(
+                                            foregroundColor:
+                                            MaterialStateProperty.all<Color>(Colors.white),
+                                            backgroundColor: MaterialStateProperty.all<Color>(
+                                                Colors.green),
+                                            minimumSize: MaterialStateProperty.all(Size(10, 10)),
+                                          ),
+                                        ),
+                                      ),
+
+                                      ElevatedButton(
+                                          onPressed: (){
+                                            cart.incrementQuantity(cart.items[index]);
+                                          },
+                                          child: const Icon(Icons.add) ,
+                                        style: ButtonStyle(
+                                          foregroundColor:
+                                          MaterialStateProperty.all<Color>(Colors.white),
+                                          backgroundColor: MaterialStateProperty.all<Color>(
+                                              Colors.green),
+                                          minimumSize: MaterialStateProperty.all(Size(10, 10)),
+                                        ),
+                                      )
+
+                                    ],
+                                  ),
+
+                                  Text("Quantity: " +
+                                      cart.items[index].quantity.toString() +
+                                      "\n" +
+                                      "Rs." +
+                                      cart.items[index].price.toString() +
+                                      "/="),
+                                ],
+                              ),
+
                               trailing: IconButton(
                                   onPressed: () {
                                     showDialog(
@@ -133,7 +176,8 @@ class _CartState extends State<Cart> {
                                           );
                                         });
                                   },
-                                  icon: const Icon(Icons.delete)),
+                                  iconSize: 50,
+                                  icon: const Icon(Icons.delete) ),
                             ),
                           ),
                         ),
