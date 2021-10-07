@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/models/CartItem.dart';
+import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
+import 'package:provider/provider.dart';
 
 class PromoSingle extends StatefulWidget {
   final String name;
@@ -24,7 +28,6 @@ class PromoSingle extends StatefulWidget {
 class _PromoSingleState extends State<PromoSingle> {
   @override
   Widget build(BuildContext context) {
-
     //image for the pizza hut logo
     Widget pizzaHutLogo_image = Container(
       height: 50,
@@ -36,19 +39,21 @@ class _PromoSingleState extends State<PromoSingle> {
         title: pizzaHutLogo_image,
         leading: IconButton(
           icon: Icon(Icons.navigate_before_sharp),
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.delivery_dining),
-            onPressed: (){},
+            onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: (){
-              Navigator.pushNamed(context, Cart.routeName,
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                Cart.routeName,
               );
             },
           ),
@@ -117,6 +122,7 @@ class _PromoSingleState extends State<PromoSingle> {
   int totalPrice = 0;
   int unitPrice = 0;
   int quantity = 1;
+  int currentIndex = 0;
 
   void _incrementQuantity() {
     if (quantity < 5) {
@@ -137,6 +143,42 @@ class _PromoSingleState extends State<PromoSingle> {
   void _priceCalculator() {
     unitPrice = widget.price;
     totalPrice = unitPrice * quantity;
+  }
+
+  void _addToCart() {
+    if (totalPrice != 0) {
+      Provider.of<CartModel>(context, listen: false).add(CartItem(
+          "Another",
+          widget.name,
+          totalPrice,
+          quantity,
+          "none",
+          "none",
+          "none",
+          "none",
+          "none",
+          "none"));
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return CupertinoAlertDialog(
+              title: const Text("Added to cart"),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: const <Widget>[],
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("OK"),
+                ),
+              ],
+            );
+          });
+    }
   }
 
   Widget getDescription() {
@@ -195,8 +237,6 @@ class _PromoSingleState extends State<PromoSingle> {
       ),
     );
   }
-
-  int currentIndex = 0;
 
   Widget getOptions() {
     List<BottomNavigationBarItem> typeSelected = [
@@ -680,8 +720,10 @@ class _PromoSingleState extends State<PromoSingle> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).accentColor),
                     ),
                     onPressed: () {
                       _decrementQuantity();
@@ -717,8 +759,10 @@ class _PromoSingleState extends State<PromoSingle> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFFFECE00)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).accentColor),
                     ),
                     onPressed: () {
                       _incrementQuantity();
@@ -740,7 +784,9 @@ class _PromoSingleState extends State<PromoSingle> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _addToCart();
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
