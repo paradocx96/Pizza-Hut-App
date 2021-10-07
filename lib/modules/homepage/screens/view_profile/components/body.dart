@@ -2,7 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/components/view_addresses_link.dart';
 import 'package:pizzahut/modules/homepage/screens/edit_profile/edit_profile.dart';
+import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/view_addresses.dart';
 
 import 'background.dart';
 
@@ -205,41 +208,92 @@ class _BodyState extends State<Body> {
   }
   Widget getAddressTextField(String labelText, String placeholder, bool isPasswordTextField){
     final IconData icon;
-    return Padding(
+    return Container(
       padding: EdgeInsets.only(bottom: 30),
-      child: TextField(
-        enabled: false,
-        readOnly: true,
-        obscureText: isPasswordTextField ? isObscurePassword : false,
-        decoration: InputDecoration(
-            icon: Icon(
-              icon = Icons.home,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ViewAddressesLink(press: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ViewAddresses();
+                    },
+                  ),
+                );
+              })
+            ],
+          ),
+          Container(
+            child: TextField(
+              obscureText: isPasswordTextField ? isObscurePassword : false,
+              decoration: InputDecoration(
+                  icon: Icon(
+                    icon = Icons.home,
+                  ),
+                  suffixIcon: isPasswordTextField ?
+                  IconButton(
+                      icon: Icon(Icons.remove_red_eye, color: Colors.grey),
+                      onPressed: (){
+                        setState(() {
+                          isObscurePassword = !isObscurePassword;
+                        });
+                      }
+                  ): null,
+                  contentPadding: EdgeInsets.only(bottom: 5),
+                  labelText: labelText,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  hintText: placeholder,
+                  labelStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black
+                  ),
+                  hintStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey
+                  )
+              ),
             ),
-            suffixIcon: isPasswordTextField ?
-            IconButton(
-                icon: Icon(Icons.remove_red_eye, color: Colors.grey),
-                onPressed: (){
-                  setState(() {
-                    isObscurePassword = !isObscurePassword;
-                  });
-                }
-            ): null,
-            contentPadding: EdgeInsets.only(bottom: 5),
-            labelText: labelText,
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placeholder,
-            labelStyle: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.normal,
-                color: Colors.black
-            ),
-            hintStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey
-            )
-        ),
+          ),
+        ],
       ),
+      // padding: EdgeInsets.only(bottom: 30),
+      // child: TextField(
+      //   obscureText: isPasswordTextField ? isObscurePassword : false,
+      //   decoration: InputDecoration(
+      //       icon: Icon(
+      //         icon = Icons.home,
+      //       ),
+      //       suffixIcon: isPasswordTextField ?
+      //       IconButton(
+      //           icon: Icon(Icons.remove_red_eye, color: Colors.grey),
+      //           onPressed: (){
+      //             setState(() {
+      //               isObscurePassword = !isObscurePassword;
+      //             });
+      //           }
+      //       ): null,
+      //       contentPadding: EdgeInsets.only(bottom: 5),
+      //       labelText: labelText,
+      //       floatingLabelBehavior: FloatingLabelBehavior.always,
+      //       hintText: placeholder,
+      //       labelStyle: TextStyle(
+      //           fontSize: 20,
+      //           fontWeight: FontWeight.normal,
+      //           color: Colors.black
+      //       ),
+      //       hintStyle: TextStyle(
+      //           fontSize: 16,
+      //           fontWeight: FontWeight.bold,
+      //           color: Colors.grey
+      //       )
+      //   ),
+      // ),
     );
   }
   Widget getUsernameTextField(String labelText, String placeholder, bool isPasswordTextField){

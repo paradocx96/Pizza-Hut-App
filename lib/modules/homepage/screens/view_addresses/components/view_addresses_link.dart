@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ViewAddresses extends StatelessWidget {
+class ViewAddressesLink extends StatelessWidget {
   final VoidCallback press;
-  const ViewAddresses({
+  const ViewAddressesLink({
     Key? key,
     required this.press,
   }) : super(key: key);

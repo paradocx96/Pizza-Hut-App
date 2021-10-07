@@ -2,8 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:pizzahut/modules/homepage/screens/edit_profile/components/view_addresses.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses//components/view_addresses_link.dart';
 import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/view_addresses.dart';
 import 'package:pizzahut/modules/homepage/screens/view_profile/view_profile.dart';
 
 import 'background.dart';
@@ -237,12 +238,12 @@ class _BodyState extends State<Body> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              ViewAddresses(press: (){
+              ViewAddressesLink(press: (){
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return ViewAddresses();
                     },
                   ),
                 );
