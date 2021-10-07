@@ -81,10 +81,10 @@ class _BeveragesState extends State<Beverages> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Container(
+              /*Container(
                 height: 100,
                 width: MediaQuery.of(context).size.width,
-              ),
+              ),*/
               Container(
                 height: 30,
                 width: MediaQuery.of(context).size.width,
@@ -95,7 +95,7 @@ class _BeveragesState extends State<Beverages> {
                 ),
               ),
               Container(
-                height: MediaQuery.of(context).size.height - 154,
+                height: MediaQuery.of(context).size.height - 210,
                 child: ListView.builder(
                     itemCount: beverages.length,
                     itemBuilder: (context, index) {

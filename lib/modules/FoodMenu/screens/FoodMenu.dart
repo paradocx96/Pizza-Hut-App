@@ -5,6 +5,7 @@ import 'package:pizzahut/modules/FoodMenu/widgets/AppbarWithBack.dart';
 import 'package:pizzahut/modules/FoodMenu/widgets/SlidableMenuItem.dart';
 import 'package:pizzahut/modules/Pizza/screens/PizzaMenu.dart';
 import 'package:pizzahut/modules/categories/screens/appetizers.dart';
+import 'package:pizzahut/modules/categories/screens/beverages.dart';
 import 'package:pizzahut/modules/categories/screens/pastas.dart';
 
 class FoodMenu extends StatefulWidget {
@@ -89,8 +90,8 @@ class _FoodMenuState extends State<FoodMenu> with SingleTickerProviderStateMixin
           PizzaMenu(),
           Pastas(),
           Appetizers(),
-          Text("Hello"),
-          Text("Hello"),
+          Text("desert"),
+          Beverages(),
           Text("Hello"),
         ],
         ),
