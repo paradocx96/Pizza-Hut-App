@@ -3,6 +3,7 @@ import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/FoodMenu/screens/FoodMenu.dart';
 import 'package:pizzahut/modules/Pizza/screens/PizzaSingleView.dart';
+import 'package:pizzahut/modules/Search/screens/SearchPage.dart';
 import 'package:pizzahut/modules/homepage/screens/TempGetStarted.dart';
 import 'package:pizzahut/widgets/BottomNavBar.dart';
 import 'package:pizzahut/widgets/PHAppBar.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         LandingPage.routeName: (context) => const LandingPage(),
         PizzaSingleView.routeName: (context) => const PizzaSingleView(),
         Cart.routeName : (context) => const Cart(),
+        SearchPage.routeName: (context) => const SearchPage(),
       },
     );
   }

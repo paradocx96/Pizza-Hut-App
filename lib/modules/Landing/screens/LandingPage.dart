@@ -3,6 +3,7 @@ import 'package:pizzahut/modules/Landing/routes/LandingPageArguments.dart';
 import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
 import 'package:pizzahut/modules/More/screens/MorePage.dart';
 import 'package:pizzahut/modules/homepage/screens/home.dart';
+import 'package:pizzahut/modules/Search/screens/SearchPage.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -60,7 +61,9 @@ class _LandingPageState extends State<LandingPage> {
         body: screens[currentIndex],
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          onPressed: (){},
+          onPressed: (){
+            Navigator.pushNamed(context, SearchPage.routeName);
+          },
           tooltip: 'Increment',
           child: Icon(Icons.search),
         ),
