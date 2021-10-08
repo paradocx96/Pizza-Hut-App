@@ -32,6 +32,7 @@ void main() {
 
 const accentColor = Color(0xffEE3A43);
 const secondaryColor = Color(0xffF1F1F1);
+const canvasColor = Color(0xFFF4EFEF);
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
         primarySwatch: Colors.blue,
         accentColor: accentColor,
+        canvasColor: canvasColor
       ),
       home: isLoggedIn ? SplashScreen() : HomePage(),
       routes: {

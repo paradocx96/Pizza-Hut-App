@@ -10,7 +10,7 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
-  Color secondaryColor = Color(0xffF1F1F1);
+  //Color secondaryColor = Color(0xffF1F1F1);
   Color pastaColor = Color(0xffFFC1C1);
   Color pizzaColor = Color(0xffFFDEAD);
   Color appetizerColor = Color(0xffFFFDCB);
@@ -20,6 +20,7 @@ class _MainMenuState extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
     Widget pizzaImage = Container(
+      //color: Theme.of(context).canvasColor,
       height: 90,
       width: 90,
       child: Card(
@@ -81,7 +82,7 @@ class _MainMenuState extends State<MainMenu> {
     );
 
     return Container(
-      color: secondaryColor,
+      //color: secondaryColor,
       child: Column(
         children: [
           Row(
