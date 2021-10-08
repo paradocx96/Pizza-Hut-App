@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/homepage/screens/view_addresses/components/view_addresses_link.dart';
 import 'package:pizzahut/modules/homepage/screens/edit_profile/edit_profile.dart';
 import 'package:pizzahut/modules/homepage/screens/login/login_screen.dart';
@@ -18,11 +19,36 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   bool isObscurePassword = true;
+
+  Widget pizzaHutLogo_image = Container(
+    height: 50,
+    child: Image.asset("images/pizza_hut_logo.png"),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        title: pizzaHutLogo_image,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before_sharp),
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delivery_dining),
+            onPressed: (){},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: (){
+              Navigator.pushNamed(context, Cart.routeName,
+              );
+            },
+          ),
+        ],
       ),
       body: getProfile(),
     );

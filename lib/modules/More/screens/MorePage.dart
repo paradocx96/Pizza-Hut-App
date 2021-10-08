@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/contact/screens/contact.dart';
+import 'package:pizzahut/modules/homepage/screens/view_profile/view_profile.dart';
 
 class MorePage extends StatefulWidget {
   const MorePage({Key? key}) : super(key: key);
@@ -47,7 +48,9 @@ class _MorePageState extends State<MorePage> {
                 Padding(
                   padding: const EdgeInsets.all(linkPadding),
                   child: GestureDetector(
-                    onTap: (){},
+                    onTap: (){
+                      Navigator.pushNamed(context, ViewProfile.routeName);
+                    },
                     child: Text("View Profile",style: TextStyle(fontSize: linkFontSize),),
                   ),
                 )
