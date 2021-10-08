@@ -14,9 +14,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(20, 209, 207, 207),
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-      ),
+
       body: getBody(),
     );
   }
@@ -28,7 +26,7 @@ class _BodyState extends State<Body> {
            child: ListView(
              children: [
                Text(
-                 'Trace Order',
+                 'Track Order',
                  textAlign: TextAlign.center,
                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black87),
                ),
