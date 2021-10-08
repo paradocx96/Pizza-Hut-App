@@ -9,4 +9,13 @@ class PizzaModel{
   late String extras;
 
   PizzaModel({required this.name, required this.range, required this.flag, required this.description});
+
+  factory PizzaModel.fromjson(Map<String, dynamic> json){
+    return PizzaModel(
+      name:json['name'],
+      range:json['range'],
+      flag:json['flag'],
+      description:json['description'],
+    );
+  }
 }
