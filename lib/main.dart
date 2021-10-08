@@ -13,29 +13,29 @@ import 'package:pizzahut/modules/Landing/screens/LandingPage.dart';
 import 'package:pizzahut/modules/homepage/screens/Example.dart';
 import 'package:provider/provider.dart';
 import 'package:pizzahut/modules/contact/screens/contact.dart';
+
 //import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
 import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
 import 'package:pizzahut/modules/homepage/screens/trace_order/view_trace_orders.dart';
 import 'modules/homepage/models/authentication.dart';
 
-
 void main() {
-  runApp(
-      MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => CartModel()),
-      ],
-      child: MyApp() )
-  );
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => CartModel()),
+    ChangeNotifierProvider.value(
+      value: Authentication(),
+    ),
+  ], child: MyApp()));
 }
+
 const accentColor = Color(0xffEE3A43);
 const secondaryColor = Color(0xffF1F1F1);
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
 
   @override
   Widget build(BuildContext context) {
-
     bool isLoggedIn = true;
 
     return MaterialApp(
@@ -45,38 +45,21 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         accentColor: accentColor,
       ),
-      home: isLoggedIn ? TempGetStarted() : HomePage(),
+      home: isLoggedIn ? SplashScreen() : HomePage(),
       routes: {
         FoodMenu.routeName: (context) => const FoodMenu(),
         LandingPage.routeName: (context) => const LandingPage(),
         PizzaSingleView.routeName: (context) => const PizzaSingleView(),
-        Cart.routeName : (context) => const Cart(),
+        Cart.routeName: (context) => const Cart(),
         SearchPage.routeName: (context) => const SearchPage(),
-        Contact.routeName : (context) => const Contact()
+        Contact.routeName: (context) => const Contact()
       },
-####################################################
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider.value(
-            value: Authentication(),
-          )
-        ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: ViewTraceOrders(),
-      ),
-####################################################
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
-
 
   final String title;
 
@@ -89,10 +72,16 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 0;
 
   final screens = [
-    Center(child: Text("Home"),),
+    Center(
+      child: Text("Home"),
+    ),
     MainMenu(),
-    Center(child: Text("Track Order"),),
-    Center(child: Text("Profile"),),
+    Center(
+      child: Text("Track Order"),
+    ),
+    Center(
+      child: Text("Profile"),
+    ),
   ];
 
   void _incrementCounter() {
@@ -108,10 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-
-    );
+    return Scaffold();
 
     /*Widget pizzaHutLogo_image = Container(
       height: 50,

@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Landing/screens/LandingPage.dart';
 import 'package:pizzahut/modules/homepage/models/authentication.dart';
 //import 'package:pizzahut/modules/homepage/screens/login/components/forgot_password_check.dart';
 import 'package:pizzahut/modules/homepage/screens/login/components/rounded_button_red.dart';
@@ -75,7 +76,7 @@ class _BodyState extends State<Body> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return ViewProfile();
+            return LandingPage();
           },
         ),
       );
