@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pizzahut/modules/Pizza/models/PizzaModel.dart';
 
-const BASE_URL = "http://192.168.1.6:8080/api/pizza/";
+const BASE_URL = "https://pizza-hut-backend.herokuapp.com/api/pizza/";
 
 Future <List<PizzaModel>> fetchAllPizzas() async {
   final response =  await http.get(Uri.parse(BASE_URL + "getAllPizzas"));
