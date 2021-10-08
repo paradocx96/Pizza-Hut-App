@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/constants/Constants.dart';
 import 'package:pizzahut/modules/Cart/models/CartItem.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/promos/widgets/custom_select.dart';
-import 'package:pizzahut/utils/helpers/Constants.dart';
 import 'package:provider/provider.dart';
 
 class PromoSingle extends StatefulWidget {
