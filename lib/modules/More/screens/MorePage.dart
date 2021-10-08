@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/contact/screens/contact.dart';
 
 class MorePage extends StatefulWidget {
   const MorePage({Key? key}) : super(key: key);
@@ -70,7 +71,9 @@ class _MorePageState extends State<MorePage> {
                 Padding(
                   padding: const EdgeInsets.all(linkPadding),
                   child: GestureDetector(
-                    onTap: (){},
+                    onTap: (){
+                      Navigator.pushNamed(context, Contact.routeName);
+                    },
                     child: Text("Contact Us",style: TextStyle(fontSize: linkFontSize),),
                   ),
                 )

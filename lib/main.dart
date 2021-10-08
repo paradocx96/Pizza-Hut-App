@@ -12,6 +12,7 @@ import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
 import 'package:pizzahut/modules/Landing/screens/LandingPage.dart';
 import 'package:pizzahut/modules/homepage/screens/Example.dart';
 import 'package:provider/provider.dart';
+import 'package:pizzahut/modules/contact/screens/contact.dart';
 
 void main() {
   runApp(
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         PizzaSingleView.routeName: (context) => const PizzaSingleView(),
         Cart.routeName : (context) => const Cart(),
         SearchPage.routeName: (context) => const SearchPage(),
+        Contact.routeName : (context) => const Contact()
       },
     );
   }
