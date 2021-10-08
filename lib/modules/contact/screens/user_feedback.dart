@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/contact/widgets/message_type_dropdown.dart';
 
 class UserFeedback extends StatefulWidget {
@@ -9,11 +10,37 @@ class UserFeedback extends StatefulWidget {
 }
 
 class _UserFeedbackState extends State<UserFeedback> {
+
+  //image asset for logog
+  Widget pizzaHutLogo_image = Container(
+    height: 50,
+    child: Image.asset("images/pizza_hut_logo.png"),
+  );
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        title: pizzaHutLogo_image,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before_sharp),
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delivery_dining),
+            onPressed: (){},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: (){
+              Navigator.pushNamed(context, Cart.routeName);
+            },
+          ),
+        ],
       ),
       body: getBody(context),
     );

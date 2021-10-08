@@ -1,19 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/contact/screens/user_feedback.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
+
+  static const routeName = "/contact/contact-us";
 
   @override
   _ContactState createState() => _ContactState();
 }
 
 class _ContactState extends State<Contact> {
+
+  //image asset for logog
+  Widget pizzaHutLogo_image = Container(
+    height: 50,
+    child: Image.asset("images/pizza_hut_logo.png"),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        title: pizzaHutLogo_image,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before_sharp),
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delivery_dining),
+            onPressed: (){},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: (){
+              Navigator.pushNamed(context, Cart.routeName);
+            },
+          ),
+        ],
       ),
       body: getBody(context),
     );
