@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
 import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/trace_order/view_trace_orders.dart';
 import 'package:provider/provider.dart';
 
 import 'modules/homepage/models/authentication.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: SplashScreen(),
+        home: ViewTraceOrders(),
       ),
     );
   }
