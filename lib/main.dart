@@ -13,6 +13,11 @@ import 'package:pizzahut/modules/Landing/screens/LandingPage.dart';
 import 'package:pizzahut/modules/homepage/screens/Example.dart';
 import 'package:provider/provider.dart';
 import 'package:pizzahut/modules/contact/screens/contact.dart';
+//import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/trace_order/view_trace_orders.dart';
+import 'modules/homepage/models/authentication.dart';
+
 
 void main() {
   runApp(
@@ -49,6 +54,22 @@ class MyApp extends StatelessWidget {
         SearchPage.routeName: (context) => const SearchPage(),
         Contact.routeName : (context) => const Contact()
       },
+####################################################
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(
+            value: Authentication(),
+          )
+        ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: ViewTraceOrders(),
+      ),
+####################################################
     );
   }
 }
