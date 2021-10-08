@@ -52,7 +52,7 @@ class _CartState extends State<Cart> {
         ],
       ),
       body: Container(
-        color: secondaryColor,
+        //color: secondaryColor,
         child: Column(
           children: [
             //Text("Cart"),

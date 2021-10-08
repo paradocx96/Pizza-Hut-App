@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -10,12 +11,37 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+
+  Widget pizzaHutLogo_image = Container(
+    height: 50,
+    child: Image.asset("images/pizza_hut_logo.png"),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(20, 209, 207, 207),
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        title: pizzaHutLogo_image,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before_sharp),
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delivery_dining),
+            onPressed: (){},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: (){
+              Navigator.pushNamed(context, Cart.routeName,
+              );
+            },
+          ),
+        ],
       ),
       body: getBody(),
     );

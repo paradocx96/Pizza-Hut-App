@@ -5,6 +5,7 @@ import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
 import 'package:pizzahut/modules/More/screens/MorePage.dart';
 import 'package:pizzahut/modules/homepage/screens/home.dart';
 import 'package:pizzahut/modules/Search/screens/SearchPage.dart';
+import 'package:pizzahut/modules/homepage/screens/trace_order/view_trace_orders.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _LandingPageState extends State<LandingPage> {
   final screens = [
     Home(),
     MainMenu(),
-    Center(child: Text("Order tracking coming soon"),),
+    ViewTraceOrders(),
     MorePage(),
   ];
 
