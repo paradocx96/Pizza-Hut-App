@@ -59,37 +59,39 @@ class _PastasState extends State<Pastas> {
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height - 210,
-                child: ListView.builder(
-                    itemCount: pastas.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 1.0, horizontal: 5.0),
-                        child: Card(
-                          child: ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => NormalFood(
-                                          name: pastas[index].name,
-                                          price: pastas[index].price,
-                                          description:
-                                              pastas[index].description,
-                                          flag: pastas[index].flag)));
-                            },
-                            title: Text(pastas[index].name),
-                            subtitle: Text(
-                                'Rs.' + pastas[index].price.toString() + '.00'),
-                            leading: Image(
-                              image: AssetImage(pastas[index].flag),
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height - 210,
+                  child: ListView.builder(
+                      itemCount: pastas.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 1.0, horizontal: 5.0),
+                          child: Card(
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => NormalFood(
+                                            name: pastas[index].name,
+                                            price: pastas[index].price,
+                                            description:
+                                                pastas[index].description,
+                                            flag: pastas[index].flag)));
+                              },
+                              title: Text(pastas[index].name),
+                              subtitle: Text(
+                                  'Rs.' + pastas[index].price.toString() + '.00'),
+                              leading: Image(
+                                image: AssetImage(pastas[index].flag),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      }),
+                ),
               ),
             ],
           ),

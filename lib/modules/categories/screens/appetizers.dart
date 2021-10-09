@@ -124,38 +124,40 @@ class _AppetizersState extends State<Appetizers> {
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height - 210,
-                child: ListView.builder(
-                    itemCount: appetizers.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 1.0, horizontal: 5.0),
-                        child: Card(
-                          child: ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => AppetizerFood(
-                                          name: appetizers[index].name,
-                                          size: appetizers[index].size,
-                                          price: appetizers[index].price,
-                                          description: appetizers[index].description,
-                                          type: appetizers[index].type,
-                                          flag: appetizers[index].flag)));
-                            },
-                            title: Text(appetizers[index].name),
-                            subtitle: Text(appetizers[index].startPrice),
-                            leading: Image(
-                              image: AssetImage(
-                                  'assets/images/appetizers/${appetizers[index].flag}'),
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height - 210,
+                  child: ListView.builder(
+                      itemCount: appetizers.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 1.0, horizontal: 5.0),
+                          child: Card(
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => AppetizerFood(
+                                            name: appetizers[index].name,
+                                            size: appetizers[index].size,
+                                            price: appetizers[index].price,
+                                            description: appetizers[index].description,
+                                            type: appetizers[index].type,
+                                            flag: appetizers[index].flag)));
+                              },
+                              title: Text(appetizers[index].name),
+                              subtitle: Text(appetizers[index].startPrice),
+                              leading: Image(
+                                image: AssetImage(
+                                    'assets/images/appetizers/${appetizers[index].flag}'),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      }),
+                ),
               ),
             ],
           ),

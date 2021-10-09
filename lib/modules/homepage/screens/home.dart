@@ -76,38 +76,41 @@ class _HomeState extends State<Home> {
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height - 408,
-                child: ListView.builder(
-                    itemCount: promos.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 1.0, horizontal: 5.0),
-                        child: Card(
-                          child: ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => PromoSingle(
-                                            name: promos[index].name,
-                                            price: promos[index].price,
-                                            description: promos[index].description,
-                                            flag: promos[index].flag,
-                                            type: promos[index].type,
-                                          )));
-                            },
-                            title: Text(
-                                '${promos[index].name}\nRs.${promos[index].price}.00'),
-                            subtitle: Text(promos[index].description),
-                            leading: Image(
-                              image: AssetImage(promos[index].flag),
+              //expanded widget added to fix Galaxy A50S bottom overflow problem
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height - 408,
+                  child: ListView.builder(
+                      itemCount: promos.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 1.0, horizontal: 5.0),
+                          child: Card(
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => PromoSingle(
+                                              name: promos[index].name,
+                                              price: promos[index].price,
+                                              description: promos[index].description,
+                                              flag: promos[index].flag,
+                                              type: promos[index].type,
+                                            )));
+                              },
+                              title: Text(
+                                  '${promos[index].name}\nRs.${promos[index].price}.00'),
+                              subtitle: Text(promos[index].description),
+                              leading: Image(
+                                image: AssetImage(promos[index].flag),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      }),
+                ),
               ),
             ],
           ),

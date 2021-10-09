@@ -45,6 +45,7 @@ class _PizzaMenu2State extends State<PizzaMenu2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SafeArea(
           child: Container(
             child: Column(
@@ -65,37 +66,41 @@ class _PizzaMenu2State extends State<PizzaMenu2> {
                     if(snapshot.hasData){
                       print("Assigning list");
                       List<PizzaModel>? pizzas  =snapshot.data;
-                      return Container(
-                        height: MediaQuery.of(context).size.height -225,
-                        child: ListView.builder(
-                            itemCount: pizzas!.length,
-                            //itemExtent: 100,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                /*padding: const EdgeInsets.symmetric(
-                        vertical: 1.0, horizontal: 5.0),*/
-                                padding: EdgeInsets.all(5),
-                                child: Card(
-                                  shape: RoundedRectangleBorder( borderRadius: BorderRadius.all(Radius.circular(10))),
-                                  elevation: 3,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: ListTile(
-                                      minLeadingWidth: 100,
-                                      onTap: () {
-                                        Navigator.pushNamed(context, PizzaSingleView.routeName,
-                                            arguments: PizzaSingleViewArguments(pizzas[index]) //navigate to pizza
-                                        );
-                                      },
-                                      title: Text(pizzas[index].name),
-                                      leading: Image(
-                                          image:
-                                          AssetImage('images/pizza/${pizzas[index].flag}')),
+
+                      //expanded widget added to fix Galaxy A50S bottom overflow problem
+                      return Expanded(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height -225,
+                          child: ListView.builder(
+                              itemCount: pizzas!.length,
+                              //itemExtent: 100,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  /*padding: const EdgeInsets.symmetric(
+                          vertical: 1.0, horizontal: 5.0),*/
+                                  padding: EdgeInsets.all(5),
+                                  child: Card(
+                                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.all(Radius.circular(10))),
+                                    elevation: 3,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: ListTile(
+                                        minLeadingWidth: 100,
+                                        onTap: () {
+                                          Navigator.pushNamed(context, PizzaSingleView.routeName,
+                                              arguments: PizzaSingleViewArguments(pizzas[index]) //navigate to pizza
+                                          );
+                                        },
+                                        title: Text(pizzas[index].name),
+                                        leading: Image(
+                                            image:
+                                            AssetImage('images/pizza/${pizzas[index].flag}')),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            }),
+                                );
+                              }),
+                        ),
                       );
                     }
                     else if(snapshot.hasError){
