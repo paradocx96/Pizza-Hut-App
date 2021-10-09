@@ -50,6 +50,7 @@ class _UserFeedbackState extends State<UserFeedback> {
   Widget getBody() {
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+
     final List<String> types = [
       'Message Type',
       'Contact',
@@ -58,47 +59,8 @@ class _UserFeedbackState extends State<UserFeedback> {
       'Complaint'
     ];
 
-    Widget showAlert(String result) {
-      return CupertinoAlertDialog(
-        title: Text(result),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: const <Widget>[],
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text("OK"),
-          ),
-        ],
-      );
-    }
-
     final _messageTypeController = TextEditingController();
     final _messageBodyController = TextEditingController();
-
-    // void sendFeedbackToApi() async {
-    //   print("Send Button Press");
-    //   print("selected async : " + _messageTypeController.text);
-    //   print("Controller Message : " + _messageBodyController.text);
-    //
-    //   final value = FeedbackModel(
-    //       user: 'Anonymous',
-    //       message_type: _messageTypeController.text,
-    //       description: _messageBodyController.text);
-    //
-    //   if (_messageTypeController != null) {
-    //     if (_messageBodyController != null) {
-    //       final result = await FeedbackService.sendFeedback(value);
-    //       showAlert(result);
-    //     }
-    //   } else {
-    //     showAlert("ERROR");
-    //   }
-    // }
 
     return SafeArea(
       child: Container(
@@ -107,10 +69,11 @@ class _UserFeedbackState extends State<UserFeedback> {
           children: [
             Container(
               height: 30,
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               width: MediaQuery.of(context).size.width,
               color: Colors.white,
               child: Text(
-                'FEEDBACK ------------------------------------------------------',
+                'FEEDBACK',
                 style: TextStyle(height: 1.5, fontSize: 20),
               ),
             ),

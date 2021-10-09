@@ -58,16 +58,13 @@ Widget getBody(context) {
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
-          // Container(
-          //   height: 60,
-          //   width: MediaQuery.of(context).size.width,
-          // ),
           Container(
             height: 30,
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
             width: MediaQuery.of(context).size.width,
             color: Colors.white,
             child: Text(
-              'CONTACT US ---------------------------------------------------',
+              'CONTACT US',
               style: TextStyle(height: 1.5, fontSize: 20),
             ),
           ),
