@@ -118,9 +118,10 @@ class _AppetizersState extends State<Appetizers> {
               ),*/
               Container(
                 height: 30,
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 width: MediaQuery.of(context).size.width,
                 color: Colors.white,
-                child: Text('APPETIZERS ---------------------------------------------------',
+                child: Text('APPETIZERS',
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),

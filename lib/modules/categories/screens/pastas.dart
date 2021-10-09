@@ -52,10 +52,11 @@ class _PastasState extends State<Pastas> {
               ),*/
               Container(
                 height: 30,
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 width: MediaQuery.of(context).size.width,
                 color: Colors.white,
                 child: Text(
-                  'PASTAS -----------------------------------------------------------',
+                  'PASTAS',
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),
