@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/FoodMenu/routes/FoodMenuArguments.dart';
@@ -9,6 +10,7 @@ import 'package:pizzahut/modules/categories/screens/appetizers.dart';
 import 'package:pizzahut/modules/categories/screens/beverages.dart';
 import 'package:pizzahut/modules/categories/screens/desserts.dart';
 import 'package:pizzahut/modules/categories/screens/pastas.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/view_addresses.dart';
 import 'package:pizzahut/modules/promos/screens/promos.dart';
 
 class FoodMenu extends StatefulWidget {
@@ -59,7 +61,42 @@ class _FoodMenuState extends State<FoodMenu> with SingleTickerProviderStateMixin
           actions: [
             IconButton(
               icon: Icon(Icons.delivery_dining),
-              onPressed: (){},
+              onPressed: (){
+
+
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context){
+                      return CupertinoAlertDialog(
+                        title: const Text("Need to change deliver address?"),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: const <Widget>[
+                              Text("Your order will be delivered "),
+                              Text("211/G Niwandama south ja-ela?",style: TextStyle( decoration: TextDecoration.underline, color: Colors.redAccent),),
+                            ],
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text("Keep")),
+                          TextButton(
+                              onPressed: () {
+                                //Navigator.of(context).pop();
+                                //Navigator.pushNamed(context, ViewAddresses.routeName);
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => ViewAddresses()));
+                              },
+                              child: const Text("Change"))
+                        ],
+                      );
+                    });
+
+
+              },
             ),
             IconButton(
               icon: Icon(Icons.shopping_cart),

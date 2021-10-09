@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/Landing/routes/LandingPageArguments.dart';
@@ -6,6 +7,7 @@ import 'package:pizzahut/modules/More/screens/MorePage.dart';
 import 'package:pizzahut/modules/homepage/screens/home.dart';
 import 'package:pizzahut/modules/Search/screens/SearchPage.dart';
 import 'package:pizzahut/modules/homepage/screens/trace_order/view_trace_orders.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/view_addresses.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -19,7 +21,6 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-
   int currentIndex = 0;
 
   final screens = [
@@ -29,10 +30,8 @@ class _LandingPageState extends State<LandingPage> {
     MorePage(),
   ];
 
-
   @override
   Widget build(BuildContext context) {
-
     //final args = ModalRoute.of(context)!.settings.arguments as LandingPageArguments;
     //int currentIndex = args.navbarIndex;
     //setState(() => {currentIndex = args.navbarIndex} );
@@ -47,16 +46,56 @@ class _LandingPageState extends State<LandingPage> {
           title: pizzaHutLogo_image,
           leading: IconButton(
             icon: Icon(Icons.navigate_before_sharp),
-            onPressed: (){},
+            onPressed: () {},
           ),
           actions: [
             IconButton(
               icon: Icon(Icons.delivery_dining),
-              onPressed: (){},
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      return CupertinoAlertDialog(
+                        title: const Text("Need to change deliver address?"),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: const <Widget>[
+                              Text("Your order will be delivered "),
+                              Text(
+                                "211/G Niwandama south ja-ela?",
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.redAccent),
+                              ),
+                            ],
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text("Keep")),
+                          TextButton(
+                              onPressed: () {
+                                //Navigator.of(context).pop();
+                                //Navigator.pushNamed(context, ViewAddresses.routeName);
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            ViewAddresses()));
+                              },
+                              child: const Text("Change"))
+                        ],
+                      );
+                    });
+              },
             ),
             IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: (){
+              onPressed: () {
                 Navigator.pushNamed(context, Cart.routeName);
               },
             ),
@@ -65,7 +104,7 @@ class _LandingPageState extends State<LandingPage> {
         body: screens[currentIndex],
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pushNamed(context, SearchPage.routeName);
           },
           tooltip: 'Increment',
@@ -80,8 +119,7 @@ class _LandingPageState extends State<LandingPage> {
             selectedFontSize: 15,
             currentIndex: currentIndex,
             //currentIndex: args.navbarIndex,
-            onTap: (index) => setState(() => currentIndex = index) ,
-
+            onTap: (index) => setState(() => currentIndex = index),
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_filled),
@@ -103,7 +141,6 @@ class _LandingPageState extends State<LandingPage> {
                 label: 'More',
                 backgroundColor: Theme.of(context).primaryColor,
               )
-            ])
-    );
+            ]));
   }
 }
