@@ -43,6 +43,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_launcher_icons: "^0.8.1"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -100,6 +107,7 @@ flutter:
     - assets/images/promos/Image8.jpg
     - assets/images/atc/atc_background.png
     - images/pizza_hut_logo.png
+    - images/pizza_hut_logo2.png
     - images/pizza_main.jpg
     - images/pasta_main.jpg
     - images/cheesy_garlic_bread_main.jpg

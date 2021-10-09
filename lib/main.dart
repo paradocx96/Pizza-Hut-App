@@ -42,7 +42,8 @@ class MyApp extends StatelessWidget {
     bool isLoggedIn = true;
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Pizza Hut RHN',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.white,
         primarySwatch: Colors.blue,
