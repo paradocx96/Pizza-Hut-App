@@ -47,6 +47,20 @@ class _UserFeedbackState extends State<UserFeedback> {
     );
   }
 
+  // Widget showSnackBar() {
+  //   return Center(
+  //     child: ElevatedButton(
+  //       onPressed: () {
+  //         final snackBar = SnackBar(
+  //           content: const Text('Should filled Subject & Message!'),
+  //         );
+  //         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //       },
+  //       child: const Text('Show SnackBar'),
+  //     ),
+  //   );
+  // }
+
   Widget getBody() {
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
@@ -61,6 +75,9 @@ class _UserFeedbackState extends State<UserFeedback> {
 
     final _messageTypeController = TextEditingController();
     final _messageBodyController = TextEditingController();
+    final snackBar = SnackBar(
+      content: const Text('Should filled Subject & Message!'),
+    );
 
     return SafeArea(
       child: Container(
@@ -150,6 +167,8 @@ class _UserFeedbackState extends State<UserFeedback> {
                             ],
                           );
                         });
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                 },
                 child: Row(
