@@ -4,7 +4,7 @@ import 'package:pizzahut/modules/homepage/screens/view_addresses/components/body
 
 class ViewAddresses extends StatelessWidget {
   const ViewAddresses({Key? key}) : super(key: key);
-
+  static const routeName = "/address/viewAddress";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

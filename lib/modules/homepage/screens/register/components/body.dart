@@ -35,21 +35,44 @@ class _BodyState extends State<Body> {
 
   void _showErrorDialog(String msg)
   {
+    // showDialog(
+    //     context: context,
+    //     builder: (ctx) => AlertDialog(
+    //       title: Text('Email already exist!'),
+    //       content: Text(msg),
+    //       actions: <Widget>[
+    //         FlatButton(
+    //           child: Text('Okay'),
+    //           onPressed: (){
+    //             Navigator.of(ctx).pop();
+    //           },
+    //         )
+    //       ],
+    //     )
+    // );
+
     showDialog(
         context: context,
-        builder: (ctx) => AlertDialog(
-          title: Text('Email already exist!'),
-          content: Text(msg),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('Okay'),
-              onPressed: (){
-                Navigator.of(ctx).pop();
-              },
-            )
-          ],
-        )
-    );
+        barrierDismissible: false,
+        builder: (BuildContext context){
+          return CupertinoAlertDialog(
+            title: const Text("Email already exist!"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text(msg),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("Try again")),
+            ],
+          );
+        });
   }
 
   Future<void> _submit() async

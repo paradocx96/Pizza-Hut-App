@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 
 class RoundedButtonWhite extends StatelessWidget {
   final String text;
@@ -20,6 +22,7 @@ class RoundedButtonWhite extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       width: size.width * 0.8,
+      height: size.height * 0.085,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
           border: Border.all(
@@ -47,17 +50,23 @@ class RoundedButtonWhite extends StatelessWidget {
   //Here we have to apply customizations to Button by inheriting the styleFrom
 
   Widget newElevatedButton() {
-    return ElevatedButton(
-      child: Text(
-        text,
-        style: TextStyle(color: textColor),
-      ),
-      onPressed: press,
-      style: ElevatedButton.styleFrom(
-          primary: color,
-          padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-          textStyle: TextStyle(
-              color: textColor, fontSize: 16, fontWeight: FontWeight.w700)),
+    // return ElevatedButton(
+    //   child: Text(
+    //     text,
+    //     style: TextStyle(color: textColor),
+    //   ),
+    //   onPressed: press,
+    //   style: ElevatedButton.styleFrom(
+    //       primary: color,
+    //       padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+    //       textStyle: TextStyle(
+    //           color: textColor, fontSize: 16, fontWeight: FontWeight.w700)),
+    // );
+
+    return SignInButton(
+      Buttons.Google,
+      text: "Sign up with Google",
+      onPressed: () {},
     );
   }
 }

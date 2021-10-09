@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 
+import '../view_addresses.dart';
+
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
@@ -32,7 +34,38 @@ class _BodyState extends State<Body> {
         actions: [
           IconButton(
             icon: Icon(Icons.delivery_dining),
-            onPressed: (){},
+            onPressed: (){
+              showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (BuildContext context){
+                    return CupertinoAlertDialog(
+                      title: const Text("Need to change deliver address?"),
+                      content: SingleChildScrollView(
+                        child: ListBody(
+                          children: const <Widget>[
+                            Text("Your order will be delivered "),
+                            Text("211/G Niwandama south ja-ela?",style: TextStyle( decoration: TextDecoration.underline, color: Colors.redAccent),),
+                          ],
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text("Keep")),
+                        TextButton(
+                            onPressed: () {
+                              //Navigator.of(context).pop();
+                              //Navigator.pushNamed(context, ViewAddresses.routeName);
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => ViewAddresses()));
+                            },
+                            child: const Text("Change"))
+                      ],
+                    );
+                  });
+            },
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
