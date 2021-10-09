@@ -65,47 +65,63 @@ class _CartState extends State<Cart> {
                   ),
                 );
               } else {
-                return ListView.builder(
-                    itemCount: cart.items.length,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.all(5),
-                        child: Card(
-                          color: cardColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          elevation: 3,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 12.0),
-                            child: ListTile(
-                              title: cart.items[index].itemType == 'Pizza'
-                                  ? Text(cart.items[index].name +
-                                          ", " +
-                                          cart.items[index].topping +
-                                          " topping, " +
-                                          cart.items[index].pizzaSize +
-                                          ", " +
-                                          cart.items[index].crust +
-                                          " "
-                                      //cart.items[index].extras == 'none'? "": ""
-                                      )
-                                  : Text(cart.items[index].name),
-                              subtitle: Column(
-                                //mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 8.0),
-                                        child: ElevatedButton(
+                return Expanded(
+                  child: ListView.builder(
+                      itemCount: cart.items.length,
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Card(
+                            color: cardColor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            elevation: 3,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 12.0),
+                              child: ListTile(
+                                title: cart.items[index].itemType == 'Pizza'
+                                    ? Text(cart.items[index].name +
+                                            ", " +
+                                            cart.items[index].topping +
+                                            " topping, " +
+                                            cart.items[index].pizzaSize +
+                                            ", " +
+                                            cart.items[index].crust +
+                                            " "
+                                        //cart.items[index].extras == 'none'? "": ""
+                                        )
+                                    : Text(cart.items[index].name),
+                                subtitle: Column(
+                                  //mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 8.0),
+                                          child: ElevatedButton(
+                                              onPressed: (){
+                                                cart.decrementQuantity(cart.items[index]);
+                                              },
+                                              child: const Icon(Icons.remove) ,
+                                            style: ButtonStyle(
+                                              foregroundColor:
+                                              MaterialStateProperty.all<Color>(Colors.white),
+                                              backgroundColor: MaterialStateProperty.all<Color>(
+                                                  Colors.green),
+                                              minimumSize: MaterialStateProperty.all(Size(10, 10)),
+                                            ),
+                                          ),
+                                        ),
+
+                                        ElevatedButton(
                                             onPressed: (){
-                                              cart.decrementQuantity(cart.items[index]);
+                                              cart.incrementQuantity(cart.items[index]);
                                             },
-                                            child: const Icon(Icons.remove) ,
+                                            child: const Icon(Icons.add) ,
                                           style: ButtonStyle(
                                             foregroundColor:
                                             MaterialStateProperty.all<Color>(Colors.white),
@@ -113,76 +129,62 @@ class _CartState extends State<Cart> {
                                                 Colors.green),
                                             minimumSize: MaterialStateProperty.all(Size(10, 10)),
                                           ),
-                                        ),
-                                      ),
+                                        )
 
-                                      ElevatedButton(
-                                          onPressed: (){
-                                            cart.incrementQuantity(cart.items[index]);
-                                          },
-                                          child: const Icon(Icons.add) ,
-                                        style: ButtonStyle(
-                                          foregroundColor:
-                                          MaterialStateProperty.all<Color>(Colors.white),
-                                          backgroundColor: MaterialStateProperty.all<Color>(
-                                              Colors.green),
-                                          minimumSize: MaterialStateProperty.all(Size(10, 10)),
-                                        ),
-                                      )
+                                      ],
+                                    ),
 
-                                    ],
-                                  ),
+                                    Text("Quantity: " +
+                                        cart.items[index].quantity.toString() +
+                                        "\n" +
+                                        "Rs." +
+                                        cart.items[index].price.toString() +
+                                        "/=" ,style: TextStyle(fontSize: 18),),
+                                  ],
+                                ),
 
-                                  Text("Quantity: " +
-                                      cart.items[index].quantity.toString() +
-                                      "\n" +
-                                      "Rs." +
-                                      cart.items[index].price.toString() +
-                                      "/=" ,style: TextStyle(fontSize: 18),),
-                                ],
-                              ),
-
-                              trailing: IconButton(
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        barrierDismissible: false,
-                                        builder: (BuildContext context) {
-                                          return CupertinoAlertDialog(
-                                            title: const Text("Remove item"),
-                                            content: SingleChildScrollView(
-                                              child: ListBody(
-                                                children: const <Widget>[
-                                                  Text(
-                                                      "Do you want to remove this item from the cart?")
-                                                ],
+                                trailing: IconButton(
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          barrierDismissible: false,
+                                          builder: (BuildContext context) {
+                                            return CupertinoAlertDialog(
+                                              title: const Text("Remove item"),
+                                              content: SingleChildScrollView(
+                                                child: ListBody(
+                                                  children: const <Widget>[
+                                                    Text(
+                                                        "Do you want to remove this item from the cart?")
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            actions: [
-                                              TextButton(
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                  child: const Text("No")),
-                                              TextButton(
-                                                  onPressed: () {
-                                                    //remove the selected item
-                                                    cart.removeItem(
-                                                        cart.items[index]);
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                  child: const Text("Yes"))
-                                            ],
-                                          );
-                                        });
-                                  },
-                                  iconSize: 50,
-                                  icon: const Icon(Icons.delete) ),
+                                              actions: [
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                    child: const Text("No")),
+                                                TextButton(
+                                                    onPressed: () {
+                                                      //remove the selected item
+                                                      cart.removeItem(
+                                                          cart.items[index]);
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                    child: const Text("Yes"))
+                                              ],
+                                            );
+                                          });
+                                    },
+                                    iconSize: 50,
+                                    icon: const Icon(Icons.delete) ),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    });
+                        );
+                      }),
+                );
               }
             }),
             Consumer<CartModel>(builder: (context, cart, child) {
