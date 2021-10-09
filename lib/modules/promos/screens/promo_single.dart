@@ -4,6 +4,7 @@ import 'package:pizzahut/constants/Constants.dart';
 import 'package:pizzahut/modules/Cart/models/CartItem.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/view_addresses.dart';
 import 'package:pizzahut/modules/promos/widgets/custom_select.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +49,47 @@ class _PromoSingleState extends State<PromoSingle> {
         actions: [
           IconButton(
             icon: Icon(Icons.delivery_dining),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (BuildContext context) {
+                    return CupertinoAlertDialog(
+                      title: const Text("Need to change deliver address?"),
+                      content: SingleChildScrollView(
+                        child: ListBody(
+                          children: const <Widget>[
+                            Text("Your order will be delivered "),
+                            Text(
+                              "211/G Niwandama south ja-ela?",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.redAccent),
+                            ),
+                          ],
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text("Keep")),
+                        TextButton(
+                            onPressed: () {
+                              //Navigator.of(context).pop();
+                              //Navigator.pushNamed(context, ViewAddresses.routeName);
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          ViewAddresses()));
+                            },
+                            child: const Text("Change"))
+                      ],
+                    );
+                  });
+            },
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -567,15 +608,22 @@ class _PromoSingleState extends State<PromoSingle> {
                     : currentIndex == 3
                         ? CustomSelect(list: Constants.promoAppetizerListOne)
                         : currentIndex == 4
-                            ? CustomSelect(list: Constants.promoAppetizerListOne)
+                            ? CustomSelect(
+                                list: Constants.promoAppetizerListOne)
                             : currentIndex == 5
-                                ? CustomSelect(list: Constants.promoDessertListSix)
+                                ? CustomSelect(
+                                    list: Constants.promoDessertListSix)
                                 : currentIndex == 6
-                                    ? CustomSelect(list: Constants.promoDessertListSix)
+                                    ? CustomSelect(
+                                        list: Constants.promoDessertListSix)
                                     : currentIndex == 7
-                                        ? CustomSelect(list: Constants.promoBeverageListThree)
+                                        ? CustomSelect(
+                                            list: Constants
+                                                .promoBeverageListThree)
                                         : currentIndex == 8
-                                            ? CustomSelect(list: Constants.promoBeverageListThree)
+                                            ? CustomSelect(
+                                                list: Constants
+                                                    .promoBeverageListThree)
                                             : Text('ERROR'),
       );
     } else if (widget.type == '8') {
@@ -589,15 +637,22 @@ class _PromoSingleState extends State<PromoSingle> {
                     : currentIndex == 3
                         ? CustomSelect(list: Constants.promoAppetizerListFour)
                         : currentIndex == 4
-                            ? CustomSelect(list: Constants.promoAppetizerListFour)
+                            ? CustomSelect(
+                                list: Constants.promoAppetizerListFour)
                             : currentIndex == 5
-                                ? CustomSelect(list: Constants.promoDessertListSix)
+                                ? CustomSelect(
+                                    list: Constants.promoDessertListSix)
                                 : currentIndex == 6
-                                    ? CustomSelect(list: Constants.promoDessertListSix)
+                                    ? CustomSelect(
+                                        list: Constants.promoDessertListSix)
                                     : currentIndex == 7
-                                        ? CustomSelect(list: Constants.promoBeverageListThree)
+                                        ? CustomSelect(
+                                            list: Constants
+                                                .promoBeverageListThree)
                                         : currentIndex == 8
-                                            ? CustomSelect(list: Constants.promoBeverageListThree)
+                                            ? CustomSelect(
+                                                list: Constants
+                                                    .promoBeverageListThree)
                                             : Text('ERROR'),
       );
     } else {

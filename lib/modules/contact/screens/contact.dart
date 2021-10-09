@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 import 'package:pizzahut/modules/contact/screens/user_feedback.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/view_addresses.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
@@ -12,7 +14,6 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
-
   //image asset for logog
   Widget pizzaHutLogo_image = Container(
     height: 50,
@@ -26,18 +27,58 @@ class _ContactState extends State<Contact> {
         title: pizzaHutLogo_image,
         leading: IconButton(
           icon: Icon(Icons.navigate_before_sharp),
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.delivery_dining),
-            onPressed: (){},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (BuildContext context) {
+                    return CupertinoAlertDialog(
+                      title: const Text("Need to change deliver address?"),
+                      content: SingleChildScrollView(
+                        child: ListBody(
+                          children: const <Widget>[
+                            Text("Your order will be delivered "),
+                            Text(
+                              "211/G Niwandama south ja-ela?",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.redAccent),
+                            ),
+                          ],
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text("Keep")),
+                        TextButton(
+                            onPressed: () {
+                              //Navigator.of(context).pop();
+                              //Navigator.pushNamed(context, ViewAddresses.routeName);
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          ViewAddresses()));
+                            },
+                            child: const Text("Change"))
+                      ],
+                    );
+                  });
+            },
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: (){
+            onPressed: () {
               Navigator.pushNamed(context, Cart.routeName);
             },
           ),
