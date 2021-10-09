@@ -95,12 +95,19 @@ class _BodyState extends State<Body> {
           email,
           password
       );
-      Navigator.push(
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) {
+      //       return LandingPage();
+      //     },
+      //   ),
+      // );
+
+      Navigator.pushReplacement<void, void>(
         context,
-        MaterialPageRoute(
-          builder: (context) {
-            return LandingPage();
-          },
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => LandingPage(),
         ),
       );
 
@@ -132,12 +139,18 @@ class _BodyState extends State<Body> {
                   SignInButtonRed(
                     text: "Sign In",
                     press: (){
-                      Navigator.push(
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) {
+                      //       return LoginScreen();
+                      //     },
+                      //   ),
+                      // );
+                      Navigator.pushReplacement<void, void>(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return LoginScreen();
-                          },
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => LoginScreen(),
                         ),
                       );
                     }
@@ -146,12 +159,18 @@ class _BodyState extends State<Body> {
                 SignUpButtonWhite(
                     text: "Sign Up",
                     press: (){
-                      Navigator.push(
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) {
+                      //       return RegisterScreen();
+                      //     },
+                      //   ),
+                      // );
+                      Navigator.pushReplacement<void, void>(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return RegisterScreen();
-                          },
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => RegisterScreen(),
                         ),
                       );
                     }

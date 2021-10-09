@@ -144,12 +144,18 @@ class _BodyState extends State<Body> {
                     children: [
                       ElevatedButton(
                           onPressed: (){
-                            Navigator.push(
-                                context,
-                                PageTransition(
-                                    type: PageTransitionType.rightToLeftWithFade,
-                                    child: EditProfile()
-                                )
+                            // Navigator.push(
+                            //     context,
+                            //     PageTransition(
+                            //         type: PageTransitionType.rightToLeftWithFade,
+                            //         child: EditProfile()
+                            //     )
+                            // );
+                            Navigator.pushReplacement<void, void>(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) => EditProfile(),
+                              ),
                             );
 
                             // Navigator.push(
@@ -286,6 +292,8 @@ class _BodyState extends State<Body> {
           ),
           Container(
             child: TextField(
+              enabled: false,
+              readOnly: true,
               obscureText: isPasswordTextField ? isObscurePassword : false,
               decoration: InputDecoration(
                   icon: Icon(
