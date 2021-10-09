@@ -21,7 +21,7 @@ class _MorePageState extends State<MorePage> {
 
     Widget pizzaHutLogo_image = Container(
       height: 100,
-      child: Image.asset("images/pizza_hut_logo.png"),
+      child: Image.asset("images/pizza_hut_logo2.png"),
     );
 
 
