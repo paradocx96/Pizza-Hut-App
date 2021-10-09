@@ -4,7 +4,16 @@ import 'package:pizzahut/constants/Constants.dart';
 import 'package:pizzahut/modules/Cart/models/CartItem.dart';
 import 'package:pizzahut/modules/Cart/models/CartModel.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
-import 'package:pizzahut/modules/promos/widgets/custom_select.dart';
+import 'package:pizzahut/modules/homepage/screens/view_addresses/view_addresses.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_eight.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_five.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_four.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_nine.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_one.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_seven.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_six.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_three.dart';
+import 'package:pizzahut/modules/promos/widgets/custom_select_two.dart';
 import 'package:provider/provider.dart';
 
 class PromoSingle extends StatefulWidget {
@@ -48,7 +57,47 @@ class _PromoSingleState extends State<PromoSingle> {
         actions: [
           IconButton(
             icon: Icon(Icons.delivery_dining),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (BuildContext context) {
+                    return CupertinoAlertDialog(
+                      title: const Text("Need to change deliver address?"),
+                      content: SingleChildScrollView(
+                        child: ListBody(
+                          children: const <Widget>[
+                            Text("Your order will be delivered "),
+                            Text(
+                              "211/G Niwandama south ja-ela?",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.redAccent),
+                            ),
+                          ],
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text("Keep")),
+                        TextButton(
+                            onPressed: () {
+                              //Navigator.of(context).pop();
+                              //Navigator.pushNamed(context, ViewAddresses.routeName);
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          ViewAddresses()));
+                            },
+                            child: const Text("Change"))
+                      ],
+                    );
+                  });
+            },
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -497,107 +546,124 @@ class _PromoSingleState extends State<PromoSingle> {
     if (widget.type == '1') {
       return Container(
         child: currentIndex == 0
-            ? CustomSelect(list: Constants.promoPizzasListOne)
+            ? CustomSelectOne(list: Constants.promoPizzasListOne)
             : currentIndex == 1
-                ? CustomSelect(list: Constants.promoAppetizerListOne)
+                ? CustomSelectTwo(list: Constants.promoAppetizerListOne)
                 : currentIndex == 2
-                    ? CustomSelect(list: Constants.promoDessertListOne)
+                    ? CustomSelectThree(list: Constants.promoDessertListOne)
                     : Text('ERROR'),
       );
     } else if (widget.type == '2') {
       return Container(
         child: currentIndex == 0
-            ? CustomSelect(list: Constants.promoPizzasListTwo)
+            ? CustomSelectOne(list: Constants.promoPizzasListTwo)
             : currentIndex == 1
-                ? CustomSelect(list: Constants.promoAppetizerListTwo)
+                ? CustomSelectTwo(list: Constants.promoAppetizerListTwo)
                 : currentIndex == 2
-                    ? CustomSelect(list: Constants.promoDessertListTwo)
+                    ? CustomSelectThree(list: Constants.promoDessertListTwo)
                     : currentIndex == 3
-                        ? CustomSelect(list: Constants.promoBeverageListOne)
+                        ? CustomSelectFour(list: Constants.promoBeverageListOne)
                         : Text('ERROR'),
       );
     } else if (widget.type == '3') {
       return Container(
         child: currentIndex == 0
-            ? CustomSelect(list: Constants.promoPizzasListThree)
+            ? CustomSelectOne(list: Constants.promoPizzasListThree)
             : currentIndex == 1
-                ? CustomSelect(list: Constants.promoAppetizerListTwo)
+                ? CustomSelectTwo(list: Constants.promoAppetizerListTwo)
                 : currentIndex == 2
-                    ? CustomSelect(list: Constants.promoDessertListThree)
+                    ? CustomSelectThree(list: Constants.promoDessertListThree)
                     : currentIndex == 3
-                        ? CustomSelect(list: Constants.promoBeverageListOne)
+                        ? CustomSelectFour(list: Constants.promoBeverageListOne)
                         : Text('ERROR'),
       );
     } else if (widget.type == '4') {
       return Container(
         child: currentIndex == 0
-            ? CustomSelect(list: Constants.promoPizzasListFour)
+            ? CustomSelectOne(list: Constants.promoPizzasListFour)
             : currentIndex == 1
-                ? CustomSelect(list: Constants.promoPizzasListFive)
+                ? CustomSelectTwo(list: Constants.promoPizzasListFive)
                 : Text('ERROR'),
       );
     } else if (widget.type == '5') {
       return Container(
         child: currentIndex == 0
-            ? CustomSelect(list: Constants.promoPizzasListSix)
+            ? CustomSelectOne(list: Constants.promoPizzasListSix)
             : currentIndex == 1
-                ? CustomSelect(list: Constants.promoPizzasListSix)
+                ? CustomSelectTwo(list: Constants.promoPizzasListSix)
                 : Text('ERROR'),
       );
     } else if (widget.type == '6') {
       return Container(
         child: currentIndex == 0
-            ? CustomSelect(list: Constants.promoPastaListOne)
+            ? CustomSelectOne(list: Constants.promoPastaListOne)
             : currentIndex == 1
-                ? CustomSelect(list: Constants.promoDessertListFour)
+                ? CustomSelectTwo(list: Constants.promoDessertListFour)
                 : currentIndex == 2
-                    ? CustomSelect(list: Constants.promoBeverageListTwo)
+                    ? CustomSelectThree(list: Constants.promoBeverageListTwo)
                     : currentIndex == 3
-                        ? CustomSelect(list: Constants.promoAppetizerListThree)
+                        ? CustomSelectFour(
+                            list: Constants.promoAppetizerListThree)
                         : Text('ERROR'),
       );
     } else if (widget.type == '7') {
       return Container(
         child: currentIndex == 0
-            ? CustomSelect(list: Constants.promoPizzasListFive)
+            ? CustomSelectOne(list: Constants.promoPizzasListFive)
             : currentIndex == 1
-                ? CustomSelect(list: Constants.promoPizzasListFive)
+                ? CustomSelectTwo(list: Constants.promoPizzasListFive)
                 : currentIndex == 2
-                    ? CustomSelect(list: Constants.promoAppetizerListOne)
+                    ? CustomSelectThree(list: Constants.promoAppetizerListOne)
                     : currentIndex == 3
-                        ? CustomSelect(list: Constants.promoAppetizerListOne)
+                        ? CustomSelectFour(
+                            list: Constants.promoAppetizerListOne)
                         : currentIndex == 4
-                            ? CustomSelect(list: Constants.promoAppetizerListOne)
+                            ? CustomSelectFive(
+                                list: Constants.promoAppetizerListOne)
                             : currentIndex == 5
-                                ? CustomSelect(list: Constants.promoDessertListSix)
+                                ? CustomSelectSix(
+                                    list: Constants.promoDessertListSix)
                                 : currentIndex == 6
-                                    ? CustomSelect(list: Constants.promoDessertListSix)
+                                    ? CustomSelectSeven(
+                                        list: Constants.promoDessertListSix)
                                     : currentIndex == 7
-                                        ? CustomSelect(list: Constants.promoBeverageListThree)
+                                        ? CustomSelectEight(
+                                            list: Constants
+                                                .promoBeverageListThree)
                                         : currentIndex == 8
-                                            ? CustomSelect(list: Constants.promoBeverageListThree)
+                                            ? CustomSelectNine(
+                                                list: Constants
+                                                    .promoBeverageListThree)
                                             : Text('ERROR'),
       );
     } else if (widget.type == '8') {
       return Container(
         child: currentIndex == 0
-            ? CustomSelect(list: Constants.promoPizzasListSeven)
+            ? CustomSelectOne(list: Constants.promoPizzasListSeven)
             : currentIndex == 1
-                ? CustomSelect(list: Constants.promoPizzasListSeven)
+                ? CustomSelectTwo(list: Constants.promoPizzasListSeven)
                 : currentIndex == 2
-                    ? CustomSelect(list: Constants.promoAppetizerListFour)
+                    ? CustomSelectThree(list: Constants.promoAppetizerListFour)
                     : currentIndex == 3
-                        ? CustomSelect(list: Constants.promoAppetizerListFour)
+                        ? CustomSelectFour(
+                            list: Constants.promoAppetizerListFour)
                         : currentIndex == 4
-                            ? CustomSelect(list: Constants.promoAppetizerListFour)
+                            ? CustomSelectFive(
+                                list: Constants.promoAppetizerListFour)
                             : currentIndex == 5
-                                ? CustomSelect(list: Constants.promoDessertListSix)
+                                ? CustomSelectSix(
+                                    list: Constants.promoDessertListSix)
                                 : currentIndex == 6
-                                    ? CustomSelect(list: Constants.promoDessertListSix)
+                                    ? CustomSelectSeven(
+                                        list: Constants.promoDessertListSix)
                                     : currentIndex == 7
-                                        ? CustomSelect(list: Constants.promoBeverageListThree)
+                                        ? CustomSelectEight(
+                                            list: Constants
+                                                .promoBeverageListThree)
                                         : currentIndex == 8
-                                            ? CustomSelect(list: Constants.promoBeverageListThree)
+                                            ? CustomSelectNine(
+                                                list: Constants
+                                                    .promoBeverageListThree)
                                             : Text('ERROR'),
       );
     } else {

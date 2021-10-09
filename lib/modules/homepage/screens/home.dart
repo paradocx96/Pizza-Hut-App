@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                 width: MediaQuery.of(context).size.width,
                 color: Colors.white,
                 child: Text(
-                  'MOST POPULAR DEALS ---------------------------------',
+                  'MOST POPULAR DEALS',
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),
