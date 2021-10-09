@@ -26,7 +26,7 @@ class Body extends StatelessWidget {
             // ),
             SizedBox(height: size.height * 0.8),
             RoundedButton(
-              text: "Get's Started",
+              text: "Get Started",
               press: () {
                 // Navigator.push(
                 //   context,
