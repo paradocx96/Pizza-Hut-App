@@ -179,12 +179,19 @@ class _BodyState extends State<Body> {
                     children: [
                       ElevatedButton(
                           onPressed: (){
-                            Navigator.push(
-                                context,
-                                PageTransition(
-                                    type: PageTransitionType.rightToLeftWithFade,
-                                    child: ViewProfile()
-                                )
+                            // Navigator.push(
+                            //     context,
+                            //     PageTransition(
+                            //         type: PageTransitionType.rightToLeftWithFade,
+                            //         child: ViewProfile()
+                            //     )
+                            // );
+
+                            Navigator.pushReplacement<void, void>(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) => ViewProfile(),
+                              ),
                             );
 
                           },

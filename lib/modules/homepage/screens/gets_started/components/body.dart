@@ -28,12 +28,19 @@ class Body extends StatelessWidget {
             RoundedButton(
               text: "Get's Started",
               press: () {
-                Navigator.push(
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return LoginScreen();
+                //     },
+                //   ),
+                // );
+
+                Navigator.pushReplacement<void, void>(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => LoginScreen(),
                   ),
                 );
               },
