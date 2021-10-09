@@ -83,225 +83,229 @@ class _MainMenuState extends State<MainMenu> {
 
     return Container(
       //color: secondaryColor,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                height: 175,
-                width: 175,
-                margin: EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, FoodMenu.routeName,
-                    arguments: FoodMenuArguments(0) //navigate to pizza
-                    );
-                  },
-                  child: Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    color: pizzaColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: pizzaImage,
-                          ),
-                          Center(
-                            child: Text(
-                              "Pizza",
-                              style: TextStyle(fontSize: 20),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  height: 175,
+                  width: 175,
+                  margin: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, FoodMenu.routeName,
+                          arguments: FoodMenuArguments(0) //navigate to pizza
+                          );
+                    },
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      color: pizzaColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: pizzaImage,
                             ),
-                          )
-                        ],
+                            Center(
+                              child: Text(
+                                "Pizza",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                height: 175,
-                width: 175,
-                margin: EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, FoodMenu.routeName,
-                        arguments: FoodMenuArguments(1)  //navigate to pasta
-                    );
-                  },
-                  child: Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    color: pastaColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: pastaImage,
-                          ),
-                          Center(
-                            child: Text(
-                              "Pasta",
-                              style: TextStyle(fontSize: 20),
+                Container(
+                  height: 175,
+                  width: 175,
+                  margin: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, FoodMenu.routeName,
+                          arguments: FoodMenuArguments(1) //navigate to pasta
+                          );
+                    },
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      color: pastaColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: pastaImage,
                             ),
-                          )
-                        ],
+                            Center(
+                              child: Text(
+                                "Pasta",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                height: 175,
-                width: 175,
-                margin: EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, FoodMenu.routeName,
-                        arguments: FoodMenuArguments(2) //navigate to appetizer
-                    );
-                  },
-                  child: Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    color: appetizerColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: appetizerImage,
-                          ),
-                          Center(
-                            child: Text(
-                              "Appetizer",
-                              style: TextStyle(fontSize: 20),
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  height: 175,
+                  width: 175,
+                  margin: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, FoodMenu.routeName,
+                          arguments:
+                              FoodMenuArguments(2) //navigate to appetizer
+                          );
+                    },
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      color: appetizerColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: appetizerImage,
                             ),
-                          )
-                        ],
+                            Center(
+                              child: Text(
+                                "Appetizer",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                height: 175,
-                width: 175,
-                margin: EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, FoodMenu.routeName,
-                        arguments: FoodMenuArguments(3) //navigate to desert
-                    );
-                  },
-                  child: Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    color: desertColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: desertImage,
-                          ),
-                          Center(
-                            child: Text(
-                              "Desert",
-                              style: TextStyle(fontSize: 20),
+                Container(
+                  height: 175,
+                  width: 175,
+                  margin: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, FoodMenu.routeName,
+                          arguments: FoodMenuArguments(3) //navigate to desert
+                          );
+                    },
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      color: desertColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: desertImage,
                             ),
-                          )
-                        ],
+                            Center(
+                              child: Text(
+                                "Desert",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                height: 175,
-                width: 175,
-                margin: EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, FoodMenu.routeName,
-                        arguments: FoodMenuArguments(4) //navigate to beverages
-                    );
-                  },
-                  child: Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    color: beveragesColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: beveragesImage,
-                          ),
-                          Center(
-                            child: Text(
-                              "Beverages",
-                              style: TextStyle(fontSize: 20),
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  height: 175,
+                  width: 175,
+                  margin: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, FoodMenu.routeName,
+                          arguments:
+                              FoodMenuArguments(4) //navigate to beverages
+                          );
+                    },
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      color: beveragesColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: beveragesImage,
                             ),
-                          )
-                        ],
+                            Center(
+                              child: Text(
+                                "Beverages",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                height: 175,
-                width: 175,
-                margin: EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, FoodMenu.routeName,
-                        arguments: FoodMenuArguments(5) //navigate to promos
-                    );
-                  },
-                  child: Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    color: promosColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: promoImage,
-                          ),
-                          Center(
-                            child: Text(
-                              "Promos",
-                              style: TextStyle(fontSize: 20),
+                Container(
+                  height: 175,
+                  width: 175,
+                  margin: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, FoodMenu.routeName,
+                          arguments: FoodMenuArguments(5) //navigate to promos
+                          );
+                    },
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      color: promosColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: promoImage,
                             ),
-                          )
-                        ],
+                            Center(
+                              child: Text(
+                                "Promos",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
