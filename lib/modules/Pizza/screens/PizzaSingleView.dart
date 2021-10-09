@@ -196,21 +196,33 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
                   child: Card(
                     child: Column(
                       children: [
-                        Image(
-                            image:
-                            AssetImage('images/pizza/${args.pizza.flag}')),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Image(
+                            height: 200,
+                            width: 200,
+                              image:
+                              AssetImage('images/pizza/${args.pizza.flag}')),
+                        ),
                         Text('${args.pizza.name}',style: TextStyle(fontSize: 20,
                             fontWeight: FontWeight.bold),),
-                        Text('${args.pizza.description}', style: TextStyle(fontSize: 15))
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text('${args.pizza.description}', style: TextStyle(fontSize: 15)),
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
 
-              Center(
-                child: Text("Selected Options",style: TextStyle(fontSize: 15 ,
-                    fontWeight: FontWeight.bold, color: Theme.of(context).accentColor ), ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Text("Selected Options",style: TextStyle(fontSize: 15 ,
+                      fontWeight: FontWeight.bold, color: Theme.of(context).accentColor ), ),
+                ),
               ),
 
               Center(

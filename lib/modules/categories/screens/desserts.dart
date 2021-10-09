@@ -54,37 +54,39 @@ class _DessertsState extends State<Desserts> {
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height - 210,
-                child: ListView.builder(
-                    itemCount: desserts.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 1.0, horizontal: 5.0),
-                        child: Card(
-                          child: ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => NormalFood(
-                                          name: desserts[index].name,
-                                          price: desserts[index].price,
-                                          description:
-                                              desserts[index].description,
-                                          flag: desserts[index].flag)));
-                            },
-                            title: Text(desserts[index].name),
-                            subtitle: Text('Rs.' +
-                                desserts[index].price.toString() + '.00'),
-                            leading: Image(
-                              image: AssetImage(desserts[index].flag),
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height - 210,
+                  child: ListView.builder(
+                      itemCount: desserts.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 1.0, horizontal: 5.0),
+                          child: Card(
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => NormalFood(
+                                            name: desserts[index].name,
+                                            price: desserts[index].price,
+                                            description:
+                                                desserts[index].description,
+                                            flag: desserts[index].flag)));
+                              },
+                              title: Text(desserts[index].name),
+                              subtitle: Text('Rs.' +
+                                  desserts[index].price.toString() + '.00'),
+                              leading: Image(
+                                image: AssetImage(desserts[index].flag),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      }),
+                ),
               ),
             ],
           ),

@@ -95,39 +95,41 @@ class _PromosState extends State<Promos> {
                   style: TextStyle(height: 1.5, fontSize: 20),
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height - 210,
-                child: ListView.builder(
-                    itemCount: promos.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 1.0, horizontal: 5.0),
-                        child: Card(
-                          margin: const EdgeInsets.all(5.0),
-                          child: ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => PromoSingle(
-                                            name: promos[index].name,
-                                            price: promos[index].price,
-                                            description: promos[index].description,
-                                            flag: promos[index].flag,
-                                            type: promos[index].type,
-                                          )));
-                            },
-                            title: Text(promos[index].name),
-                            subtitle: Text(
-                                'Rs.${promos[index].price}.00\n${promos[index].description}'),
-                            leading: Image(
-                              image: AssetImage(promos[index].flag),
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height - 210,
+                  child: ListView.builder(
+                      itemCount: promos.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 1.0, horizontal: 5.0),
+                          child: Card(
+                            margin: const EdgeInsets.all(5.0),
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => PromoSingle(
+                                              name: promos[index].name,
+                                              price: promos[index].price,
+                                              description: promos[index].description,
+                                              flag: promos[index].flag,
+                                              type: promos[index].type,
+                                            )));
+                              },
+                              title: Text(promos[index].name),
+                              subtitle: Text(
+                                  'Rs.${promos[index].price}.00\n${promos[index].description}'),
+                              leading: Image(
+                                image: AssetImage(promos[index].flag),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      }),
+                ),
               ),
             ],
           ),
