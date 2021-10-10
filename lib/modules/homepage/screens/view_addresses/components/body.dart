@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:pizzahut/modules/Cart/screens/Cart.dart';
 
 import '../view_addresses.dart';
+import 'add_address_btn.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -93,6 +94,14 @@ class _BodyState extends State<Body> {
                ),
                SizedBox(height: 30),
                Padding(
+                 padding: EdgeInsets.only(left: 35, top: 0, right: 35),
+                 child: AddressButton(
+                     text: "Add new address",
+                     press: (){}
+                 ),
+               ),
+               SizedBox(height: 30),
+               Padding(
                  padding: EdgeInsets.only(left: 40, top: 0, right: 0),
                  child: Row(
                    children: [
@@ -120,6 +129,7 @@ class _BodyState extends State<Body> {
                ),
                buildRectangleModel("124/A Colombo road, wattala."),
                buildRectangleModel("20/D Negombo road, kiririndiwela. "),
+               SizedBox(height: 30),
              ],
            )
          ),
