@@ -135,7 +135,7 @@ class _BodyState extends State<Body> {
                   SizedBox(height: 30),
                   getEmailTextField("Email", "anderson@gmail.com", false),
                   getPhoneTextField("Phone", "0777-1212-12 ", false),
-                  getAddressTextField("Address", "Jason Anderson", false),
+                  getAddressTextField("Address", "211/G Niwandama south, Ja-ela", false),
                   getUsernameTextField("Username", "Anderson", false),
                   getPasswordTextField("Password", "**********", true),
                   SizedBox(height: 20),
