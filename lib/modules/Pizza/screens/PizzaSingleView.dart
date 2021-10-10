@@ -357,6 +357,7 @@ class _PizzaSingleViewState extends State<PizzaSingleView> {
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       width: 105,
